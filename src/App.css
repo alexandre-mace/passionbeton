@@ -42,9 +42,15 @@ textarea:focus {
     background-color: #313235;
     padding: 20px;
     min-height: 400px;
+    max-width: 80vw;
     min-width: 280px;
     margin-top: 50px;
     border-radius: 8px;
+}
+@media screen and (max-width: 640px) {
+    .card {
+        min-width: 80vw;
+    }
 }
 a {
     color: white;

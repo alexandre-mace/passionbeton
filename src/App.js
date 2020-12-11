@@ -1,7 +1,10 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import SwipeableViews from 'react-swipeable-views';
+import { bindKeyboard } from 'react-swipeable-views-utils';
 const axios = require('axios');
+
+const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews);
 
 const styles = {
     slide: {
@@ -44,11 +47,11 @@ const App = () => {
                         <div className={"label"}>{view}/{posts.length}</div>
                     }
 
-                    <SwipeableViews index={view - 1} onChangeIndex={(index, indexLatest, meta) => {
+                    <BindKeyboardSwipeableViews enableMouseEvents={true} index={view - 1} onChangeIndex={(index, indexLatest, meta) => {
                         setView(index + 1)
                     }}>
-                        {posts.map((post) => (
-                            <div style={Object.assign({}, styles.slide)}>
+                        {posts.map((post, index) => (
+                            <div key={index} style={Object.assign({}, styles.slide)}>
                                 <div className={"m-auto"}>
                                     <div className="card">
                                         <div>{post.description}</div>
@@ -67,7 +70,7 @@ const App = () => {
                                 </div>
                             </div>
                         </div>
-                    </SwipeableViews>
+                    </BindKeyboardSwipeableViews>
                 </div>
             }
         </div>
