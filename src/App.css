@@ -39,6 +39,7 @@ textarea:focus {
 .card {
     text-align: left;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.24);
+    word-break: break-all;
     background-color: #313235;
     padding: 20px;
     min-height: 400px;
