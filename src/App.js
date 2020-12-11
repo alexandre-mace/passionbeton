@@ -56,7 +56,7 @@ const App = () => {
                                     <div className="card">
                                         <div>{post.description}</div>
                                         <br/><br/>
-                                        <a href={post.link}>{post.link}</a>
+                                        <a href={post.link} target={"_blank"} rel={"noreferrer"}>{post.link}</a>
                                     </div>
                                 </div>
                             </div>
