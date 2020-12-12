@@ -4,8 +4,7 @@ body {
     color: black;
     font-size: 1rem;
     margin-top: 30px;
-    min-height: 100vh;
-    overflow: hidden !important;
+    overflow: scroll !important;
 }
 .full-height {
     height: 100vh;
@@ -49,6 +48,17 @@ textarea:focus {
     max-width: 75vw;
     min-width: 280px;
     border-radius: 16px;
+}
+.emoji {
+    font-size: 1.7rem;
+}
+.card-archive {
+    max-height: 200px;
+    min-height: 100px;
+    margin-bottom: 20px;
+}
+.card-wrapper:last-child {
+    margin-bottom: 200px;
 }
 @media screen and (max-width: 640px) {
     .card {
@@ -117,4 +127,10 @@ a {
     margin-top: 0.5rem;
     background-color: #0001FC;
     border-radius: 50%;
+}
+.figure-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-transform: capitalize;
 }
