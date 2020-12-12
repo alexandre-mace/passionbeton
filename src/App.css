@@ -43,7 +43,7 @@ textarea:focus {
     box-shadow: 0 20px 40px 0 rgba(41,41,211,.05);
     word-break: break-all;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 15px;
     min-height: 300px;
     max-width: 75vw;
     min-width: 280px;

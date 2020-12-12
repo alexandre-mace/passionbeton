@@ -16,6 +16,9 @@ const useStyles = makeStyles({
 const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews);
 
 const styles = {
+    root: {
+        padding: '0 25px',
+    },
     slide: {
         marginTop: 20,
         marginBottom: 50,
@@ -74,7 +77,7 @@ const Latest = () => {
                         </div>
                     }
                 />
-                <BindKeyboardSwipeableViews enableMouseEvents={true} index={view - 1} onChangeIndex={(index, indexLatest, meta) => {
+                <BindKeyboardSwipeableViews style={styles.root} slideStyle={styles.slideContainer} enableMouseEvents={true} index={view - 1} onChangeIndex={(index, indexLatest, meta) => {
                     setView(index + 1)
                 }}>
                     {posts.map((post, index) => (

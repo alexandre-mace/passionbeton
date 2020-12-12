@@ -11,6 +11,7 @@ const Figure = ({figure, small = false}) => {
             </a>
             <div className={"domain-helper"}>({ domain === null ? 'lien invalide' : domain})</div>
         </div>
-    )};
+    )
+}
 
 export default Figure;
