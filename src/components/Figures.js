@@ -24,7 +24,7 @@ const Figures = () => {
             {!loading &&
             <div>
                 <div className={"header"}>
-                    <div className={"header-title"}>Les figures</div>
+                    <div className={"header-title"}>Les figures <span className="emoji">🗣️</span></div>
                     <div className={"header-subtitle"}>Voici toutes les figures des passionés de béton.</div>
                 </div>
                 {figures.map((figure, index) => (
