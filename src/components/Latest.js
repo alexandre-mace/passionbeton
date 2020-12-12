@@ -4,6 +4,7 @@ import { bindKeyboard } from 'react-swipeable-views-utils';
 import {makeStyles, MobileStepper} from "@material-ui/core";
 import SeenAll from "./SeenAll";
 import Post from "./Post";
+import Loader from "./Loader";
 
 const axios = require('axios');
 const useStyles = makeStyles({
@@ -54,7 +55,7 @@ const Latest = () => {
 
     return (
         <div className={"overflow-hidden"}>
-            {loading && <div className={"overflow-hidden m-auto full-height d-flex"}><div className={"m-auto"}>Passion Béton</div></div>}
+            {loading && <Loader/>}
             {!loading &&
             <div>
                 <div className={"header"}>

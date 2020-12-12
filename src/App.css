@@ -134,3 +134,18 @@ a {
     margin-bottom: 2rem;
     text-transform: capitalize;
 }
+.MuiBottomNavigationAction-root .MuiBottomNavigationAction-wrapper > div {
+    color: #A9A7BC !important;
+    font-size: 0.9rem !important;
+}
+.MuiBottomNavigationAction-root.Mui-selected .MuiBottomNavigationAction-wrapper > div {
+    color: black !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+}
+.bold {
+    font-weight: bold;
+}
+.loader {
+    font-size: 2rem;
+}
