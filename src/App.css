@@ -5,6 +5,7 @@ body {
     font-size: 1rem;
     margin-top: 30px;
     overflow: scroll !important;
+    font-family: 'Ubuntu', sans-serif;
 }
 .full-height {
     height: 100vh;
@@ -147,5 +148,9 @@ a {
     font-weight: bold;
 }
 .loader {
-    font-size: 2rem;
+    font-size: 28.0vw;
+    text-align: left;
+    color: #0001FC;
+    z-index: 10;
+    transform: translate(-3px, -40px);
 }
