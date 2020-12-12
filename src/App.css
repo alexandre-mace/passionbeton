@@ -1,16 +1,14 @@
 body {
     text-align: center;
-    background-color: #1C1C1C;
-    color: white;
-    font-size: 1.3rem;
-}
-input, textarea {
-    background-color: #696969;
-    border: 1px solid #696969;
-    border-radius: 5px;
-    padding: 3px;
-    color: white;
+    background-color: #F4F4FA;
+    color: black;
     font-size: 1rem;
+    margin-top: 30px;
+    min-height: 100vh;
+    overflow: hidden !important;
+}
+.full-height {
+    height: 100vh;
 }
 input:focus {
     outline: none;
@@ -25,7 +23,7 @@ textarea:focus {
     outline: none;
 }
 .label {
-    position: absolute;
+    position: fixed;
     top: 15vh;
     left: 50%;
     transform: translateX(-50%);
@@ -37,22 +35,86 @@ textarea:focus {
     margin: auto;
 }
 .card {
+    color: black;
+    max-height: 550px;
     text-align: left;
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.24);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 40px 0 rgba(41,41,211,.05);
     word-break: break-all;
-    background-color: #313235;
+    background-color: #ffffff;
     padding: 20px;
-    min-height: 400px;
-    max-width: 80vw;
+    min-height: 300px;
+    max-width: 75vw;
     min-width: 280px;
-    margin-top: 50px;
-    border-radius: 8px;
+    border-radius: 16px;
 }
 @media screen and (max-width: 640px) {
     .card {
-        min-width: 80vw;
+        min-width: 75vw;
+        width: 100%;
     }
 }
 a {
+    color: black;
+}
+.MuiMobileStepper-progress {
+    width: 80vw !important;
+}
+.MuiBottomNavigation-root {
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+}
+.header {
+    max-width: 80vw;
+    margin-left: 10vw;
+    text-align: left;
+    margin-bottom: 40px;
+}
+.header-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+.header-subtitle, .domain-helper {
+    color: #9c9a9a;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+.domain-helper {
+    text-align: center;
+    margin-top: 1rem;
+}
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+}
+.button {
+    background-color: #0001FC;
     color: white;
+    box-shadow: 0 20px 40px 0 rgba(41,41,211,.05);
+    display: inline-block;
+    z-index: 10;
+    font-weight: bold;
+    /*background-color: #E5E7FE;*/
+    border-radius: 5px;
+    padding: 10px 50px;
+}
+.card a {
+    text-decoration: none;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+.dot {
+    height: 8px;
+    width: 8px;
+    margin-top: 0.5rem;
+    background-color: #0001FC;
+    border-radius: 50%;
 }
