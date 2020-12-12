@@ -31,6 +31,9 @@ textarea:focus {
 .d-flex {
     display: flex;
 }
+.justify-content-center {
+    justify-content: center;
+}
 .m-auto {
     margin: auto;
 }
@@ -147,10 +150,19 @@ a {
 .bold {
     font-weight: bold;
 }
+.big-emoji {
+    font-size: 8rem;
+}
 .loader {
     font-size: 28.0vw;
     text-align: left;
     color: #0001FC;
     z-index: 10;
     transform: translate(-3px, -40px);
+}
+.indicators {
+    font-size: 1.3rem;
+}
+.text-center {
+    text-align: center;
 }
