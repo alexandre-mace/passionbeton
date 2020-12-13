@@ -135,7 +135,7 @@ a {
 .figure-name {
     font-size: 1.1rem;
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 0.7rem;
     text-transform: capitalize;
 }
 .MuiBottomNavigationAction-root .MuiBottomNavigationAction-wrapper > div {
