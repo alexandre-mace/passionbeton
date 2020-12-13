@@ -72,6 +72,15 @@ textarea:focus {
         width: 100%;
     }
 }
+@media screen and (max-width: 345px) {
+    .card {
+        min-width: 70vw;
+        min-height: 230px;
+    }
+    .MuiMobileStepper-root + div {
+        padding: 0 19px !important;
+    }
+}
 a {
     color: black;
 }
