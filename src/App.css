@@ -59,7 +59,7 @@ textarea:focus {
     font-size: 1.7rem;
 }
 .card-archive {
-    max-height: 200px;
+    max-height: 245px;
     min-height: 100px;
     margin-bottom: 20px;
 }
@@ -195,4 +195,13 @@ input::placeholder {
 }
 .big-emoji {
     max-height: 140px;
+}
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+}
+.post-date {
+    color: #9c9a9a;
+    font-size: 0.9rem;
 }

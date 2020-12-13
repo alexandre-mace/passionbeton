@@ -7,7 +7,10 @@ const Post = ({post, small = false}) => {
     const domain = getDomain(post.link)
     return (
         <div className={"card" + (small ? ' card-archive' : "")}>
-            <div style={{fontSize: '1rem', marginBottom: '0.5rem'}} className={"bold"}>{post.author}</div>
+            <div className={"post-header"}>
+                <div style={{fontSize: '1rem', marginBottom: '0.5rem'}} className={"bold"}>{post.author}</div>
+                <div className={"post-date"}>{post.createdAt}</div>
+            </div>
             <div style={{marginBottom: '1.3rem'}}>
             {(post.tags !== null) && post.tags.map((tag, index) => (
                 <Chip
@@ -19,7 +22,7 @@ const Post = ({post, small = false}) => {
                 />
             ))}
             </div>
-            <div style={{marginBottom: "1.6rem"}}>{post.description.substring(0, 130)}</div>
+            <div style={{marginBottom: "1.6rem"}}>{post.description.substring(0, (small ? 125 : 130))}{post.description.length > 125 && '...' }</div>
             <a href={post.link} target={"_blank"} rel={"noreferrer"}>
                 <div className={"button" + (domain === null ? " disabled" : "")}>Lire</div>
             </a>
