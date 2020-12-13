@@ -193,3 +193,6 @@ input::placeholder {
     font-family: 'Ubuntu', sans-serif !important;
     font-size: 0.9rem;
 }
+.big-emoji {
+    max-height: 140px;
+}
