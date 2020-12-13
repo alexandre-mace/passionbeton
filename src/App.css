@@ -5,7 +5,9 @@ body {
     font-size: 1rem;
     margin-top: 30px;
     overflow: scroll !important;
-    font-family: 'Ubuntu', sans-serif;
+}
+body * {
+    font-family: 'Ubuntu', sans-serif !important;
 }
 .full-height {
     height: 100vh;
@@ -165,4 +167,20 @@ a {
 }
 .text-center {
     text-align: center;
+}
+.archive-search {
+    margin-bottom: 1.3rem;
+}
+.archive-search input {
+    border: none;
+    height: 30px;
+    padding: 15px;
+    box-shadow: 0 20px 40px 0 rgba(41,41,211,.05);
+    border-radius: 16px;
+    min-width: 75vw;
+}
+input::placeholder {
+    color: #9c9a9a;
+    font-family: 'Ubuntu', sans-serif !important;
+    font-size: 0.9rem;
 }

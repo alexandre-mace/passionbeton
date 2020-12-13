@@ -19,7 +19,7 @@ const Post = ({post, small = false}) => {
                 />
             ))}
             </div>
-            <div>{post.description}</div>
+            <div style={{marginBottom: "1.6rem"}}>{post.description.substring(0, 130)}</div>
             <a href={post.link} target={"_blank"} rel={"noreferrer"}>
                 <div className={"button" + (domain === null ? " disabled" : "")}>Lire</div>
             </a>
