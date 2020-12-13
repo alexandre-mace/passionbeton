@@ -7,7 +7,7 @@ const Post = ({post, small = false}) => {
     const domain = getDomain(post.link)
     return (
         <div className={"card" + (small ? ' card-archive' : "")}>
-            <div style={{fontSize: '1.2rem', marginBottom: '0.5rem'}} className={"bold"}>{post.author}</div>
+            <div style={{fontSize: '1rem', marginBottom: '0.5rem'}} className={"bold"}>{post.author}</div>
             <div style={{marginBottom: '1.3rem'}}>
             {(post.tags !== null) && post.tags.map((tag, index) => (
                 <Chip
