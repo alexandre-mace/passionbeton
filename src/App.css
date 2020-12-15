@@ -217,6 +217,15 @@ input::placeholder {
     animation-name: animation-opacity;
     animation-duration: 0.4s;
 }
+.card * {
+}
+.card-content-visible * {
+    transition: opacity 0.3s ease-out 0.2s;
+    opacity: 1;
+}
+.card-content-invisible * {
+    opacity: 0;
+}
 .card-content-container.open {
     top: 0;
     left: 0;

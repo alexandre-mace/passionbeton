@@ -52,10 +52,8 @@ const Post = ({post, small = false, isSelected = false}) => {
         }
     }, [animating])
 
-    console.log({'flow': currentFlow});
-    console.log({'transition': animating});
     return (
-        <div className={"card" + (small ? ' card-archive' : "") + (animating ? ' opacity-transition': '')}>
+        <div className={"card" + (small ? ' card-archive' : "") + (animating ? ' card-content-invisible': ' card-content-visible')}>
             <div className={"post-header"}
             >
                 <div style={{fontSize: '1rem', marginBottom: '0.5rem'}} className={"bold"}>{post.author}</div>
