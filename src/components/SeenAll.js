@@ -1,5 +1,6 @@
 import React from 'react';
 import {motion, useMotionValue, useTransform} from "framer-motion";
+import partyPopper from'./../assets/partypopper.png';
 
 const SeenAll = (props) => {
     const x = useMotionValue(0);
@@ -55,7 +56,7 @@ const SeenAll = (props) => {
                         <div className="m-auto">
                             <div className={"bold indicators text-center"} style={{marginBottom: '1rem'}}>À jour !</div>
                             <br/>
-                            <div className={"d-flex justify-content-center"}><div><img className={""} src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/271/party-popper_1f389.png" alt=""/></div></div>
+                            <div className={"d-flex justify-content-center"}><div><img className={""} src={partyPopper} alt=""/></div></div>
                         </div>
                     </div>
                 </div>

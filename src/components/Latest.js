@@ -44,18 +44,12 @@ const Latest = () => {
     const throwConfettis = () => {
         if (!confetti) {
             setConfetti(true)
-            setTimeout(() => {
-                setConfetti(false)
-            }, 6000)
         }
     }
 
     useEffect(() => {
         if (posts.length === 0 && !loading && !confetti) {
             setConfetti(true)
-            setTimeout(() => {
-                setConfetti(false)
-            }, 6000)
         }
     }, [posts])
 
@@ -241,7 +235,7 @@ const Latest = () => {
                         </AnimatePresence>
                     </motion.div>
                 </div>
-                {confetti && <Confetti/>}
+                {confetti && <Confetti stop={() => setConfetti(false)}/>}
             </div>
 
             }
