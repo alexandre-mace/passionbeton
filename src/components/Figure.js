@@ -6,7 +6,7 @@ import getTagColor from "../domain/getTagColor";
 const Figure = ({figure, small = false}) => {
     const domain = getDomain(figure.link)
     return (
-        <div className={"card" + (small ? ' card-archive' : "")}>
+        <div className={"card figure" + (small ? ' card-archive' : "")}>
             <div className={"figure-name"}>{figure.name}</div>
             <div style={{marginBottom: '1.4rem'}}>
                 {(figure.tags !== null) && figure.tags.map((tag, index) => (

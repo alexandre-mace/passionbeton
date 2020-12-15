@@ -58,7 +58,7 @@ const ExpandPost = ({post, small}) => {
                         onDrag={(event, info) => checkSwipeToDismiss(event, info) }
                         onUpdate={checkZIndex}
                     >
-                        <Post small={small} post={post}/>
+                        <Post small={small} post={post} isSelected={isSelected}/>
                     </motion.div>
                 </div>
             </>

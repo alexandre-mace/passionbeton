@@ -59,7 +59,7 @@ textarea:focus {
     font-size: 1.7rem;
 }
 .card-archive {
-    max-height: 245px;
+    max-height: 280px;
     min-height: 100px;
     margin-bottom: 20px;
 }
@@ -213,7 +213,10 @@ input::placeholder {
     color: #9c9a9a;
     font-size: 0.9rem;
 }
-
+.opacity-transition * {
+    animation-name: animation-opacity;
+    animation-duration: 0.7s;
+}
 .card-content-container.open {
     top: 0;
     left: 0;
@@ -275,4 +278,15 @@ input::placeholder {
 .notdeported {
     position: relative;
     bottom: unset;
+}
+.figure {
+    min-height: unset;
+    max-height: 250px;
+}
+
+@keyframes animation-opacity {
+    0%   {opacity: 1;}
+    2%  {opacity: 0;}
+    60%  {opacity: 0;}
+    100% {opacity: 1;}
 }

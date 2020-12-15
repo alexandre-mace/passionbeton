@@ -60,8 +60,7 @@ const Latest = () => {
     }, [posts])
 
     const isConflict = index === 5 && posts.length === 1;
-    console.log(isConflict)
-    console.log((posts.length === 0 && !loading) || isConflict)
+
     return (
         <div>
             {loading && <Loader/>}

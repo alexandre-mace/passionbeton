@@ -24,7 +24,6 @@ const SwipePost = ({post, small = false, ...props}) => {
         }
     }
 
-    console.log(isSelected)
     return (<>
         <motion.div
             className={isSelected ? "selectedPost" : ""}
