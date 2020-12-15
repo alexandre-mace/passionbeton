@@ -215,7 +215,7 @@ input::placeholder {
 }
 .opacity-transition * {
     animation-name: animation-opacity;
-    animation-duration: 0.7s;
+    animation-duration: 0.4s;
 }
 .card-content-container.open {
     top: 0;
@@ -286,7 +286,7 @@ input::placeholder {
 
 @keyframes animation-opacity {
     0%   {opacity: 1;}
-    2%  {opacity: 0;}
-    60%  {opacity: 0;}
+    1%  {opacity: 0;}
+    85%  {opacity: 0;}
     100% {opacity: 1;}
 }

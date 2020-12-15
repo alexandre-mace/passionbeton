@@ -27,7 +27,7 @@ const Post = ({post, small = false, isSelected = false}) => {
         setCurrentFlow('opening')
         setTimeout(() => {
             setCurrentFlow('opened')
-        }, 300)
+        }, 100)
     }
 
     if (closeContext && (currentFlow !== 'closing' && currentFlow !== 'closed')) {
@@ -37,7 +37,7 @@ const Post = ({post, small = false, isSelected = false}) => {
         }, 300)
     }
 
-    if (closeContext && currentFlow === 'opened' && !animating) {
+    if (currentFlow === 'closing' && !animating) {
         setAnimating(true)
     }
     if (currentFlow === 'opening' && !animating) {
@@ -48,10 +48,12 @@ const Post = ({post, small = false, isSelected = false}) => {
         if (animating) {
             setTimeout(() => {
                 setAnimating(false)
-            }, 700)
+            }, 400)
         }
     }, [animating])
 
+    console.log({'flow': currentFlow});
+    console.log({'transition': animating});
     return (
         <div className={"card" + (small ? ' card-archive' : "") + (animating ? ' opacity-transition': '')}>
             <div className={"post-header"}
