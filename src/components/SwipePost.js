@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {motion, useMotionValue, useTransform} from "framer-motion";
+import Post from "./Post";
+import ExpandPost from "./ExpandPost";
+import ControlledExpandPost from "./ControlledExpandPost";
 
-const SeenAll = (props) => {
+const SwipePost = ({post, small = false, ...props}) => {
+    const [isSelected, setIsSelected] = useState(false);
+
     const x = useMotionValue(0);
     const scale = useTransform(x, [-150, 0, 150], [0.5, 1, 0.5]);
     const rotate = useTransform(x, [-150, 0, 150], [-45, 0, 45], {
@@ -9,15 +14,20 @@ const SeenAll = (props) => {
     });
 
     function handleDragEnd(event, info) {
-        if (info.offset.x < -100 || info.offset.x > 100) {
-            if (props.throwConfettis) {
-                props.throwConfettis()
-            }
+        if (info.offset.x < -100) {
+            props.setExitX(-250);
+            props.setIndex(props.index + 1);
+        }
+        if (info.offset.x > 100) {
+            props.setExitX(250);
+            props.setIndex(props.index + 1);
         }
     }
 
-    return (
+    console.log(isSelected)
+    return (<>
         <motion.div
+            className={isSelected ? "selectedPost" : ""}
             style={{
                 position: "absolute",
                 top: 0,
@@ -33,9 +43,9 @@ const SeenAll = (props) => {
                 bottom: 0,
                 left: 0
             }}
+            onDragEnd={handleDragEnd}
             initial={props.initial}
             animate={props.animate}
-            onDragEnd={handleDragEnd}
             transition={props.transition}
             exit={{
                 x: props.exitX,
@@ -49,19 +59,20 @@ const SeenAll = (props) => {
                     scale: scale
                 }}
             />
-            {!props.mock && (
-                <div className={"m-auto"}>
-                    <div className="card d-flex">
-                        <div className="m-auto">
-                            <div className={"bold indicators text-center"}>À jour !</div>
-                            <br/>
-                            <div className={"d-flex justify-content-center"}><div><img className={"big-emoji"} src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/271/party-popper_1f389.png" alt=""/></div></div>
-                        </div>
-                    </div>
+            <>
+                <div className={`card-content-container"}`} onClick={() => {setIsSelected(!isSelected)}}>
+                    <motion.div
+                        className={"card-content"}
+                    >
+                        <Post small={small} post={post}/>
+                    </motion.div>
                 </div>
-            )}
+            </>
         </motion.div>
+            {<ControlledExpandPost deport={!isSelected} isSelectedProp={isSelected} setIsSelectedProp={setIsSelected} post={post}/>}
+        </>
     )
 };
 
-export default SeenAll;
+
+export default SwipePost;

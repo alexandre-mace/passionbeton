@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Loader from "./Loader";
-import Post from "./Post";
+import ExpandPost from "./ExpandPost";
 const axios = require('axios');
 
 const Archives = () => {
@@ -55,7 +55,7 @@ const Archives = () => {
                     </div>
                     {posts.map((post, index) => (
                         <div className={"card-wrapper"} key={index}>
-                            <Post post={post} small={true}/>
+                            <ExpandPost post={post} small={true}/>
                         </div>
                     ))}
             </div>
