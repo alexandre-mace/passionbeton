@@ -4,7 +4,7 @@ import Confetti from "./Confetti";
 import {AnimatePresence, motion} from "framer-motion";
 import SeenAll from "./SeenAll";
 import SwipePost from "./SwipePost";
-import LatestLoader from "./LatestLoader";
+import Loader from "./Loader";
 
 const axios = require('axios');
 const useStyles = makeStyles({
@@ -57,7 +57,7 @@ const Latest = () => {
 
     return (
         <div>
-            {loading && <LatestLoader/>}
+            {loading && <Loader/>}
             {!loading &&
             <div>
                 <div className={"header"}>
