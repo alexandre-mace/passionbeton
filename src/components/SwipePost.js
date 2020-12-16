@@ -20,7 +20,9 @@ const SwipePost = ({post, small = false, ...props}) => {
         }
         if (info.offset.x > 100) {
             props.setExitX(250);
-            props.setIndex(props.index + 1);
+            if (props.index !== 0) {
+                props.setIndex(props.index - 1);
+            }
         }
     }
 

@@ -10,9 +10,13 @@ const SeenAll = (props) => {
     });
 
     function handleDragEnd(event, info) {
-        if (info.offset.x < -100 || info.offset.x > 100) {
-            if (props.throwConfettis) {
-                props.throwConfettis()
+        if (info.offset.x < -100) {
+            props.throwConfettis()
+        }
+        if (info.offset.x > 100) {
+            props.setExitX(250);
+            if (props.index !== 0) {
+                props.setIndex(props.index - 1);
             }
         }
     }

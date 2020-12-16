@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {makeStyles, MobileStepper} from "@material-ui/core";
 import Confetti from "./Confetti";
 import {AnimatePresence, motion} from "framer-motion";
@@ -15,14 +15,25 @@ const useStyles = makeStyles({
     },
 });
 
+function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+        ref.current = value;
+    });
+    return ref.current;
+}
+
 const Latest = () => {
     const classes = useStyles();
 
     const [loading, setLoading] = useState(true);
     const [posts, setPosts] = useState([]);
+    const [removedPosts, setRemovedPosts] = useState([]);
     const [confetti, setConfetti] = useState(false);
     const [index, setIndex] = React.useState(0);
     const [exitX, setExitX] = React.useState("100%");
+
+    const prevIndex = usePrevious(index)
 
     useEffect(() => {
         axios.get('https://wd2q3hrfr4-rycbhpqkvnz7k.eu.s5y.io/posts/latest')
@@ -36,8 +47,15 @@ const Latest = () => {
     }, []);
 
     useEffect(() => {
-        if (index !== 0) {
-            setPosts(posts.filter((post, loopIndex) => loopIndex !== 0))
+        if (posts.length > 0 || (posts.length === 0 && removedPosts.length > 0)) {
+            if (index > prevIndex) {
+                setRemovedPosts([...removedPosts, posts.find((post, loopIndex) => loopIndex === 0)])
+                setPosts(posts.filter((post, loopIndex) => loopIndex !== 0))
+            }
+            if (index < prevIndex) {
+                setPosts([removedPosts[removedPosts.length - 1], ...posts])
+                setRemovedPosts((removedPosts.filter((post, loopIndex) => loopIndex !== removedPosts.length - 1)))
+            }
         }
     }, [index])
 
