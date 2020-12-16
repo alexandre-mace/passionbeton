@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {makeStyles, MobileStepper} from "@material-ui/core";
-import Loader from "./Loader";
 import Confetti from "./Confetti";
 import {AnimatePresence, motion} from "framer-motion";
 import SeenAll from "./SeenAll";
 import SwipePost from "./SwipePost";
+import LatestLoader from "./LatestLoader";
 
 const axios = require('axios');
 const useStyles = makeStyles({
@@ -57,7 +57,7 @@ const Latest = () => {
 
     return (
         <div>
-            {loading && <Loader/>}
+            {loading && <LatestLoader/>}
             {!loading &&
             <div>
                 <div className={"header"}>
