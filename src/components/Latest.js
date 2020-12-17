@@ -5,6 +5,7 @@ import {AnimatePresence, motion} from "framer-motion";
 import SeenAll from "./SeenAll";
 import SwipePost from "./SwipePost";
 import Loader from "./Loader";
+import xSwipe from'./../assets/xSwipe.png';
 
 const axios = require('axios');
 const useStyles = makeStyles({
@@ -253,11 +254,11 @@ const Latest = () => {
                         </AnimatePresence>
                     </motion.div>
                 </div>
+                <div className={"swipe-indicator"}><div><img className={""} src={xSwipe} alt=""/></div></div>
                 {confetti && <Confetti stop={() => setConfetti(false)}/>}
             </div>
-
             }
         </div>
-    )};
+)}
 
 export default Latest;
