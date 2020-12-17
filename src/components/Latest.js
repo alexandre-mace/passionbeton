@@ -75,7 +75,7 @@ const Latest = () => {
     const isConflict = index === 5 && posts.length === 1;
 
     return (
-        <div>
+        <div style={{ overflow: "hidden"}}>
             {loading && <Loader/>}
             {!loading &&
             <div>
@@ -83,7 +83,7 @@ const Latest = () => {
                     <div className={"header-title"}><div>Cool de se revoir ! <span className="emoji">👋</span></div> </div>
                     <div className={"header-subtitle"}>Voici les derniers partages par les passionés de béton.</div>
                 </div>
-                <div style={{ overflow: "hidden"}}>
+                <div>
 
                 <MobileStepper
                     variant="progress"
