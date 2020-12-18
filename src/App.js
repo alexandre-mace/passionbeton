@@ -1,37 +1,31 @@
 import './App.css';
 import React from 'react';
-import {BottomNavigation, BottomNavigationAction, makeStyles} from "@material-ui/core";
-import Latest from "./components/Latest";
-import Archives from "./components/Archives";
-import Figures from "./components/Figures";
+import Latest from "./components/modes/Latest";
+import Archives from "./components/modes/Archives";
+import Figures from "./components/modes/Figures";
+import BottomNavigation from "./components/BottomNavigation";
+import Loader from "./components/Loader";
+import {useLatestPost} from "./data/hooks/useLatestPosts";
+import {usePosts} from "./data/hooks/usePosts";
+import {useFigures} from "./data/hooks/useFigures";
 
-const useStyles = makeStyles({
-    root: {
-        borderTopLeftRadius: 16,
-        borderTopRightRadius: 16,
-        height: 70
-    },
-});
 const App = () => {
-    const classes = useStyles();
     const [mode, setMode] = React.useState(0);
+    const latestPosts = useLatestPost().posts
+    const latestPostsLoading = useLatestPost().loading
+    const posts = usePosts().posts
+    const postsLoading = usePosts().loading
+    const figures = useFigures().figures
+    const figuresLoading = useFigures().loading
 
     return (
         <div>
-            {mode === 0 && <Latest/>}
-            {mode === 1 && <Archives/>}
-            {mode === 2 && <Figures/>}
-            <BottomNavigation
-                value={mode}
-                onChange={(event, newValue) => {
-                    setMode(newValue);
-                }}
-                className={classes.root}
-            >
-                <BottomNavigationAction label={<div className={"dot"}></div>} icon={<div>News</div>} />
-                <BottomNavigationAction label={<div className={"dot"}></div>} icon={<div>Archives</div>} />
-                <BottomNavigationAction label={<div className={"dot"}></div>} icon={<div>Figures</div>} />
-            </BottomNavigation>
+            {(latestPostsLoading || postsLoading || figuresLoading) && <Loader/>}
+
+            {(!latestPostsLoading && latestPosts && latestPosts.length > 0 && mode === 0) && <Latest postsProp={latestPosts}/>}
+            {(!postsLoading && posts && posts.length > 0 && mode === 1) && <Archives postsProp={posts}/>}
+            {(!figuresLoading && figures && figures.length > 0 && mode === 2) && <Figures figuresProp={figures}/>}
+            <BottomNavigation mode={mode} setMode={setMode}/>
         </div>
     )};
 

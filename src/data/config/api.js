@@ -1,0 +1,1 @@
+export const apiAddress = 'https://wd2q3hrfr4-rycbhpqkvnz7k.eu.s5y.io';

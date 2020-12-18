@@ -2,6 +2,10 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Chip} from "@material-ui/core";
 import getTagColor from "../domain/getTagColor";
 import getDomain from "../utils/getDomain";
+import ImageIcon from '@material-ui/icons/Image';
+import isImage from "../utils/isImage";
+import DescriptionIcon from '@material-ui/icons/Description';
+import {apiAddress} from "../data/config/api";
 
 function usePrevious(value) {
     const ref = useRef();
@@ -18,7 +22,6 @@ const Post = ({post, small = false, isSelected = false}) => {
         closeContext = true;
     }
 
-    const [isSelectedComponent, setIsSelected] = useState(isSelected);
     const [animating, setAnimating] = useState(isSelected || closeContext);
     const [currentFlow, setCurrentFlow] = useState('closed');
 
@@ -73,6 +76,24 @@ const Post = ({post, small = false, isSelected = false}) => {
             </div>
             <div style={{marginBottom: "1.6rem"}}
             >{post.description.substring(0, (small ? 125 : 130))}{post.description.length > 125 && '...' }</div>
+            {isSelected && (
+                <div className={"medias"}>
+                    {post.medias.map((media, index) => (
+                        <div key={index}>
+                            {isImage(media.fileName) && (<div className={"media-image"}><img src={apiAddress + '/uploads/medias/' + media.fileName} alt=""/></div>)}
+                            {!isImage(media.fileName) && (<DescriptionIcon/>)}
+                        </div>
+                    ))}
+                </div>
+            )}
+            <div className={"medias-indicator"}>
+                {post.medias.map((media, index) => (
+                    <div key={index}>
+                        {isImage(media.fileName) && (<ImageIcon/>)}
+                        {!isImage(media.fileName) && (<DescriptionIcon/>)}
+                    </div>
+                ))}
+            </div>
             <a href={post.link} target={"_blank"} rel={"noreferrer"}>
                 <div className={"button" + (domain === null ? " disabled" : "")}>Lire</div>
             </a>

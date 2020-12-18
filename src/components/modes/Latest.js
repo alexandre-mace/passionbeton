@@ -1,13 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {makeStyles, MobileStepper} from "@material-ui/core";
-import Confetti from "./Confetti";
+import Confetti from "../Confetti";
 import {AnimatePresence, motion} from "framer-motion";
-import SeenAll from "./SeenAll";
-import SwipePost from "./SwipePost";
-import Loader from "./Loader";
-import xSwipe from'./../assets/xSwipe.png';
+import SeenAll from "../SeenAll";
+import SwipePost from "../SwipePost";
+import xSwipe from '../../assets/xSwipe.png';
 
-const axios = require('axios');
 const useStyles = makeStyles({
     root: {
         borderTopLeftRadius: 16,
@@ -24,28 +22,16 @@ function usePrevious(value) {
     return ref.current;
 }
 
-const Latest = () => {
+const Latest = ({ postsProp }) => {
     const classes = useStyles();
 
-    const [loading, setLoading] = useState(true);
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState(postsProp);
     const [removedPosts, setRemovedPosts] = useState([]);
     const [confetti, setConfetti] = useState(false);
     const [index, setIndex] = React.useState(0);
     const [exitX, setExitX] = React.useState("100%");
 
     const prevIndex = usePrevious(index)
-
-    useEffect(() => {
-        axios.get('https://wd2q3hrfr4-rycbhpqkvnz7k.eu.s5y.io/posts/latest')
-            .then(function (response) {
-                setPosts(response.data)
-                setLoading(false)
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }, []);
 
     useEffect(() => {
         if (posts.length > 0 || (posts.length === 0 && removedPosts.length > 0)) {
@@ -67,7 +53,7 @@ const Latest = () => {
     }
 
     useEffect(() => {
-        if (posts.length === 0 && !loading && !confetti) {
+        if (posts.length === 0 && !confetti) {
             setConfetti(true)
         }
     }, [posts])
@@ -76,8 +62,7 @@ const Latest = () => {
 
     return (
         <div style={{ overflow: "hidden"}}>
-            {loading && <Loader/>}
-            {!loading &&
+            {
             <div>
                 <div className={"header"}>
                     <div className={"header-title"}><div>Cool de se revoir ! <span className="emoji">👋</span></div> </div>
@@ -113,7 +98,7 @@ const Latest = () => {
                     >
                         <AnimatePresence initial={false}>
                             <>
-                                {((posts.length === 0 && !loading) || isConflict) && (
+                                {((posts.length === 0) || isConflict) && (
                                     <SeenAll
                                         key={index + 1}
                                         initial={{
@@ -133,7 +118,7 @@ const Latest = () => {
                                         }}
                                     />
                                 )}
-                                {((posts.length === 0 && !loading) || isConflict) && (
+                                {((posts.length === 0) || isConflict) && (
                                     <SeenAll
                                         key={index}
                                         animate={{

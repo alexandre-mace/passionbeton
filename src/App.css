@@ -139,7 +139,6 @@ a {
 }
 .card a {
     text-decoration: none;
-    margin-top: auto;
     margin-left: auto;
     margin-right: auto;
     display: inline-block;
@@ -241,6 +240,7 @@ input::placeholder {
     max-width: unset;
     min-height: calc(100vh - 7vh);
     padding-top: 5vh;
+    overflow: scroll;
 }
 .card-content-container.open .card .post-header {
     margin-bottom: 3vh;
@@ -302,4 +302,12 @@ input::placeholder {
 .swipe-indicator img{
     max-width: 50px;
     transform: translateY(-10px);
+}
+.medias-indicator {
+    display: flex;
+    margin-top: auto;
+}
+.media-image img {
+    max-width: 100%;
+    max-height: 250px;
 }

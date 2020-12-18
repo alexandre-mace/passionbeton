@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {motion, useMotionValue, useTransform} from "framer-motion";
 import Post from "./Post";
-import ExpandPost from "./ExpandPost";
 import ControlledExpandPost from "./ControlledExpandPost";
 
 const SwipePost = ({post, small = false, ...props}) => {
@@ -61,7 +60,7 @@ const SwipePost = ({post, small = false, ...props}) => {
                 }}
             />
             <>
-                <div className={`card-content-container"}`} onClick={() => {setIsSelected(!isSelected)}}>
+                <div className={`card-content-container`} onClick={() => {setIsSelected(!isSelected)}}>
                     <motion.div
                         className={"card-content"}
                     >

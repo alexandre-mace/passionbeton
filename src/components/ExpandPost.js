@@ -30,7 +30,6 @@ const ExpandPost = ({post, small}) => {
             zIndex.set(0);
         }
     }
-
     const containerRef = useRef(null);
     useWheelScroll(
         containerRef,
