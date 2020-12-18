@@ -6,6 +6,7 @@ import ImageIcon from '@material-ui/icons/Image';
 import isImage from "../utils/isImage";
 import DescriptionIcon from '@material-ui/icons/Description';
 import {apiAddress} from "../data/config/api";
+import {motion} from "framer-motion";
 
 function usePrevious(value) {
     const ref = useRef();
@@ -74,30 +75,26 @@ const Post = ({post, small = false, isSelected = false}) => {
                     />
                 ))}
             </div>
+            {!isSelected &&
             <div style={{marginBottom: "1.6rem"}}
             >{post.description.substring(0, (small ? 125 : 130))}{post.description.length > 125 && '...' }</div>
-            {isSelected && (
-                <div className={"medias"}>
-                    {post.medias.map((media, index) => (
-                        <div key={index}>
-                            {isImage(media.fileName) && (<div className={"media-image"}><img src={apiAddress + '/uploads/medias/' + media.fileName} alt=""/></div>)}
-                            {!isImage(media.fileName) && (<DescriptionIcon/>)}
-                        </div>
-                    ))}
-                </div>
-            )}
+            }
             <div className={"medias-indicator"}>
-                {post.medias.map((media, index) => (
+                {!isSelected && post.medias.map((media, index) => (
                     <div key={index}>
                         {isImage(media.fileName) && (<ImageIcon/>)}
                         {!isImage(media.fileName) && (<DescriptionIcon/>)}
                     </div>
                 ))}
             </div>
-            <a href={post.link} target={"_blank"} rel={"noreferrer"}>
-                <div className={"button" + (domain === null ? " disabled" : "")}>Lire</div>
-            </a>
-            <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
+            {!isSelected &&
+            <>
+                <a href={post.link} target={"_blank"} rel={"noreferrer"}>
+                    <div className={"button" + (domain === null ? " disabled" : "")}>Lire</div>
+                </a>
+                <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
+            </>
+            }
         </div>
     )
 }
