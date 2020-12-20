@@ -234,9 +234,6 @@ input::placeholder {
     overflow: hidden;
     padding: 40px 0;
 }
-.card-content-visible {
-    min-height: unset !important;
-}
 .overlay.open {
     background-color: white;
 }
@@ -244,13 +241,11 @@ input::placeholder {
     margin: 0;
     width: calc(100vw - 30px);
     max-width: unset;
-    min-height: calc(100vh - 7vh);
+    min-height: unset;
     padding-top: 5vh;
     max-height: unset;
 }
-.card .medias {
-    /*overflow: scroll;*/
-
+.card-content-visible {
 }
 .card-content-container.open .card .post-header {
     margin-bottom: 3vh;

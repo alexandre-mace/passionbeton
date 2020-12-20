@@ -8,6 +8,7 @@ import isImage from "../utils/isImage";
 import {apiAddress} from "../data/config/api";
 import DescriptionIcon from "@material-ui/icons/Description";
 import getDomain from "../utils/getDomain";
+import { Frame, Scroll } from "framer"
 
 const dismissDistance = 50;
 
@@ -35,13 +36,6 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
     }
 
     const containerRef = useRef(null);
-    useWheelScroll(
-        containerRef,
-        y,
-        constraints,
-        checkSwipeToDismiss,
-        isSelectedProp
-    );
 
     y.set(0)
 
@@ -65,6 +59,8 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
                 >
                     <Post small={small} post={post} isSelected={isSelectedProp}/>
                     {isSelectedProp &&
+                    // <Scroll>
+                    //     <Frame>
                         <div className={"card-fullcontent"}>
                             <div style={{marginBottom: "1.6rem"}}>{post.description}</div>
                             {isSelectedProp && (
@@ -84,7 +80,9 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
                                 <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
                             </>
                         </div>
-                    }
+                        // </Frame></Scroll>
+
+                        }
                 </motion.div>
             </div>
         </div>

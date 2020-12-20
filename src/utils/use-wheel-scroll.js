@@ -20,12 +20,16 @@ function springTo(value, from, to) {
             velocity: value.getVelocity(),
             stiffness: 400,
             damping: 40
-        }).start({
-            update: (v) => value.set(v),
-            complete
-        });
+        })
 
-        return () => animation.stop();
+        if (animation.start) {
+            animation.start({
+                update: (v) => value.set(v),
+                complete
+            });
+
+            return () => animation.stop();
+        }
     });
 }
 
