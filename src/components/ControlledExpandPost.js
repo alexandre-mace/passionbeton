@@ -8,9 +8,8 @@ import isImage from "../utils/isImage";
 import {apiAddress} from "../data/config/api";
 import DescriptionIcon from "@material-ui/icons/Description";
 import getDomain from "../utils/getDomain";
-import { Frame, Scroll } from "framer"
 
-const dismissDistance = 50;
+const dismissDistance = 350;
 
 const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setIsSelectedProp, deport = false}) => {
 
@@ -18,14 +17,6 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
     const zIndex = useMotionValue(isSelectedProp ? 2 : 0);
     const cardRef = useRef(null);
     const constraints = useScrollConstraints(cardRef, isSelectedProp);
-
-    function checkSwipeToDismiss(event, info) {
-        if (info && info.offset && info.offset.y > dismissDistance) {
-            setTimeout(() => {
-                setIsSelectedProp(false)
-            }, 200)
-        }
-    }
 
     function checkZIndex(latest) {
         if (isSelectedProp) {
@@ -41,6 +32,19 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
 
     const domain = getDomain(post.link)
 
+    function checkSwipeToDismiss(event, info, cardRef) {
+        let scrolledY = 0
+        if (cardRef['current'].style.transform.split(',')[1]) {
+            scrolledY =  cardRef['current'].style.transform.split(',')[1].replace('px', '')
+        }
+
+        if (info && info.offset && info.offset.y > (dismissDistance - scrolledY)) {
+            setTimeout(() => {
+                setIsSelectedProp(false)
+            }, 200)
+        }
+    }
+
     return (
         <div className={deport ? "deport" : "notdeported"}>
             <Overlay isSelected={isSelectedProp} />
@@ -54,7 +58,7 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
                     drag={isSelectedProp ? "y" : false}
                     onClick={() => {setIsSelectedProp(!isSelectedProp)}}
                     dragConstraints={constraints}
-                    onDrag={(event, info) => checkSwipeToDismiss(event, info) }
+                    onDrag={(event, info) => checkSwipeToDismiss(event, info, cardRef) }
                     onUpdate={checkZIndex}
                 >
                     <Post small={small} post={post} isSelected={isSelectedProp}/>
