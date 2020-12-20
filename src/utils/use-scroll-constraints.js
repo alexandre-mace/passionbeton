@@ -17,8 +17,12 @@ export function useScrollConstraints(ref, measureConstraints) {
         const contentTop = element.offsetTop;
         const contentHeight = element.offsetHeight;
         const scrollableViewport = viewportHeight - contentTop * 2;
-        const top = Math.min(scrollableViewport - contentHeight, 0);
 
+        let top = Math.min(scrollableViewport - contentHeight, 0);
+
+        if (top === 0) {
+            top = -105;
+        }
         setConstraints({ top, bottom: 0 });
     }, [measureConstraints]);
 
