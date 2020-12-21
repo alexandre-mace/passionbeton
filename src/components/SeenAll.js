@@ -1,6 +1,6 @@
 import React from 'react';
 import {motion, useMotionValue, useTransform} from "framer-motion";
-import partyPopper from'./../assets/partypopper.gif';
+import partyPopper from'./../assets/partypopper.png';
 
 const SeenAll = (props) => {
     const x = useMotionValue(0);
