@@ -78,12 +78,12 @@ const ExpandPost = ({post, small}) => {
                                     ))}
                                 </motion.div>
                             )}
-                            <>
+                            <div className={"card-button-section"}>
                                 <a href={post.link} target={"_blank"} rel={"noreferrer"}>
                                     <div className={"button" + (domain === null ? " disabled" : "")}>Lire</div>
                                 </a>
                                 <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
-                            </>
+                            </div>
                         </div>
                             // </Frame></Scroll>
 

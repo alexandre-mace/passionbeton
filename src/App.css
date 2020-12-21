@@ -319,6 +319,12 @@ input::placeholder {
 .card-fullcontent {
     background-color: white;
     transform: translateY(-8px);
+    display: flex;
+    flex-direction: column;
     padding-top: 30px;
     padding-bottom: 40px;
+    min-height: calc(100vh - 210px);
+}
+.card-button-section {
+    margin-top: auto;
 }

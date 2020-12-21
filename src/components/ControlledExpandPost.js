@@ -16,7 +16,8 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
     const y = useMotionValue(0);
     const zIndex = useMotionValue(isSelectedProp ? 2 : 0);
     const cardRef = useRef(null);
-    const constraints = useScrollConstraints(cardRef, isSelectedProp);
+    const cardFullContentRef = useRef(null);
+    const constraints = useScrollConstraints(cardRef, isSelectedProp, cardFullContentRef);
 
     function checkZIndex(latest) {
         if (isSelectedProp) {
@@ -65,7 +66,7 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
                     {isSelectedProp &&
                     // <Scroll>
                     //     <Frame>
-                        <div className={"card-fullcontent"}>
+                        <div className={"card-fullcontent"} ref={cardFullContentRef}>
                             <div style={{marginBottom: "1.6rem"}}>{post.description}</div>
                             {isSelectedProp && (
                                 <motion.div className={"content-container medias"}>
@@ -77,12 +78,12 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
                                 ))}
                                 </motion.div>
                                 )}
-                            <>
+                            <div className={"card-button-section"}>
                                 <a href={post.link} target={"_blank"} rel={"noreferrer"}>
                                     <div className={"button" + (domain === null ? " disabled" : "")}>Lire</div>
                                 </a>
                                 <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
-                            </>
+                            </div>
                         </div>
                         // </Frame></Scroll>
 
