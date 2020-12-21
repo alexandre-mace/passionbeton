@@ -9,8 +9,8 @@ import {apiAddress} from "../data/config/api";
 import DescriptionIcon from "@material-ui/icons/Description";
 import getDomain from "../utils/getDomain";
 
-const dismissDistance = 100;
-const bottomDismissDistance = 100;
+const dismissDistance = 250;
+const bottomDismissDistance = 50
 
 const ExpandPost = ({post, small}) => {
     const [isSelected, setIsSelected] = useState(false);

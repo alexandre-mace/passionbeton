@@ -9,8 +9,8 @@ import {apiAddress} from "../data/config/api";
 import DescriptionIcon from "@material-ui/icons/Description";
 import getDomain from "../utils/getDomain";
 
-const dismissDistance = 350;
-const bottomDismissDistance = 100;
+const dismissDistance = 250;
+const bottomDismissDistance = 50;
 
 const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setIsSelectedProp, deport = false}) => {
 
@@ -45,6 +45,7 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
         const contentOversize = contentHeight - viewportHeight;
 
         const scrollUnderContentSize =  contentOversize + parseInt(scrolledY);
+        console.log(info.offset.y - (dismissDistance - scrolledY))
         if (
             info &&
             info.offset &&
@@ -55,7 +56,7 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
         ) {
             setTimeout(() => {
                 setIsSelectedProp(false)
-            }, 200)
+            }, 50)
         }
     }
 
@@ -69,7 +70,7 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
                     style={{ zIndex, y }}
                     layout={true}
                     transition={isSelectedProp ? openSpring : closeSpring}
-                    drag={isSelectedProp ? "y" : false}
+                    drag={"y"}
                     onClick={() => {setIsSelectedProp(!isSelectedProp)}}
                     dragConstraints={constraints}
                     onDrag={(event, info) => checkSwipeToDismiss(event, info, cardRef) }
