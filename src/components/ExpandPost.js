@@ -10,6 +10,7 @@ import DescriptionIcon from "@material-ui/icons/Description";
 import getDomain from "../utils/getDomain";
 
 const dismissDistance = 100;
+const bottomDismissDistance = 100;
 
 const ExpandPost = ({post, small}) => {
     const [isSelected, setIsSelected] = useState(false);
@@ -19,8 +20,25 @@ const ExpandPost = ({post, small}) => {
     const cardRef = useRef(null);
     const constraints = useScrollConstraints(cardRef, isSelected);
 
-    function checkSwipeToDismiss(event, info) {
-        if (info && info.offset && info.offset.y > dismissDistance) {
+    function checkSwipeToDismiss(event, info, cardRef) {
+        let scrolledY = 0
+        if (cardRef['current'].style.transform.split(',')[1]) {
+            scrolledY =  cardRef['current'].style.transform.split(',')[1].replace('px', '')
+        }
+        const element = cardRef.current;
+        const viewportHeight = window.innerHeight;
+        const contentHeight = element.offsetHeight;
+        const contentOversize = contentHeight - viewportHeight;
+
+        const scrollUnderContentSize =  contentOversize + parseInt(scrolledY);
+        if (
+            info &&
+            info.offset &&
+            (
+                (info.offset.y > (dismissDistance - scrolledY)) ||
+                (scrollUnderContentSize < 0 && Math.abs(scrollUnderContentSize) > bottomDismissDistance)
+            )
+        ) {
             setTimeout(() => {
                 setIsSelected(false)
             }, 200)
@@ -59,7 +77,7 @@ const ExpandPost = ({post, small}) => {
                         drag={isSelected ? "y" : false}
                         onClick={() => {setIsSelected(!isSelected)}}
                         dragConstraints={constraints}
-                        onDrag={(event, info) => checkSwipeToDismiss(event, info) }
+                        onDrag={(event, info) => checkSwipeToDismiss(event, info, cardRef) }
                         onUpdate={checkZIndex}
                     >
                         <Post small={small} post={post} isSelected={isSelected}/>

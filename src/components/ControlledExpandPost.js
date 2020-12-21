@@ -10,6 +10,7 @@ import DescriptionIcon from "@material-ui/icons/Description";
 import getDomain from "../utils/getDomain";
 
 const dismissDistance = 350;
+const bottomDismissDistance = 100;
 
 const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setIsSelectedProp, deport = false}) => {
 
@@ -38,8 +39,20 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
         if (cardRef['current'].style.transform.split(',')[1]) {
             scrolledY =  cardRef['current'].style.transform.split(',')[1].replace('px', '')
         }
+        const element = cardRef.current;
+        const viewportHeight = window.innerHeight;
+        const contentHeight = element.offsetHeight;
+        const contentOversize = contentHeight - viewportHeight;
 
-        if (info && info.offset && info.offset.y > (dismissDistance - scrolledY)) {
+        const scrollUnderContentSize =  contentOversize + parseInt(scrolledY);
+        if (
+            info &&
+            info.offset &&
+            (
+                (info.offset.y > (dismissDistance - scrolledY)) ||
+                (scrollUnderContentSize < 0 && Math.abs(scrollUnderContentSize) > bottomDismissDistance)
+            )
+        ) {
             setTimeout(() => {
                 setIsSelectedProp(false)
             }, 200)
