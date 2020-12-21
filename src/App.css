@@ -328,3 +328,6 @@ input::placeholder {
 .card-button-section {
     margin-top: auto;
 }
+.gif {
+    max-height: 210px;
+}

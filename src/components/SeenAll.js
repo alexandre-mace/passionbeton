@@ -1,6 +1,6 @@
 import React from 'react';
 import {motion, useMotionValue, useTransform} from "framer-motion";
-import partyPopper from'./../assets/partypopper.png';
+import partyPopper from'./../assets/partypopper.gif';
 
 const SeenAll = (props) => {
     const x = useMotionValue(0);
@@ -58,9 +58,9 @@ const SeenAll = (props) => {
                 <div className={"m-auto"}>
                     <div className="card d-flex">
                         <div className="m-auto">
-                            <div className={"bold indicators text-center"} style={{marginBottom: '1rem'}}>À jour !</div>
+                            <div className={"bold indicators text-center"}>À jour !</div>
                             <br/>
-                            <div className={"d-flex justify-content-center"}><div><img className={""} src={partyPopper} alt=""/></div></div>
+                            <div className={"d-flex justify-content-center"}><div><img className={"gif"} src={partyPopper} alt=""/></div></div>
                         </div>
                     </div>
                 </div>
