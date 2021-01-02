@@ -251,4 +251,4 @@ const TinderCard = React.forwardRef(({ flickOnSwipe = true, children, onSwipe, o
     )
 })
 
-module.exports = TinderCard
+export default TinderCard
