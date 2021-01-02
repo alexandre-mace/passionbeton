@@ -64,6 +64,7 @@ const ExpandPost = ({post, small}) => {
     y.set(0)
     const domain = getDomain(post.link)
 
+    console.log(isSelected)
     return (
             <>
                 <Overlay isSelected={isSelected} />
@@ -75,7 +76,7 @@ const ExpandPost = ({post, small}) => {
                         layout={true}
                         layoutTransition={isSelected ? openSpring : closeSpring}
                         drag={isSelected ? "y" : false}
-                        onClick={() => {setIsSelected(!isSelected)}}
+                        onClick={() => {console.log('hi');setIsSelected(!isSelected)}}
                         dragConstraints={constraints}
                         onDrag={(event, info) => checkSwipeToDismiss(event, info, cardRef) }
                         onUpdate={checkZIndex}

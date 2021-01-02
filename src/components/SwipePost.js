@@ -69,7 +69,7 @@ const SwipePost = ({post, small = false, ...props}) => {
                 </div>
             </>
         </motion.div>
-            {<ControlledExpandPost deport={!isSelected} isSelectedProp={isSelected} setIsSelectedProp={setIsSelected} post={post}/>}
+            {/*{<ControlledExpandPost deport={!isSelected} isSelectedProp={isSelected} setIsSelectedProp={setIsSelected} post={post}/>}*/}
         </>
     )
 };

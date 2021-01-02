@@ -21,7 +21,6 @@ const App = () => {
     return (
         <div>
             {(latestPostsLoading || postsLoading || figuresLoading) && <Loader/>}
-
             {(!latestPostsLoading && latestPosts && latestPosts.length > 0 && mode === 0) && <Latest postsProp={latestPosts}/>}
             {(!postsLoading && posts && posts.length > 0 && mode === 1) && <Archives postsProp={posts}/>}
             {(!figuresLoading && figures && figures.length > 0 && mode === 2) && <Figures figuresProp={figures}/>}

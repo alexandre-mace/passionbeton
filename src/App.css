@@ -4,7 +4,9 @@ body {
     color: black;
     font-size: 1rem;
     margin-top: 30px;
-    overflow: scroll !important;
+}
+.overflow-hidden {
+    overflow: hidden !important;
 }
 body * {
     font-family: 'Ubuntu', sans-serif !important;
@@ -46,7 +48,6 @@ textarea:focus {
     margin: auto;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 20px 40px 0 rgba(41,41,211,.05);
     word-break: break-all;
     background-color: #ffffff;
     padding: 15px;
@@ -330,4 +331,33 @@ input::placeholder {
 }
 .gif {
     max-height: 210px;
+}
+
+.swipe {
+    position: absolute;
+}
+
+.swipe-card-container {
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    max-height: 30vh;
+    overflow: hidden;
+    min-height: 350px;
+}
+
+.swipe:first-child .card {
+    box-shadow: 0 20px 40px 0 rgba(41,41,211,.05);
+}
+
+.swipeCard {
+    position: relative;
+    background-color: #fff;
+    width: 80vw;
+    max-width: 260px;
+    height: 300px;
+    /*box-shadow: 0px 0px 60px 0px rgba(0,0,0,0.30);*/
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
 }
