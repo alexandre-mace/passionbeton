@@ -33,6 +33,7 @@ const Latest = ({ postsProp }) => {
         if ((posts.length > 0 || posts.length === 0) && removedPosts.length > 0) {
             setPosts([removedPosts[removedPosts.length - 1], ...posts])
             setRemovedPosts((removedPosts.filter((post, loopIndex) => loopIndex !== removedPosts.length - 1)))
+            setPostIndex(postIndex - 1)
         }
     }
 
