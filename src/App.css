@@ -3,7 +3,8 @@ body {
     background-color: #F4F4FA;
     color: black;
     font-size: 1rem;
-    margin-top: 30px;
+    margin-top: 25px;
+    overflow-y: scroll;
 }
 .overflow-hidden {
     overflow: hidden !important;
@@ -51,8 +52,7 @@ textarea:focus {
     word-break: break-all;
     background-color: #ffffff;
     padding: 15px;
-    min-height: 300px;
-    max-width: 75vw;
+    min-height: 350px;
     min-width: 280px;
     border-radius: 16px;
 }
@@ -81,7 +81,7 @@ textarea:focus {
 }
 @media screen and (max-width: 640px) {
     .card {
-        width: calc(80vw - 30px);
+        width: calc(90vw - 30px);
         min-width: unset;
     }
 }
@@ -94,7 +94,11 @@ a {
     color: black;
 }
 .MuiMobileStepper-progress {
-    width: 80vw !important;
+    width: 100vw !important;
+}
+.MuiMobileStepper-root {
+    height: 4px !important;
+    padding: 0 !important;
 }
 .MuiBottomNavigation-root {
     position: fixed;
@@ -102,8 +106,8 @@ a {
     bottom: 0;
 }
 .header {
-    max-width: 80vw;
-    margin-left: 10vw;
+    max-width: 90vw;
+    margin-left: 5vw;
     text-align: left;
     margin-bottom: 20px;
 }
@@ -148,7 +152,7 @@ a {
     height: 8px;
     width: 8px;
     margin-top: 0.5rem;
-    background-color: #0001FC;
+    background-color: #0001fc;
     border-radius: 50%;
 }
 .figure-name {
@@ -307,7 +311,7 @@ input::placeholder {
 }
 .swipe-indicator img{
     max-width: 50px;
-    transform: translateY(-10px);
+    transform: translateY(-50px);
 }
 .medias-indicator {
     display: flex;
@@ -336,14 +340,13 @@ input::placeholder {
 .swipe {
     position: absolute;
 }
-
 .swipe-card-container {
-    width: 90vw;
+    width: 100vw;
     display: flex;
     justify-content: center;
     max-height: 30vh;
     overflow: hidden;
-    min-height: 350px;
+    min-height: calc(350px + 30px);
 }
 
 .swipe:first-child .card {
@@ -353,11 +356,33 @@ input::placeholder {
 .swipeCard {
     position: relative;
     background-color: #fff;
-    width: 80vw;
-    max-width: 260px;
+    width: 90vw;
     height: 300px;
-    /*box-shadow: 0px 0px 60px 0px rgba(0,0,0,0.30);*/
     border-radius: 20px;
     background-size: cover;
     background-position: center;
+}
+.swipe-actions {
+    max-width: 90vw;
+    margin-top: 5vw;
+    margin-left: 5vw;
+    text-align: left;
+}
+.swipe-actions button {
+    box-shadow: 0 20px 40px 0 rgba(41,41,211,.1);
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    padding: 10px;
+}
+button:focus {
+    outline: none;
+}
+.swipe-back-icon {
+    transform: rotate(-22deg) translateY(1px);
+    max-height: 30px;
+}
+.postindex-indicator {
+    position: absolute;
+    top: 0;
 }

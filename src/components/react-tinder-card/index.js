@@ -4,7 +4,7 @@ const React = require('react')
 const sleep = require('p-sleep')
 
 const settings = {
-    snapBackDuration: 100,
+    snapBackDuration: 300,
     maxTilt: 0,
     bouncePower: 0.2,
     swipeThreshold: 300 // px/s
@@ -166,9 +166,9 @@ const TinderCard = React.forwardRef(({ flickOnSwipe = true, children, onSwipe, o
 
             if (flickOnSwipe) {
                 if (!preventSwipe.includes(dir)) {
+                    if (onCardLeftScreen) onCardLeftScreen(dir)
                     await animateOut(element, speed)
                     element.style.display = 'none'
-                    if (onCardLeftScreen) onCardLeftScreen(dir)
                     return
                 }
             }
