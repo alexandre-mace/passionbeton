@@ -45,7 +45,6 @@ const ControlledExpandPost = ({post, small = false, isSelectedProp = false, setI
         const contentOversize = contentHeight - viewportHeight;
 
         const scrollUnderContentSize =  contentOversize + parseInt(scrolledY);
-        console.log(info.offset.y - (dismissDistance - scrolledY))
         if (
             info &&
             info.offset &&

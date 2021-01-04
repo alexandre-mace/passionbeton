@@ -6,9 +6,6 @@ body {
     margin-top: 25px;
     overflow-y: scroll;
 }
-.overflow-hidden {
-    overflow: hidden !important;
-}
 body * {
     font-family: 'Ubuntu', sans-serif !important;
 }
