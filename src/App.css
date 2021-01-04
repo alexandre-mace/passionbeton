@@ -198,7 +198,7 @@ a {
     padding: 15px;
     box-shadow: 0 20px 40px 0 rgba(41,41,211,.05);
     border-radius: 16px;
-    min-width: 75vw;
+    width: calc(90vw - 30px);
 }
 input::placeholder {
     color: #9c9a9a;
