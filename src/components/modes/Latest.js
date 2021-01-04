@@ -37,11 +37,14 @@ const Latest = ({ postsProp }) => {
 
     useEffect(() => {
         if (swipe !== null) {
+            console.log(swipe)
+
             if (posts.length > 0 || (posts.length === 0 && removedPosts.length > 0)) {
                 setRemovedPosts([...removedPosts, posts.find((post, loopIndex) => loopIndex === 0)])
                 setPosts(posts.filter((post, loopIndex) => loopIndex !== 0))
             }
             setPostIndex(postIndex + 1)
+            setSwipe(null)
         }
     }, [swipe])
 
@@ -99,7 +102,6 @@ const Latest = ({ postsProp }) => {
                                 key={loopIndex}
                                 className='swipe'
                                 onSwipe={(direction) => setSwipe(direction)}
-                                preventSwipe={['right']}
                             >
                                 <div className='swipeCard'>
                                     <SwipePost
