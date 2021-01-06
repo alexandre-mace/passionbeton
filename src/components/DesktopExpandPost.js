@@ -1,7 +1,5 @@
 import React, {useRef, useState} from 'react';
 import {motion, useMotionValue} from "framer-motion";
-import { useScrollConstraints } from "../utils/use-scroll-constraints";
-import { useWheelScroll } from "../utils/use-wheel-scroll";
 import { openSpring, closeSpring } from "../utils/cardAnimations";
 import Post from "./Post";
 import isImage from "../utils/isImage";
@@ -50,7 +48,11 @@ const DesktopExpandPost = ({post, small}) => {
                 >
                     <Post small={small} post={post} isSelected={isSelected}/>
                     {isSelected &&
-                    <div className={"card-fullcontent"}>
+                    <motion.div
+                        className={"card-fullcontent"}
+                        animate={{ backgroundColor: '#EFF1FF' }}
+                        transition={{ delay: 1, duration: 0.3, ease: "easeOut" }}
+                    >
                         <div style={{marginBottom: "1.6rem"}}>{post.description}</div>
                         {isSelected && (
                             <motion.div className={"content-container medias"}>
@@ -68,7 +70,7 @@ const DesktopExpandPost = ({post, small}) => {
                             </a>
                             <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
                         </div>
-                    </div>
+                    </motion.div>
                     }
                 </motion.div>
             </div>
