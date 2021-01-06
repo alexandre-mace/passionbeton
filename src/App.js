@@ -8,6 +8,9 @@ import Loader from "./components/Loader";
 import {useLatestPost} from "./data/hooks/useLatestPosts";
 import {usePosts} from "./data/hooks/usePosts";
 import {useFigures} from "./data/hooks/useFigures";
+import {useWindowSize} from "react-use";
+import PostsWithControls from "./components/PostsWithControls";
+import TopNavigation from "./components/TopNavigation";
 
 const App = () => {
     const [mode, setMode] = React.useState(0);
@@ -17,14 +20,20 @@ const App = () => {
     const postsLoading = usePosts().loading
     const figures = useFigures().figures
     const figuresLoading = useFigures().loading
+    const { width, height } = useWindowSize()
 
     return (
         <div>
+            {width >= 800 &&
+                <TopNavigation mode={mode} setMode={setMode}/>
+            }
             {(latestPostsLoading || postsLoading || figuresLoading) && <Loader/>}
             {(!latestPostsLoading && latestPosts && latestPosts.length > 0 && mode === 0) && <Latest postsProp={latestPosts}/>}
             {(!postsLoading && posts && posts.length > 0 && mode === 1) && <Archives postsProp={posts}/>}
             {(!figuresLoading && figures && figures.length > 0 && mode === 2) && <Figures figuresProp={figures}/>}
-            <BottomNavigation mode={mode} setMode={setMode}/>
+            {width < 800 &&
+                <BottomNavigation mode={mode} setMode={setMode}/>
+            }
         </div>
     )};
 

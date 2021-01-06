@@ -64,7 +64,7 @@ const Latest = ({ postsProp }) => {
                     <div className={"swipe-indicator"}><img className={""} src={xSwipe} alt=""/></div>
                 </>
             }
-            {width > 800 &&
+            {width >= 800 &&
             <>
                 <PostsWithControls posts={posts} setSwipe={setSwipe} throwConfettis={throwConfettis}/>
             </>
