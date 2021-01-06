@@ -1,12 +1,12 @@
 import React from 'react'
-import ExpandPost from "./ExpandPost";
+import DesktopExpandPost from "./DesktopExpandPost";
 
 const PostsWithControls = ({ posts, throwConfettis, setSwipe }) => {
     return (
         <div className={"desktop-posts-wrapper"}>
             {(posts.length > 0) && posts.map((post, loopIndex) => (
                 <div className={"mb-3"} key={loopIndex}>
-                    <ExpandPost post={post} small={true}/>
+                    <DesktopExpandPost post={post} small={true}/>
                 </div>
             ))}
         </div>

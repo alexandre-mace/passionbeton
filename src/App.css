@@ -267,7 +267,6 @@ input::placeholder {
     pointer-events: auto;
     position: relative;
     border-radius: 20px;
-    background: #F4F4FA;
     width: 100%;
     height: 100%;
     margin: 0 auto;
@@ -402,11 +401,20 @@ button:focus {
     margin-bottom: 1.5rem;
 }
 @media screen and (min-width: 800px) {
+    .desktop-posts-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto auto;
+    }
     .open .card-content {
         max-width: 80vw;
     }
     .card:hover {
         cursor: pointer;
+    }
+    .card-fullcontent {
+        padding-bottom: 100px;
     }
     body {
         max-width: 80vw;
@@ -438,9 +446,20 @@ button:focus {
     .top-navigation-item:hover {
         cursor: pointer;
     }
+    .card-content-container.open {
+        position: absolute;
+        top: 184px;
+    }
+    .overlay {
+        z-index: 0;
+        background: transparent;
+    }
 }
 @media screen and (min-width: 1200px) {
     body {
+        max-width: 70vw;
+    }
+    .open .card-content {
         max-width: 70vw;
     }
     .header {
@@ -455,6 +474,9 @@ button:focus {
 }
 @media screen and (min-width: 1450px) {
     body {
+        max-width: 60vw;
+    }
+    .open .card-content {
         max-width: 60vw;
     }
     .header {
