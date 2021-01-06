@@ -460,12 +460,16 @@ button:focus {
     }
     .card-content-container.open {
         position: absolute;
-        top: 260px;
+        top: 140px;
         background-color: #EFF1FF;
     }
     .overlay {
-        top: 260px;
+        width: 80vw;
+        top: 125px;
         position: absolute;
+        max-width: unset;
+        background-color: #EFF1FF;
+        z-index: 0;
     }
     .card-content-container.open .card {
         background-color: transparent;
@@ -477,10 +481,6 @@ button:focus {
         transition: background-color 0.3s ease-out 1s;
         background-color: #EFF1FF;
     }
-    .overlay {
-        z-index: 0;
-        background: transparent;
-    }
 }
 @media screen and (min-width: 1200px) {
     body {
@@ -489,7 +489,7 @@ button:focus {
     .open .card-content {
         max-width: 70vw;
     }
-    .header {
+    .header, .overlay {
         width: 70vw;
     }
     .archive-search input {
@@ -509,7 +509,7 @@ button:focus {
     .open .card-content {
         max-width: 60vw;
     }
-    .header {
+    .header, .overlay {
         width: 60vw;
     }
     .archive-search input {
