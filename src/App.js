@@ -9,8 +9,8 @@ import {useLatestPost} from "./data/hooks/useLatestPosts";
 import {usePosts} from "./data/hooks/usePosts";
 import {useFigures} from "./data/hooks/useFigures";
 import {useWindowSize} from "react-use";
-import PostsWithControls from "./components/PostsWithControls";
 import TopNavigation from "./components/TopNavigation";
+import DesktopLatest from "./components/modes/DesktopLatest";
 
 const App = () => {
     const [mode, setMode] = React.useState(0);
@@ -24,11 +24,22 @@ const App = () => {
 
     return (
         <div>
-            {width >= 800 &&
+            {(width >= 800 && mode !==0) &&
                 <TopNavigation mode={mode} setMode={setMode}/>
             }
             {(latestPostsLoading || postsLoading || figuresLoading) && <Loader/>}
-            {(!latestPostsLoading && latestPosts && latestPosts.length > 0 && mode === 0) && <Latest postsProp={latestPosts}/>}
+            {(!latestPostsLoading && latestPosts && latestPosts.length > 0 && mode === 0) &&
+                (
+                    <>
+                        {width < 800 &&
+                            <Latest postsProp={latestPosts}/>
+                        }
+                        {width >= 800 &&
+                            <DesktopLatest postsProp={latestPosts} mode={mode} setMode={setMode}/>
+                        }
+                    </>
+                )
+            }
             {(!postsLoading && posts && posts.length > 0 && mode === 1) && <Archives postsProp={posts}/>}
             {(!figuresLoading && figures && figures.length > 0 && mode === 2) && <Figures figuresProp={figures}/>}
             {width < 800 &&

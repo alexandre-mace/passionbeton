@@ -5,8 +5,8 @@ import getDomain from "../utils/getDomain";
 import ImageIcon from '@material-ui/icons/Image';
 import isImage from "../utils/isImage";
 import DescriptionIcon from '@material-ui/icons/Description';
-import {apiAddress} from "../data/config/api";
 import {motion} from "framer-motion";
+import CloseIcon from '@material-ui/icons/Close';
 
 function usePrevious(value) {
     const ref = useRef();
@@ -16,7 +16,7 @@ function usePrevious(value) {
     return ref.current;
 }
 
-const Post = ({post, small = false, isSelected = false}) => {
+const Post = ({post, small = false, isSelected = false, setIsSelected}) => {
     const prevSelected = usePrevious(isSelected)
     let closeContext = false;
     if (prevSelected === true && isSelected === false) {
@@ -57,7 +57,22 @@ const Post = ({post, small = false, isSelected = false}) => {
     }, [animating])
 
     return (
-        <div style={{pointerEvents: (currentFlow === 'closing' ? 'none' : 'auto')}} className={"card" + (small ? ' card-archive' : "") + (animating ? ' card-content-invisible': ' card-content-visible')}>
+        <div
+            style={{pointerEvents: (currentFlow === 'closing' ? 'none' : 'auto')}}
+            className={"card" + (small ? ' card-archive' : "") + (animating ? ' card-content-invisible': ' card-content-visible')}
+        >
+            {isSelected &&
+            <motion.div
+                className={"back-wrapper mb-3"}
+                style={{ opacity: 0}}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5, duration: 0.3, ease: "easeOut" }}
+            >
+                <div className={"back"} onClick={() => {console.log('hi');setIsSelected(false)}}>
+                    <CloseIcon/>
+                </div>
+            </motion.div>
+            }
             <div className={"post-header"}
             >
                 <div style={{fontSize: '1rem', marginBottom: '0.5rem'}} className={"bold"}>{post.author}</div>

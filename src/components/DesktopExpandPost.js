@@ -43,15 +43,13 @@ const DesktopExpandPost = ({post, small}) => {
                     className={"card-content"}
                     layout={true}
                     layoutTransition={isSelected ? openSpring : closeSpring}
-                    onClick={() => setIsSelected(!isSelected)}
+                    onClick={() => {if (!isSelected) {setIsSelected(true)}}}
                     onUpdate={checkZIndex}
                 >
-                    <Post small={small} post={post} isSelected={isSelected}/>
+                    <Post post={post} isSelected={isSelected} setIsSelected={setIsSelected}/>
                     {isSelected &&
                     <motion.div
                         className={"card-fullcontent"}
-                        animate={{ backgroundColor: '#EFF1FF' }}
-                        transition={{ delay: 1, duration: 0.3, ease: "easeOut" }}
                     >
                         <div style={{marginBottom: "1.6rem"}}>{post.description}</div>
                         {isSelected && (

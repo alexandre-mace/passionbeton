@@ -24,6 +24,7 @@
     "react-scripts": "4.0.1",
     "react-swipeable-views-utils": "^0.14.0-alpha.0",
     "react-use": "^15.3.4",
+    "resize-observer-polyfill": "^1.5.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
