@@ -7,20 +7,12 @@ import {apiAddress} from "../data/config/api";
 import DescriptionIcon from "@material-ui/icons/Description";
 import getDomain from "../utils/getDomain";
 
-const DesktopExpandPost = ({post, small}) => {
+const DesktopExpandPost = ({post}) => {
     const [isSelected, setIsSelected] = useState(false);
 
     const y = useMotionValue(0);
     const zIndex = useMotionValue(isSelected ? 2 : 0);
     const cardRef = useRef(null);
-
-    function checkSwipeToDismiss(event, info, cardRef) {
-        if (true) {
-            setTimeout(() => {
-                setIsSelected(false)
-            }, 200)
-        }
-    }
 
     function checkZIndex(latest) {
         if (isSelected) {

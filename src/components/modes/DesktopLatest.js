@@ -1,18 +1,13 @@
-import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
+import React, {useCallback, useLayoutEffect, useRef, useState} from 'react';
 import Confetti from "../Confetti";
 import Header from "../Header";
-import { useWindowSize } from 'react-use'
 import TopNavigation from "../TopNavigation";
 import {motion, useSpring, useTransform, useViewportScroll} from "framer-motion";
 import DesktopExpandPost from "../DesktopExpandPost";
 import ResizeObserver from "resize-observer-polyfill";
 
 const DesktopLatest = ({ postsProp, mode, setMode }) => {
-    const [posts, setPosts] = useState(postsProp);
-    const [removedPosts, setRemovedPosts] = useState([]);
     const [confetti, setConfetti] = useState(false);
-    const [postIndex, setPostIndex] = React.useState(0);
-    const { width, height } = useWindowSize()
     const ghostRef = useRef(null)
     const [scrollRange, setScrollRange] = useState(0)
     const scrollRef = useRef(null)
@@ -43,18 +38,6 @@ const DesktopLatest = ({ postsProp, mode, setMode }) => {
     const physics = { damping: 10, mass: 0.27, stiffness: 60 };
     const spring = useSpring(transform, physics)
 
-    useEffect(() => {
-        if (postIndex === postsProp.length) {
-            throwConfettis()
-        }
-    }, [postIndex])
-
-    const throwConfettis = () => {
-        if (!confetti) {
-            setConfetti(true)
-        }
-    }
-
     return (
         <>
         <div className="scroll-container">
@@ -64,9 +47,9 @@ const DesktopLatest = ({ postsProp, mode, setMode }) => {
                         ref={scrollRef}
                         style={{ x: spring }}
             >
-                {(posts.length > 0) && posts.map((post, loopIndex) => (
+                {(postsProp.length > 0) && postsProp.map((post, loopIndex) => (
                     <div key={loopIndex}>
-                        <DesktopExpandPost post={post} small={true}/>
+                        <DesktopExpandPost post={post}/>
                     </div>
                 ))}
             </motion.div>

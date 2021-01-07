@@ -24,27 +24,17 @@ const App = () => {
 
     return (
         <div>
-            {(width >= 800 && mode !==0) &&
-                <TopNavigation mode={mode} setMode={setMode}/>
-            }
+            {(width >= 800 && mode !==0) && <TopNavigation mode={mode} setMode={setMode}/>}
             {(latestPostsLoading || postsLoading || figuresLoading) && <Loader/>}
             {(!latestPostsLoading && latestPosts && latestPosts.length > 0 && mode === 0) &&
-                (
-                    <>
-                        {width < 800 &&
-                            <Latest postsProp={latestPosts}/>
-                        }
-                        {width >= 800 &&
-                            <DesktopLatest postsProp={latestPosts} mode={mode} setMode={setMode}/>
-                        }
-                    </>
-                )
+                (<>
+                    {width < 800 && <Latest postsProp={latestPosts}/>}
+                    {width >= 800 && <DesktopLatest postsProp={latestPosts} mode={mode} setMode={setMode}/>}
+                </>)
             }
             {(!postsLoading && posts && posts.length > 0 && mode === 1) && <Archives postsProp={posts}/>}
             {(!figuresLoading && figures && figures.length > 0 && mode === 2) && <Figures figuresProp={figures}/>}
-            {width < 800 &&
-                <BottomNavigation mode={mode} setMode={setMode}/>
-            }
+            {width < 800 && <BottomNavigation mode={mode} setMode={setMode}/>}
         </div>
     )};
 
