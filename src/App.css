@@ -444,7 +444,7 @@ button:focus {
         width: max-content;
         display: flex;
         align-items: center;
-        padding: 60px 20vw 0 20vw;
+        padding: 60px 0 0 20vw;
     }
     .desktop-posts-wrapper .card {
         width: 400px;
@@ -483,8 +483,11 @@ button:focus {
     }
     .card {
         margin-bottom: 40px;
-        height: 380px;
         padding: 20px;
+    }
+    .card-archive {
+        min-height: 350px;
+        max-height: unset;
     }
     .open .card {
         height: auto;

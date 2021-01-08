@@ -11,6 +11,7 @@ import {useFigures} from "./data/hooks/useFigures";
 import {useWindowSize} from "react-use";
 import TopNavigation from "./components/TopNavigation";
 import DesktopLatest from "./components/modes/DesktopLatest";
+import DesktopArchives from "./components/modes/DesktopArchives";
 
 const App = () => {
     const [mode, setMode] = React.useState(0);
@@ -32,7 +33,13 @@ const App = () => {
                     {width >= 800 && <DesktopLatest postsProp={latestPosts} mode={mode} setMode={setMode}/>}
                 </>)
             }
-            {(!postsLoading && posts && posts.length > 0 && mode === 1) && <Archives postsProp={posts}/>}
+            {(!postsLoading && posts && posts.length > 0 && mode === 1) &&
+                (<>
+                    {width < 800 && <Archives postsProp={posts}/>}
+                    {width >= 800 && <DesktopArchives postsProp={latestPosts} mode={mode} setMode={setMode}/>}
+                </>)
+
+            }
             {(!figuresLoading && figures && figures.length > 0 && mode === 2) && <Figures figuresProp={figures}/>}
             {width < 800 && <BottomNavigation mode={mode} setMode={setMode}/>}
         </div>
