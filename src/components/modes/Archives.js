@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ExpandPost from "../ExpandPost";
 import filterPosts from "../../filters/filterPosts";
+import ArchivesHeader from "../ArchivesHeader";
 
 const Archives = ({ postsProp }) => {
     const [posts, setPosts] = useState(postsProp);
@@ -14,10 +15,7 @@ const Archives = ({ postsProp }) => {
     return (
         <div>
             <div>
-                <div className={"header"}>
-                    <div className={"header-title"}>Les archives <span className="emoji">🗄️</span></div>
-                    <div className={"header-subtitle"}>Voici tous les partages par les passionés de béton.</div>
-                </div>
+                <ArchivesHeader/>
                 <div className={"archive-search"}>
                     <input type="text" placeholder={"Rechercher dans les archives"} value={search} onChange={(event => {setSearch(event.target.value)})} />
                 </div>

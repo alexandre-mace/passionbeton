@@ -548,6 +548,10 @@ button:focus {
     .card-content-container {
         height: auto;
     }
+    .figure {
+        height: 100%;
+        margin-bottom: 60px;
+    }
 }
 @media screen and (min-width: 1200px) {
     body {
