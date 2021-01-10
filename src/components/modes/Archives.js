@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ExpandPost from "../ExpandPost";
 import filterPosts from "../../filters/filterPosts";
-import ArchivesHeader from "../ArchivesHeader";
+import ArchivesHeader from "../archive/ArchivesHeader";
 
 const Archives = ({ postsProp }) => {
     const [posts, setPosts] = useState(postsProp);

@@ -1,7 +1,7 @@
 import React from 'react';
-import getDomain from "../utils/getDomain";
+import getDomain from "../../utils/getDomain";
 import {Chip} from "@material-ui/core";
-import getTagColor from "../domain/getTagColor";
+import getTagColor from "../../domain/getTagColor";
 
 const Figure = ({figure, small = false}) => {
     const domain = getDomain(figure.link)
@@ -19,10 +19,12 @@ const Figure = ({figure, small = false}) => {
                     />
                 ))}
             </div>
-            <a href={figure.link} target={"_blank"} rel={"noreferrer"}>
-                <div className={"button" + (domain === null ? " disabled" : "")}>Découvrir</div>
-            </a>
-            <div className={"domain-helper"}>({ domain === null ? 'lien invalide' : domain})</div>
+            <div className="card-actions">
+                <a href={figure.link} target={"_blank"} rel={"noreferrer"}>
+                    <div className={"button" + (domain === null ? " disabled" : "")}>Découvrir</div>
+                </a>
+                <div className={"domain-helper"}>({ domain === null ? 'lien invalide' : domain})</div>
+            </div>
         </div>
     )
 }

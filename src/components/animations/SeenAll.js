@@ -1,5 +1,5 @@
 import React from 'react';
-import partyPopper from'./../assets/partypopper.png';
+import partyPopper from '../../assets/partypopper.png';
 
 const SeenAll = ({animation, withAnimation}) => {
     if (withAnimation) {

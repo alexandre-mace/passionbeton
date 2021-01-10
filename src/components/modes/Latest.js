@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import Confetti from "../Confetti";
+import Confetti from "../animations/Confetti";
 import xSwipe from '../../assets/xSwipe.png';
-import SwipeActions from "../SwipeActions";
+import SwipeActions from "../animations/SwipeActions";
 import PostIndexIndicator from "../PostIndexIndicator";
-import Header from "../Header";
+import Header from "../post/Header";
 import PostsWithSwipe from "../PostsWithSwipe";
 
 const Latest = ({ postsProp }) => {

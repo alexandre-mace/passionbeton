@@ -1,6 +1,6 @@
 import React from 'react'
 import TinderCard from "./react-tinder-card";
-import SeenAll from "./SeenAll";
+import SeenAll from "./animations/SeenAll";
 import SwipePost from "./SwipePost";
 
 const PostsWithSwipe = ({ posts, throwConfettis, setSwipe }) => {

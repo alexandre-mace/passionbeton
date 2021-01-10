@@ -64,7 +64,7 @@ textarea:focus {
 .emoji {
     font-size: 1.7rem;
 }
-.card-archive {
+.card-small {
     max-height: 280px;
     min-height: 100px;
     margin-bottom: calc(20px);
@@ -336,6 +336,7 @@ input::placeholder {
 }
 .card-button-section {
     margin-top: auto;
+    text-align: center;
 }
 .gif {
     max-height: 210px;
@@ -406,7 +407,16 @@ button:focus {
     color: #0001FC;
     font-size: 1.3rem;
 }
+.medias-indicator {
+    margin-bottom: 0.5rem;
+}
 @media screen and (min-width: 800px) {
+    .domain-helper {
+        margin-top: 0.5rem;
+    }
+    .card-fullcontent {
+        padding: 0 50px 0 50px;
+    }
     .scroll-container {
         position: fixed;
         left: 0;
@@ -427,8 +437,11 @@ button:focus {
         overflow-x: hidden;
     }
     .back-wrapper {
-        max-width: 80vw;
         margin-left: auto;
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px 10px 0 0;
     }
     .top-navigation-item {
         font-weight: bold;
@@ -443,8 +456,13 @@ button:focus {
         position: relative;
         width: max-content;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         padding: 60px 0 0 20vw;
+    }
+    @media screen and (max-width: 800px) {
+        .desktop-posts-wrapper {
+            padding: 0 0 0 20vw;
+        }
     }
     .desktop-posts-wrapper .card {
         width: 400px;
@@ -466,7 +484,6 @@ button:focus {
         cursor: auto;
     }
     .card-fullcontent {
-        padding-bottom: 100px;
         height: auto;
         min-height: unset;
     }
@@ -484,9 +501,28 @@ button:focus {
     .card {
         margin-bottom: 40px;
         padding: 20px;
+        min-height: 400px;
+        max-height: 400px;
     }
-    .card-archive {
-        min-height: 350px;
+    .figure {
+        min-height: 250px;
+        max-height: 250px;
+    }
+    .col-lg-4, .col-md-6 {
+        position: initial;
+    }
+     .card.small {
+        max-width: 100%;
+        min-height: 270px;
+        max-height: 270px;
+    }
+    .card.selected, .card.small.selected {
+        height: auto;
+        max-height: unset;
+        max-width: unset;
+    }
+    .card-small {
+        min-height: 280px;
         max-height: unset;
     }
     .open .card {
@@ -524,26 +560,17 @@ button:focus {
         cursor: pointer;
     }
     .card-content-container.open {
-        position: absolute;
-        top: -140px;
-        left: -25px;
+        position: fixed;
+        top: 0;
+        margin: auto;
         width: 80vw;
-        z-index: 1;
-    }
-    .overlay {
-        width: 80vw;
-        top: 125px;
-        position: absolute;
-        max-width: unset;
-        background-color: #EFF1FF;
-        z-index: 0;
+        z-index: 3;
+        background-color: #eff1ff;
+        overflow-y: scroll;
+        height: 100vh;
     }
     .card-content {
         background-color: white;
-    }
-    .card-content-container.open .card-content {
-        transition: background-color 0.3s ease-out 1s;
-        background-color: #EFF1FF;
     }
     .card-content-container {
         height: auto;
@@ -551,6 +578,15 @@ button:focus {
     .figure {
         height: 100%;
         margin-bottom: 60px;
+        display: flex;
+        flex-direction: column;
+    }
+    .card-actions {
+        margin-top: auto;
+        text-align: center;
+    }
+    .card-content-container.open .card-fullcontent {
+        padding-bottom: 40px;
     }
 }
 @media screen and (min-width: 1200px) {
@@ -602,6 +638,6 @@ button:focus {
         max-width: 60vw;
     }
     .card-content-container.open {
-        width: calc(60vw + 50px)
+        width: calc(60vw + 80px)
     }
 }

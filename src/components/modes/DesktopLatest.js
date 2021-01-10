@@ -1,9 +1,9 @@
 import React, {useCallback, useLayoutEffect, useRef, useState} from 'react';
-import Confetti from "../Confetti";
-import Header from "../Header";
-import TopNavigation from "../TopNavigation";
+import Confetti from "../animations/Confetti";
+import Header from "../post/Header";
+import TopNavigation from "../navigation/TopNavigation";
 import {motion, useSpring, useTransform, useViewportScroll} from "framer-motion";
-import DesktopExpandPost from "../DesktopExpandPost";
+import HoverExpandPostContainer from "../HoverExpandPostContainer";
 import ResizeObserver from "resize-observer-polyfill";
 
 const DesktopLatest = ({ postsProp, mode, setMode }) => {
@@ -49,7 +49,7 @@ const DesktopLatest = ({ postsProp, mode, setMode }) => {
             >
                 {(postsProp.length > 0) && postsProp.map((post, loopIndex) => (
                     <div key={loopIndex}>
-                        <DesktopExpandPost post={post}/>
+                        <HoverExpandPostContainer post={post}/>
                     </div>
                 ))}
             </motion.div>

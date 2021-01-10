@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Figure from "../Figure";
-import FiguresHeader from "../FIguresHeader";
+import FiguresHeader from "../figure/FIguresHeader";
+import DesktopExpandFigure from "../DesktopExpandFigure";
 
 const DesktopFigures = ({ figuresProp }) => {
     const [figures, setFigures] = useState(figuresProp);
@@ -11,7 +11,7 @@ const DesktopFigures = ({ figuresProp }) => {
             <div className={"row"}>
                 {figures.map((figure, index) => (
                     <div className={"card-wrapper col-6"} key={index}>
-                        <Figure figure={figure}/>
+                        <DesktopExpandFigure figure={figure}/>
                     </div>
                 ))}
             </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ExpandPost from "../ExpandPost";
 import filterPosts from "../../filters/filterPosts";
-import ArchivesHeader from "../ArchivesHeader";
+import ArchivesHeader from "../archive/ArchivesHeader";
+import DesktopExpandPost from "../DesktopExpandPost";
 
 const Archives = ({ postsProp }) => {
     const [posts, setPosts] = useState(postsProp);
@@ -20,9 +20,9 @@ const Archives = ({ postsProp }) => {
                     <input type="text" placeholder={"Rechercher dans les archives"} value={search} onChange={(event => {setSearch(event.target.value)})} />
                 </div>
                 <div className={"row"}>
-                    {posts.map((post, index) => (
-                        <div className={"card-wrapper col-6"} key={index}>
-                            <ExpandPost post={post} small={true}/>
+                    {[...posts].map((post, index) => (
+                        <div className={"card-wrapper col-md-6 col-lg-4"} key={index}>
+                            <DesktopExpandPost post={post} small={true}/>
                         </div>
                     ))}
                 </div>

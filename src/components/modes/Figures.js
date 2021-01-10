@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Figure from "../Figure";
-import FiguresHeader from "../FIguresHeader";
+import Figure from "../figure/Figure";
+import FiguresHeader from "../figure/FIguresHeader";
 
 const Figures = ({ figuresProp }) => {
     const [figures, setFigures] = useState(figuresProp);
