@@ -82,6 +82,6 @@ const App = () => {
             </Snackbar>
             }
         </div>
-    )};
+    )}
 
 export default App;
