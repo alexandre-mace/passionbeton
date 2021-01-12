@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Latest from "./components/modes/Latest";
 import Archives from "./components/modes/Archives";
 import Figures from "./components/modes/Figures";
@@ -13,9 +13,19 @@ import TopNavigation from "./components/navigation/TopNavigation";
 import DesktopLatest from "./components/modes/DesktopLatest";
 import DesktopArchives from "./components/modes/DesktopArchives";
 import DesktopFigures from "./components/modes/DesktopFigures";
+import { getToken, onMessageListener } from './firebase';
+import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const App = () => {
     const [mode, setMode] = React.useState(0);
+    const [isTokenFound, setTokenFound] = useState(false);
+    const [newNotficiation, setNewNotification] = useState(false);
+
     const latestPosts = useLatestPost().posts
     const latestPostsLoading = useLatestPost().loading
     const posts = usePosts().posts
@@ -23,6 +33,22 @@ const App = () => {
     const figures = useFigures().figures
     const figuresLoading = useFigures().loading
     const { width, height } = useWindowSize()
+
+    useEffect(() => {
+        getToken(setTokenFound);
+
+        onMessageListener().then(payload => {
+            setNewNotification(payload);
+        }).catch(err => console.log('failed: ', err));
+    }, [])
+
+    const handleCloseNotification = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setNewNotification(false);
+    };
 
     return (
         <div>
@@ -48,6 +74,13 @@ const App = () => {
                 </>)
             }
             {width < 800 && <BottomNavigation mode={mode} setMode={setMode}/>}
+            {newNotficiation &&
+            <Snackbar open={newNotficiation !== false} autoHideDuration={6000} onClose={handleCloseNotification}>
+                <Alert onClose={handleCloseNotification} severity="success">
+                    {newNotficiation.notification.body}
+                </Alert>
+            </Snackbar>
+            }
         </div>
     )};
 
