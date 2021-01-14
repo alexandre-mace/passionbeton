@@ -609,7 +609,7 @@ button:focus {
         width: calc(70vw);
     }
     .card-content-container.open {
-        width: 70vw;
+        width: 80vw;
     }
 }
 @media screen and (min-width: 1450px) {
@@ -635,6 +635,6 @@ button:focus {
         max-width: 60vw;
     }
     .card-content-container.open {
-        width: calc(60vw + 80px)
+        width: 70vw;
     }
 }
