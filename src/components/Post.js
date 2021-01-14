@@ -7,6 +7,12 @@ import isImage from "../utils/isImage";
 import DescriptionIcon from '@material-ui/icons/Description';
 import {motion} from "framer-motion";
 import CloseIcon from '@material-ui/icons/Close';
+import PostTags from "./PostTags";
+import PostTitle from "./PostTitle";
+import PostContent from "./PostContent";
+import PostMediaIndicators from "./PostMediaIndicators";
+import PostLink from "./PostLink";
+import PostFooter from "./PostFooter";
 
 function usePrevious(value) {
     const ref = useRef();
@@ -26,7 +32,6 @@ const Post = ({post, small = false, isSelected = false, setIsSelected}) => {
     const [animating, setAnimating] = useState(isSelected || closeContext);
     const [currentFlow, setCurrentFlow] = useState('closed');
 
-    const domain = getDomain(post.link)
     if (currentFlow === 'closed' && isSelected) {
         setCurrentFlow('opening')
         setTimeout(() => {
@@ -73,43 +78,16 @@ const Post = ({post, small = false, isSelected = false, setIsSelected}) => {
                 </div>
             </motion.div>
             }
-            <div className={"post-header"}
-            >
-                <div style={{fontSize: '1rem', marginBottom: '0.5rem'}} className={"bold"}>{post.author}</div>
-                <div className={"post-date"}>{post.createdAt}</div>
-            </div>
-            <div className={"post-tags"} style={{marginBottom: '1rem'}}
-            >
-                {(post.tags !== null) && post.tags.map((tag, index) => (
-                    <Chip
-                        key={index}
-                        style={{marginRight: '0.5rem', marginBottom: '0.3rem', borderColor: getTagColor(tag), color: getTagColor(tag)}}
-                        variant="outlined"
-                        size={"small"}
-                        label={tag}
-                    />
-                ))}
-            </div>
+            <PostTags post={post}/>
+            <PostTitle post={post}/>
             {(!isSelected && !small)  &&
-            <div style={{marginBottom: "1.6rem"}}
-            >{post.description.substring(0, (small ? 125 : 130))}{post.description.length > 125 && '...' }</div>
+                <PostContent post={post}/>
             }
-            <div className={"medias-indicator"}>
-                {!isSelected && post.medias.map((media, index) => (
-                    <div key={index}>
-                        {isImage(media.fileName) && (<ImageIcon/>)}
-                        {!isImage(media.fileName) && (<DescriptionIcon/>)}
-                    </div>
-                ))}
-            </div>
+            <PostMediaIndicators post={post} isSelected={isSelected}/>
             {!isSelected &&
-            <>
-                <a href={post.link} target={"_blank"} rel={"noreferrer"}>
-                    <div className={"button" + (domain === null ? " disabled" : "")}>Lire</div>
-                </a>
-                <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
-            </>
+                <PostLink post={post} />
             }
+            <PostFooter post={post}/>
         </div>
     )
 }

@@ -7,10 +7,16 @@ import isImage from "../utils/isImage";
 import DescriptionIcon from '@material-ui/icons/Description';
 import {motion} from "framer-motion";
 import {apiAddress} from "../data/config/api";
+import PostTags from "./PostTags";
+import PostTitle from "./PostTitle";
+import PostContent from "./PostContent";
+import PostMediaIndicators from "./PostMediaIndicators";
+import PostLink from "./PostLink";
+import PostFooter from "./PostFooter";
 
 const HoverExpandPost = ({post, small}) => {
     const domain = getDomain(post.link)
-    const [isSelected, setIsSelected] = useState(false)
+    const [isSelected, setIsSelected] = useState(true)
     const [lastScroll, setLastScroll] = useState(new Date())
     const myRef = useRef(null)
 
@@ -30,54 +36,33 @@ const HoverExpandPost = ({post, small}) => {
         <motion.div
             ref={myRef}
             className={"card" + (isSelected ? " selected" : "") + (small ? " small" : "")}
-            whileHover={{ width: '60vw', height: '27vw', overflow: "scroll" }}
+            whileHover={{ width: '60vw', height: '27vw', overflowY: "scroll" }}
             onHoverStart={() => setIsSelected(true)}
             onHoverEnd={() => setIsSelected(false)}
             transition={{ type: "spring", stiffness: 50, duration: 0.1 }}
 
         >
-            <div className={"post-header"}
-            >
-                <div style={{fontSize: '1rem', marginBottom: '0.5rem'}} className={"bold"}>{post.author}</div>
-                <div className={"post-date"}>{post.createdAt}</div>
-            </div>
-            <div className={"post-tags"} style={{marginBottom: '1rem'}}
-            >
-                {(post.tags !== null) && post.tags.map((tag, index) => (
-                    <Chip
-                        key={index}
-                        style={{marginRight: '0.5rem', marginBottom: '0.3rem', borderColor: getTagColor(tag), color: getTagColor(tag)}}
-                        variant="outlined"
-                        size={"small"}
-                        label={tag}
-                    />
-                ))}
-            </div>
-            {(!isSelected && !small) &&
-            <div style={{marginBottom: "1.6rem"}}
-            >{post.description.substring(0, (isSelected ? 125 : 130))}{post.description.length > 125 && '...' }</div>
+            <PostTags post={post}/>
+            <PostTitle post={post}/>
+            {(!isSelected && !small)  &&
+            <PostContent post={post}/>
             }
-            <div className={"medias-indicator"}>
-                {!isSelected && post.medias.map((media, index) => (
-                    <div key={index}>
-                        {isImage(media.fileName) && (<ImageIcon/>)}
-                        {!isImage(media.fileName) && (<DescriptionIcon/>)}
-                    </div>
-                ))}
-            </div>
             {!isSelected &&
-            <>
-                <a href={post.link} target={"_blank"} rel={"noreferrer"}>
-                    <div className={"button" + (domain === null ? " disabled" : "")}>Lire</div>
-                </a>
-                <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
-            </>
+                <>
+                    <PostMediaIndicators post={post} isSelected={isSelected}/>
+                    <PostLink post={post} />
+                    <PostFooter post={post}/>
+                </>
             }
+
             {isSelected &&
-            <motion.div
+            <>
+            <div style={{marginBottom: "1.6rem", color: '#b8b8b8'}}>{post.description}</div>
+
+                <motion.div
                 className={"card-fullcontent"}
             >
-                <div style={{marginBottom: "1.6rem"}}>{post.description}</div>
+                <PostMediaIndicators post={post} isSelected={isSelected}/>
                 <motion.div className={"content-container medias"}>
                     {post.medias.map((media, index) => (
                         <div key={index}>
@@ -92,7 +77,9 @@ const HoverExpandPost = ({post, small}) => {
                     </a>
                     <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
                 </div>
+                <PostFooter post={post}/>
             </motion.div>
+            </>
             }
         </motion.div>
     )

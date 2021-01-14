@@ -12,8 +12,7 @@ const Figure = ({figure, small = false}) => {
                 {(figure.tags !== null) && figure.tags.map((tag, index) => (
                     <Chip
                         key={index}
-                        style={{marginRight: '0.5rem', borderColor: getTagColor(tag), color: getTagColor(tag)}}
-                        variant="outlined"
+                        style={{marginRight: '0.5rem', borderColor: getTagColor(tag), color: 'white', backgroundColor: getTagColor(tag)}}
                         size={"small"}
                         label={tag}
                     />

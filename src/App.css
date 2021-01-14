@@ -51,7 +51,7 @@ textarea:focus {
     text-align: left;
     margin: auto;
     display: flex;
-    max-width: calc(90vw - 30px);
+    max-width: calc(90vw);
     box-shadow: 0 20px 40px 0 rgba(41,41,211,.10);
     flex-direction: column;
     word-break: break-all;
@@ -86,7 +86,7 @@ textarea:focus {
 }
 @media screen and (max-width: 640px) {
     .card {
-        width: calc(90vw - 30px);
+        width: calc(90vw);
         min-width: unset;
     }
 }
@@ -122,7 +122,7 @@ a {
     margin-bottom: 0.8rem;
 }
 .header-subtitle, .domain-helper {
-    color: #9c9a9a;
+    color: #b8b8b8;
 }
 .overflow-hidden {
     overflow: hidden;
@@ -206,21 +206,18 @@ a {
     width: calc(90vw - 30px);
 }
 input::placeholder {
-    color: #9c9a9a;
+    color: #b8b8b8;
     font-family: 'Ubuntu', sans-serif !important;
     font-size: 0.9rem;
 }
 .big-emoji {
     max-height: 140px;
 }
-.post-header {
+.post-footer {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.4rem;
-}
-.post-date {
-    color: #9c9a9a;
-    font-size: 0.9rem;
+    margin-top: 1.5rem;
 }
 .opacity-transition * {
     animation-name: animation-opacity;
@@ -257,7 +254,7 @@ input::placeholder {
 }
 .card-content-visible {
 }
-.card-content-container.open .card .post-header {
+.card-content-container.open .card .post-footer {
     margin-bottom: 3vh;
 }
 .card-content-container.open .card .post-tags {
@@ -288,12 +285,6 @@ input::placeholder {
         padding: 0;
     }
 }
-/*.selectedPost {*/
-/*    position: relative !important;*/
-/*    transform: none !important;*/
-/*    transform-origin: unset !important;*/
-/*    top: unset !important;*/
-/*}*/
 .deport {
     position: absolute;
     bottom: -1000px;
@@ -327,12 +318,10 @@ input::placeholder {
 }
 .card-fullcontent {
     background-color: white;
-    transform: translateY(-8px);
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 210px);
     text-align: left;
-    padding: 30px 15px 40px;
 }
 .card-button-section {
     margin-top: auto;
@@ -377,7 +366,6 @@ input::placeholder {
 }
 .swipe-actions {
     max-width: 90vw;
-    margin-top: 5vw;
     margin-left: 5vw;
     text-align: left;
 }
@@ -386,14 +374,14 @@ input::placeholder {
     background-color: white;
     border-radius: 50%;
     border: none;
-    padding: 10px;
+    padding: 12px;
 }
 button:focus {
     outline: none;
 }
 .swipe-back-icon {
     transform: rotate(-22deg) translateY(1px);
-    max-height: 30px;
+    max-height: 23px;
 }
 .postindex-indicator {
     position: absolute;
@@ -410,12 +398,13 @@ button:focus {
 .medias-indicator {
     margin-bottom: 0.5rem;
 }
+.domain-helper {
+    margin-top: 0.5rem;
+}
 @media screen and (min-width: 800px) {
-    .domain-helper {
-        margin-top: 0.5rem;
-    }
     .card-fullcontent {
-        padding: 0 50px 0 50px;
+        min-height: 100%;
+        margin-top: auto;
     }
     .scroll-container {
         position: fixed;
