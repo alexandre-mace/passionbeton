@@ -80,10 +80,8 @@ const ExpandPost = ({post, small}) => {
                         onDrag={(event, info) => checkSwipeToDismiss(event, info, cardRef) }
                         onUpdate={checkZIndex}
                     >
-                        <Post small={small} post={post} isSelected={isSelected}/>
+                        <Post small={small} post={post} isSelected={isSelected} setIsSelected={setIsSelected}/>
                         {isSelected &&
-                        // <Scroll>
-                        //     <Frame>
                         <div className={"card-fullcontent"}>
                             <div style={{marginBottom: "1.6rem"}}>{post.description}</div>
                             {isSelected && (
@@ -103,8 +101,6 @@ const ExpandPost = ({post, small}) => {
                                 <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
                             </div>
                         </div>
-                            // </Frame></Scroll>
-
                         }
                     </motion.div>
                 </div>
