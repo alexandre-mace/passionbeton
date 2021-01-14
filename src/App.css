@@ -469,7 +469,7 @@ button:focus {
         margin-right: 30px;
     }
     .card-content-container.open .card {
-        width: calc(80vw - 30px);
+        width: calc(80vw);
         padding-top: 1rem;
     }
     .open .card-content {
@@ -606,7 +606,7 @@ button:focus {
         max-width: 70vw;
     }
     .card-content-container.open .card {
-        width: calc(70vw - 30px);
+        width: calc(70vw);
     }
     .card-content-container.open {
         width: 70vw;
