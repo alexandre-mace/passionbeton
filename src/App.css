@@ -561,7 +561,7 @@ button:focus {
         position: fixed;
         top: 0;
         margin: auto;
-        width: 80vw;
+        width: 90vw;
         z-index: 3;
         background-color: #eff1ff;
         overflow-y: scroll;
