@@ -22,7 +22,7 @@ const HoverExpandPost = ({post, small}) => {
 
     useEffect(() => {
         let lastScrollCopy = new Date(lastScroll)
-        lastScrollCopy.setSeconds(lastScroll.getSeconds() + 1.5)
+        lastScrollCopy.setSeconds(lastScroll.getSeconds() + 1)
 
         if (isSelected && !small && (!lastScroll || (new Date() > lastScrollCopy))) {
             setTimeout(() => {
