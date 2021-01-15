@@ -1,3 +1,45 @@
+/*@font-face {*/
+/*    font-family: 'sk-modernistregular';*/
+/*    src: url('assets/fonts/sk-modernist-regular-webfont.woff2') format('woff2'),*/
+/*    url('assets/fonts/sk-modernist-regular-webfont.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+@font-face {
+    font-family: 'monument-regular';
+    src: url('assets/fonts/MonumentExtended-Regular.woff2') format('woff2'),
+    url('assets/fonts/MonumentExtended-Regular.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'monument-bold';
+    src: url('assets/fonts/MonumentExtended-Black.woff2') format('woff2'),
+    url('assets/fonts/MonumentExtended-Black.woff2') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/*@font-face {*/
+/*    font-family: 'technique_sansregular';*/
+/*    src: url('assets/fonts/technique_sans-webfont.woff2') format('woff2'),*/
+/*    url('assets/fonts/technique_sans-webfont.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'mattoneregular';*/
+/*    src: url('assets/fonts/mattone-regular-webfont.woff2') format('woff2'),*/
+/*    url('assets/fonts/mattone-regular-webfont.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+
+/*}*/
+
 body {
     text-align: center;
     background-color: #EFF1FF;
@@ -7,7 +49,7 @@ body {
     overflow-y: scroll;
 }
 body * {
-    font-family: 'Ubuntu', sans-serif !important;
+    font-family: 'Work Sans', sans-serif;
 }
 .full-height {
     height: 100vh;
@@ -60,6 +102,9 @@ textarea:focus {
     min-height: 350px;
     min-width: 280px;
     border-radius: 16px;
+}
+.back {
+    text-align: right;
 }
 .emoji {
     font-size: 1.7rem;
@@ -117,9 +162,13 @@ a {
     margin-bottom: 20px;
 }
 .header-title {
-    font-weight: 700;
-    font-size: 1.3rem;
     margin-bottom: 0.8rem;
+    font-family: 'monument-regular', sans-serif;
+    font-size: 1.2rem;
+}
+.header-title * {
+    font-family: 'monument-regular', sans-serif;
+    font-size: 1.2rem;
 }
 .header-subtitle, .domain-helper {
     color: #b8b8b8;
@@ -168,12 +217,13 @@ a {
 }
 .MuiBottomNavigationAction-root .MuiBottomNavigationAction-wrapper > div {
     color: #A9A7BC !important;
-    font-size: 0.9rem !important;
+    font-family: 'monument-bold', sans-serif;
+    font-size: 0.8rem !important;
 }
 .MuiBottomNavigationAction-root.Mui-selected .MuiBottomNavigationAction-wrapper > div {
     color: black !important;
-    font-weight: 700 !important;
-    font-size: 0.9rem !important;
+    font-family: 'monument-bold', sans-serif;
+    font-size: 0.8rem !important;
 }
 .bold {
     font-weight: bold;
@@ -207,7 +257,7 @@ a {
 }
 input::placeholder {
     color: #b8b8b8;
-    font-family: 'Ubuntu', sans-serif !important;
+    font-family: 'Work Sans', sans-serif;
     font-size: 0.9rem;
 }
 .big-emoji {
@@ -400,9 +450,9 @@ button:focus {
     margin-bottom: 1.5rem;
 }
 .logo {
-    font-weight: bold;
     color: #0001FC;
-    font-size: 1.3rem;
+    font-size: 1rem;
+    font-family: 'monument-bold', sans-serif;
 }
 .medias-indicator {
     margin-bottom: 0.5rem;
@@ -441,8 +491,8 @@ button:focus {
         justify-content: flex-end;
         padding: 10px 10px 0 0;
     }
-    .top-navigation-item {
-        font-weight: bold;
+    .top-navigation-item * {
+        font-family: 'monument-bold', sans-serif;
     }
     .back {
         text-align: left;
@@ -493,6 +543,12 @@ button:focus {
         width: 80vw;
         margin: 2rem auto 3rem auto;
     }
+    .header-title {
+        font-size: 1.4rem;
+    }
+    .header-title * {
+        font-size: 1.4rem;
+    }
     .archive-search input {
         width: 80vw;
     }
@@ -528,7 +584,6 @@ button:focus {
     }
     .
     .logo {
-        font-weight: bold;
         color: #0001FC;
         font-size: 1.3rem;
     }
