@@ -179,6 +179,7 @@ a {
 .domain-helper {
     text-align: center;
     margin-top: 1rem;
+    font-size: 0.8rem;
 }
 .disabled {
     cursor: not-allowed;
@@ -194,7 +195,7 @@ a {
     font-weight: bold;
     /*background-color: #E5E7FE;*/
     border-radius: 5px;
-    padding: 10px 50px;
+    padding: 9px 48px;
 }
 .card a {
     text-decoration: none;
@@ -266,7 +267,6 @@ input::placeholder {
 .post-footer {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.4rem;
     margin-top: 1.5rem;
 }
 .opacity-transition * {
@@ -576,7 +576,7 @@ button:focus {
         max-width: unset;
     }
     .card-small {
-        min-height: 280px;
+        min-height: 330px;
         max-height: unset;
     }
     .open .card {

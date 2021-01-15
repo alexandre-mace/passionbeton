@@ -4,7 +4,7 @@ import getTagColor from "../domain/getTagColor";
 
 const PostTags = ({post}) => {
     return (
-            <div className={"post-tags"} style={{marginBottom: '1rem'}}
+            <div className={"post-tags"} style={{marginBottom: '0.3rem'}}
             >
                 {(post.tags !== null) && post.tags.map((tag, index) => (
                     <Chip
