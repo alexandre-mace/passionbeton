@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import {motion} from "framer-motion";
-import DesktopPost from "./HoverExpandPost";
+import HoverExpandPost from "./HoverExpandPost";
 
 const HoverExpandPostContainer = ({post, small}) => {
     const cardRef = useRef(null);
@@ -14,7 +14,7 @@ const HoverExpandPostContainer = ({post, small}) => {
                     ref={cardRef}
                     className={"card-content"}
                 >
-                    <DesktopPost post={post} small={small}/>
+                    <HoverExpandPost post={post} small={small}/>
                 </motion.div>
             </motion.div>
         </>

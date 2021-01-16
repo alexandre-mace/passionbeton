@@ -12,7 +12,7 @@ const loadingCircle = {
     display: "block",
     width: "0.8rem",
     height: "0.8rem",
-    backgroundColor: "#0001FC",
+    backgroundColor: "white",
     borderRadius: "0.4rem"
 };
 

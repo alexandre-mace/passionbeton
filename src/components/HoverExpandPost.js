@@ -57,7 +57,7 @@ const HoverExpandPost = ({post, small}) => {
 
             {isSelected &&
             <>
-            <div style={{marginBottom: "1.6rem", color: '#b8b8b8'}}>{post.description}</div>
+            <div style={{marginBottom: "1.6rem"}}>{post.description}</div>
 
                 <motion.div
                 className={"card-fullcontent"}

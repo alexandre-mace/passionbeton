@@ -16,6 +16,7 @@ import DesktopFigures from "./components/modes/DesktopFigures";
 import { getToken, onMessageListener } from './firebase';
 import MuiAlert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
+import CustomCursor from "./components/CustomCursor";
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -41,6 +42,12 @@ const App = () => {
             setNewNotification(payload);
         }).catch(err => console.log('failed: ', err));
     }, [])
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0
+        });
+    }, [mode])
 
     const handleCloseNotification = (event, reason) => {
         if (reason === 'clickaway') {
@@ -74,6 +81,7 @@ const App = () => {
                 </>)
             }
             {width < 800 && <BottomNavigation mode={mode} setMode={setMode}/>}
+            {width >= 800 && <div id="custom-cursor"/>}
             {newNotficiation &&
             <Snackbar open={newNotficiation !== false} autoHideDuration={6000} onClose={handleCloseNotification}>
                 <Alert onClose={handleCloseNotification} severity="success">
