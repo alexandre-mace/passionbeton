@@ -31,19 +31,19 @@
 
 /*}*/
 
-/*@font-face {*/
-/*    font-family: 'mattoneregular';*/
-/*    src: url('assets/fonts/mattone-regular-webfont.woff2') format('woff2'),*/
-/*    url('assets/fonts/mattone-regular-webfont.woff') format('woff');*/
-/*    font-weight: normal;*/
-/*    font-style: normal;*/
+@font-face {
+    font-family: 'mattoneregular';
+    src: url('assets/fonts/mattone-regular-webfont.woff2') format('woff2'),
+    url('assets/fonts/mattone-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 
-/*}*/
+}
 
 body {
     text-align: center;
-    background-color: #EFF1FF;
-    color: black;
+    background-color: #3860ff;
+    color: white;
     font-size: 1rem;
     margin-top: 25px;
     overflow-y: scroll;
@@ -105,6 +105,7 @@ textarea:focus {
 }
 .back {
     text-align: right;
+    color: black;
 }
 .emoji {
     font-size: 1.7rem;
@@ -163,12 +164,13 @@ a {
 }
 .header-title {
     margin-bottom: 0.8rem;
-    font-family: 'monument-regular', sans-serif;
-    font-size: 1.2rem;
 }
-.header-title * {
-    font-family: 'monument-regular', sans-serif;
-    font-size: 1.2rem;
+.header-title, .header-title * {
+    font-family: 'monument-bold', sans-serif;
+    font-size: 3rem;
+    -webkit-text-stroke: 2px #3860ff;
+    color: rgba(245, 239, 215, 0);
+    -webkit-text-stroke-color: rgb(245, 239, 215);
 }
 .header-subtitle, .domain-helper {
     color: #b8b8b8;
@@ -187,7 +189,7 @@ a {
     text-decoration: none;
 }
 .button {
-    background-color: #0001FC;
+    background-color: #3860FF;
     color: white;
     box-shadow: 0 20px 40px 0 rgba(41,41,211,.10);
     display: inline-block;
@@ -207,7 +209,7 @@ a {
     height: 8px;
     width: 8px;
     margin-top: 0.5rem;
-    background-color: #0001fc;
+    background-color: #3860FF;
     border-radius: 50%;
 }
 .figure-name {
@@ -235,7 +237,7 @@ a {
 .loader {
     font-size: 28.0vw;
     text-align: left;
-    color: #0001FC;
+    color: #3860FF;
     z-index: 10;
     transform: translate(-3px, -40px);
 }
@@ -450,7 +452,7 @@ button:focus {
     margin-bottom: 1.5rem;
 }
 .logo {
-    color: #0001FC;
+    color: white;
     font-size: 1rem;
     font-family: 'monument-bold', sans-serif;
 }
@@ -493,6 +495,7 @@ button:focus {
     }
     .top-navigation-item * {
         font-family: 'monument-bold', sans-serif;
+        color: white;
     }
     .back {
         text-align: left;
@@ -543,11 +546,8 @@ button:focus {
         width: 80vw;
         margin: 2rem auto 3rem auto;
     }
-    .header-title {
-        font-size: 1.4rem;
-    }
-    .header-title * {
-        font-size: 1.4rem;
+    .header-title, .header-title * {
+        font-size: 2.5rem;
     }
     .archive-search input {
         width: 80vw;
@@ -582,9 +582,8 @@ button:focus {
     .open .card {
         height: auto;
     }
-    .
     .logo {
-        color: #0001FC;
+        color: white;
         font-size: 1.3rem;
     }
     .logo:hover {
