@@ -58,6 +58,15 @@
 
 }
 
+@font-face {
+    font-family: 'tt_normsbold';
+    src: url('assets/fonts/ttnorms-bold-webfont.woff2') format('woff2'),
+    url('assets/fonts/ttnorms-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
     text-align: center;
     background-color: #3860ff;
@@ -67,10 +76,11 @@ body {
     overflow-y: scroll;
 }
 body * {
-    font-family: 'tt_normsregular', sans-serif;
+    font-family: 'tt_normsmedium', sans-serif;
 }
 .post-title {
-    font-family: 'tt_normsmedium', sans-serif;
+    font-family: 'tt_normsbold', sans-serif;
+    font-weight: 800;
 }
 .full-height {
     height: 100vh;
@@ -107,6 +117,9 @@ textarea:focus {
 }
 .m-auto {
     margin: auto;
+}
+.post-author {
+    font-family: 'tt_normsbold', sans-serif;
 }
 .card {
     color: black;
