@@ -48,12 +48,15 @@
     <script>
 
         function moveCircle(e) {
-            TweenLite.to(document.getElementById('custom-cursor'), 0.3, {
-                css: {
-                    left: e.pageX,
-                    top: e.pageY
-                }
-            });
+            let cursor = document.getElementById('custom-cursor')
+            if (cursor !== null) {
+                TweenLite.to(cursor, 0.3, {
+                    css: {
+                        left: e.clientX,
+                        top: e.clientY
+                    }
+                });
+            }
         }
 
         document.addEventListener('mousemove', moveCircle);

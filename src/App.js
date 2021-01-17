@@ -81,7 +81,7 @@ const App = () => {
                 </>)
             }
             {width < 800 && <BottomNavigation mode={mode} setMode={setMode}/>}
-            {width >= 800 && <div id="custom-cursor"/>}
+            {(width >= 800 && !latestPostsLoading) && <div id="custom-cursor"/>}
             {newNotficiation &&
             <Snackbar open={newNotficiation !== false} autoHideDuration={6000} onClose={handleCloseNotification}>
                 <Alert onClose={handleCloseNotification} severity="success">
