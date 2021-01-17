@@ -1,10 +1,11 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {motion} from "framer-motion";
 import HoverExpandPost from "./HoverExpandPost";
 
 const HoverExpandPostContainer = ({post, small}) => {
     const cardRef = useRef(null);
     const containerRef = useRef(null);
+    const [lastScroll, setLastScroll] = useState(new Date())
 
     return (
         <>
@@ -14,7 +15,7 @@ const HoverExpandPostContainer = ({post, small}) => {
                     ref={cardRef}
                     className={"card-content"}
                 >
-                    <HoverExpandPost post={post} small={small}/>
+                    <HoverExpandPost post={post} small={small} lastScroll={lastScroll} setLastScroll={setLastScroll}/>
                 </motion.div>
             </motion.div>
         </>

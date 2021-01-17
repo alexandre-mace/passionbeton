@@ -1,8 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Chip} from "@material-ui/core";
-import getTagColor from "../domain/getTagColor";
 import getDomain from "../utils/getDomain";
-import ImageIcon from '@material-ui/icons/Image';
 import isImage from "../utils/isImage";
 import DescriptionIcon from '@material-ui/icons/Description';
 import {motion} from "framer-motion";
@@ -14,10 +11,9 @@ import PostMediaIndicators from "./PostMediaIndicators";
 import PostLink from "./PostLink";
 import PostFooter from "./PostFooter";
 
-const HoverExpandPost = ({post, small}) => {
+const HoverExpandPost = ({post, small, lastScroll, setLastScroll}) => {
     const domain = getDomain(post.link)
-    const [isSelected, setIsSelected] = useState(true)
-    const [lastScroll, setLastScroll] = useState(new Date())
+    const [isSelected, setIsSelected] = useState(false)
     const myRef = useRef(null)
 
     useEffect(() => {
