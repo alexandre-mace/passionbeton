@@ -506,6 +506,9 @@ button:focus {
     margin-top: 0.5rem;
 }
 @media screen and (min-width: 800px) {
+    .card-content-container.open .figure {
+        box-shadow: none;
+    }
     #custom-cursor {
         position: fixed;
         width: 40px;
@@ -515,7 +518,7 @@ button:focus {
         pointer-events: none;
         mix-blend-mode: difference;
         margin: -20px 0 0 -20px;
-        background: white;
+        background: #ffffff;
         border-radius: 80%;
         backface-visibility: hidden;
     }
