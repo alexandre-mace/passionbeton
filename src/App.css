@@ -618,6 +618,12 @@ button:focus {
         min-height: 400px;
         max-height: 400px;
     }
+    @media screen and (max-height: 800px) {
+        .card {
+            min-height: 320px;
+            max-height: 320px;
+        }
+    }
     .figure {
         min-height: 250px;
         max-height: 250px;
