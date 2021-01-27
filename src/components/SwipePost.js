@@ -12,19 +12,6 @@ const SwipePost = ({post, small = false, ...props}) => {
         clamp: false
     });
 
-    function handleDragEnd(event, info) {
-        if (info.offset.x < -100) {
-            props.setExitX(-250);
-            props.setIndex(props.index + 1);
-        }
-        if (info.offset.x > 100) {
-            props.setExitX(250);
-            if (props.index !== 0) {
-                props.setIndex(props.index - 1);
-            }
-        }
-    }
-
     return (<>
         <motion.div
             className={isSelected ? "selectedPost" : ""}
@@ -33,7 +20,8 @@ const SwipePost = ({post, small = false, ...props}) => {
                 top: 0,
                 x: x,
                 rotate: rotate,
-                cursor: "grab"
+                cursor: "grab",
+                boxShadow: 4 - props.indicatorIndex ? '0 20px 40px 0 rgb(41 41 211 / 55%)' : 'none'
             }}
             whileTap={{ cursor: "grabbing" }}
             drag={props.drag}
@@ -43,9 +31,13 @@ const SwipePost = ({post, small = false, ...props}) => {
                 bottom: 0,
                 left: 0
             }}
-            onDragEnd={handleDragEnd}
+            onDragEnd={() => {}}
             initial={props.initial}
-            animate={props.animate}
+            animate={{
+                top: props.index === 4 - props.indicatorIndex ? 0 : 35,
+                scale: props.index === 4 - props.indicatorIndex ? 1 : 0.9,
+                transition: { duration: 0.2 }
+            }}
             transition={props.transition}
             exit={{
                 x: props.exitX,

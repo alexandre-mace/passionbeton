@@ -55,7 +55,7 @@ const Latest = ({ postsProp }) => {
             <Header/>
             <>
                 <PostIndexIndicator postIndex={postIndex} steps={6}/>
-                <PostsWithSwipe posts={posts} setSwipe={setSwipe} throwConfettis={throwConfettis}/>
+                <PostsWithSwipe posts={posts} setSwipe={setSwipe} throwConfettis={throwConfettis} postIndex={postIndex}/>
                 <SwipeActions swipeBack={getLastRemovedPost}/>
                 <div className={"swipe-indicator"}><img className={""} src={xSwipe} alt=""/></div>
             </>
