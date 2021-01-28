@@ -21,7 +21,8 @@ const SwipePost = ({post, small = false, ...props}) => {
                 x: x,
                 rotate: rotate,
                 cursor: "grab",
-                boxShadow: 4 - props.indicatorIndex ? '0 20px 40px 0 rgb(41 41 211 / 55%)' : 'none'
+                borderRadius: "16px",
+                boxShadow: props.index === 4 - props.indicatorIndex ? '0 20px 40px 0 rgb(41 41 211 / 55%)' : 'none'
             }}
             whileTap={{ cursor: "grabbing" }}
             drag={props.drag}
