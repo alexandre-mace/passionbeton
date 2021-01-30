@@ -8,7 +8,7 @@ const Figures = ({ figuresProp }) => {
     return (
         <div>
             <FiguresHeader/>
-            {figures.map((figure, index) => (
+            {[...figures].reverse().map((figure, index) => (
                 <div className={"card-wrapper"} key={index}>
                     <Figure figure={figure} small={true}/>
                 </div>

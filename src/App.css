@@ -199,6 +199,9 @@ a {
     text-align: left;
     margin-bottom: 20px;
 }
+.figure-content, .post-content {
+    word-break: keep-all;
+}
 .header-title {
     margin-bottom: 0.8rem;
 }
@@ -393,7 +396,6 @@ input::placeholder {
 .controlled-expand-post {
     position: absolute;
     bottom: 0;
-    transition: bottom 2s ease-in-out;
     z-index: 40;
     width: 100vw;
 }
@@ -435,7 +437,7 @@ input::placeholder {
     text-align: left;
 }
 .card-button-section {
-    margin-top: auto;
+    margin-top: 1.5rem;
     text-align: center;
 }
 .gif {
@@ -636,8 +638,8 @@ button:focus {
         }
     }
     .figure {
-        min-height: 250px;
-        max-height: 250px;
+        min-height: 275px;
+        max-height: 275px;
     }
     .col-lg-4, .col-md-6 {
         position: initial;

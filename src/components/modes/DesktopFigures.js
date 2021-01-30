@@ -9,7 +9,7 @@ const DesktopFigures = ({ figuresProp }) => {
         <div>
             <FiguresHeader/>
             <div className={"row"}>
-                {figures.map((figure, index) => (
+                {[...figures].reverse().map((figure, index) => (
                     <div className={"card-wrapper col-6"} key={index}>
                         <DesktopExpandFigure figure={figure}/>
                     </div>
