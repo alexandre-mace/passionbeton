@@ -56,11 +56,13 @@ const PostsWithSwipe = ({ posts, throwConfettis, setSwipe, postIndex }) => {
             ))
             }
         </div>
+            {posts.length > 0 &&
             <ControlledExpandPost
                 post={expandedPost ? expandedPost : posts[0]}
                 isExpanded={expandedPost !== false}
                 setExpandedPost={setExpandedPost}
             />
+            }
         </>
     )
 };
