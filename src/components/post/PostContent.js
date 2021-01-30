@@ -2,7 +2,7 @@ import React from 'react';
 
 const PostContent = ({post}) => {
     return (
-        <div style={{marginBottom: "1.6rem"}}
+        <div className={"post-content"} style={{marginBottom: "1.6rem"}}
         >{post.description.substring(0, 130)}{post.description.length > 125 && '...' }</div>
     )
 }

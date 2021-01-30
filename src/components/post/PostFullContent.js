@@ -13,7 +13,7 @@ const PostFullContent = ({post, isSelected}) => {
     return (
         <>
             <motion.div className={"card-fullcontent"}>
-                <div style={{marginBottom: "1.6rem"}}>{post.description}</div>
+                <div className={"post-content"} style={{marginBottom: "1.6rem"}}>{post.description}</div>
                 <PostMediaIndicators post={post} isSelected={isSelected}/>
                 <motion.div className={"content-container medias"}>
                     {post.medias.map((media, index) => (
