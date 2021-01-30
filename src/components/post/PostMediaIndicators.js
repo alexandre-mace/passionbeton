@@ -1,5 +1,5 @@
 import React from 'react';
-import isImage from "../utils/isImage";
+import isImage from "../../utils/isImage";
 import ImageIcon from "@material-ui/icons/Image";
 import DescriptionIcon from "@material-ui/icons/Description";
 

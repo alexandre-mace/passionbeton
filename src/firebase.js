@@ -17,7 +17,6 @@ const messaging = firebase.messaging();
 export const getToken = (setTokenFound) => {
     return messaging.getToken({vapidKey: 'BIlSpicZrE17yN4cVKZ7xhD78z44qnnXlBH2kwR1trbSt1DHKP6oW4srqq4l6xD3GgKdThUYbcCGmoNvwxfdAJE'}).then((currentToken) => {
         if (currentToken) {
-            console.log('current token for client: ', currentToken);
             setTokenFound(true);
             addDeviceToken({'token': currentToken})
             // Track the token -> client mapping, by sending to backend server

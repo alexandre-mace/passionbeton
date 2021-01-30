@@ -4,15 +4,15 @@ import isImage from "../utils/isImage";
 import DescriptionIcon from '@material-ui/icons/Description';
 import {motion} from "framer-motion";
 import {apiAddress} from "../data/config/api";
-import PostTags from "./PostTags";
-import PostTitle from "./PostTitle";
-import PostContent from "./PostContent";
-import PostMediaIndicators from "./PostMediaIndicators";
-import PostLink from "./PostLink";
-import PostFooter from "./PostFooter";
+import PostTags from "./post/PostTags";
+import PostTitle from "./post/PostTitle";
+import PostContent from "./post/PostContent";
+import PostMediaIndicators from "./post/PostMediaIndicators";
+import PostLink from "./post/PostLink";
+import PostFooter from "./post/PostFooter";
+import PostFullContent from "./post/PostFullContent";
 
 const HoverExpandPost = ({post, small, lastScroll, setLastScroll}) => {
-    const domain = getDomain(post.link)
     const [isSelected, setIsSelected] = useState(false)
     const myRef = useRef(null)
 
@@ -52,30 +52,7 @@ const HoverExpandPost = ({post, small, lastScroll, setLastScroll}) => {
             }
 
             {isSelected &&
-            <>
-            <div style={{marginBottom: "1.6rem"}}>{post.description}</div>
-
-                <motion.div
-                className={"card-fullcontent"}
-            >
-                <PostMediaIndicators post={post} isSelected={isSelected}/>
-                <motion.div className={"content-container medias"}>
-                    {post.medias.map((media, index) => (
-                        <div key={index}>
-                            {isImage(media.fileName) && (<div className={"media-image"}><img src={apiAddress + '/uploads/medias/' + media.fileName} alt=""/></div>)}
-                            {!isImage(media.fileName) && (<DescriptionIcon/>)}
-                        </div>
-                    ))}
-                </motion.div>
-                <div className={"card-button-section"}>
-                    <a href={post.link} target={"_blank"} rel={"noreferrer"}>
-                        <div className={"button" + (domain === null ? " disabled" : "")}>Lire</div>
-                    </a>
-                    <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
-                </div>
-                <PostFooter post={post}/>
-            </motion.div>
-            </>
+                <PostFullContent post={post} isSelected={isSelected}/>
             }
         </motion.div>
     )

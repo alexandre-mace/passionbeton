@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import TinderCard from "./react-tinder-card";
 import SeenAll from "./animations/SeenAll";
 import SwipePost from "./SwipePost";
 import {motion} from "framer-motion";
+import ControlledExpandPost from "./ControlledExpandPost";
 
 const PostsWithSwipe = ({ posts, throwConfettis, setSwipe, postIndex }) => {
+    const [expandedPost, setExpandedPost] = React.useState(false);
+
     return (
+        <>
         <div className='swipe-card-container'>
             <TinderCard
                 key={'seenall'}
@@ -45,12 +49,20 @@ const PostsWithSwipe = ({ posts, throwConfettis, setSwipe, postIndex }) => {
                             post={post}
                             index={loopIndex}
                             indicatorIndex={postIndex}
+                            setExpandedPost={setExpandedPost}
                         />
                     </div>
                 </TinderCard>
             ))
             }
         </div>
+            <ControlledExpandPost
+                post={expandedPost ? expandedPost : posts[0]}
+                isExpanded={expandedPost !== false}
+                setExpandedPost={setExpandedPost}
+            />
+        </>
     )
-}
+};
+
 export default PostsWithSwipe

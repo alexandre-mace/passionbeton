@@ -17,7 +17,12 @@ const Archives = ({ postsProp }) => {
             <div>
                 <ArchivesHeader/>
                 <div className={"archive-search"}>
-                    <input type="text" placeholder={"Rechercher dans les archives"} value={search} onChange={(event => {setSearch(event.target.value)})} />
+                    <input
+                        type="text"
+                        placeholder={"Rechercher dans les archives"}
+                        value={search}
+                        onChange={(event => {setSearch(event.target.value)})}
+                    />
                 </div>
                 {posts.map((post, index) => (
                     <div className={"card-wrapper"} key={index}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import getDomain from "../utils/getDomain";
+import getDomain from "../../utils/getDomain";
 
 const PostLink = ({post}) => {
 

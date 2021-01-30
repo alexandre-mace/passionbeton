@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Confetti from "../animations/Confetti";
 import xSwipe from '../../assets/xSwipe.png';
 import SwipeActions from "../animations/SwipeActions";
-import PostIndexIndicator from "../PostIndexIndicator";
+import PostIndexIndicator from "../post/PostIndexIndicator";
 import Header from "../post/Header";
 import PostsWithSwipe from "../PostsWithSwipe";
 

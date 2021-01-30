@@ -7,12 +7,12 @@ import isImage from "../utils/isImage";
 import DescriptionIcon from '@material-ui/icons/Description';
 import {motion} from "framer-motion";
 import CloseIcon from '@material-ui/icons/Close';
-import PostTags from "./PostTags";
-import PostTitle from "./PostTitle";
-import PostContent from "./PostContent";
-import PostMediaIndicators from "./PostMediaIndicators";
-import PostLink from "./PostLink";
-import PostFooter from "./PostFooter";
+import PostTags from "./post/PostTags";
+import PostTitle from "./post/PostTitle";
+import PostContent from "./post/PostContent";
+import PostMediaIndicators from "./post/PostMediaIndicators";
+import PostLink from "./post/PostLink";
+import PostFooter from "./post/PostFooter";
 
 function usePrevious(value) {
     const ref = useRef();

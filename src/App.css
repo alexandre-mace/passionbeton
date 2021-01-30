@@ -386,13 +386,16 @@ input::placeholder {
         padding: 0;
     }
 }
+.controlled-expand-post {
+    position: absolute;
+    bottom: 0;
+    transition: bottom 2s ease-in-out;
+    z-index: 40;
+    width: 100vw;
+}
 .deport {
     position: absolute;
-    bottom: -1000px;
-}
-.notdeported {
-    position: relative;
-    bottom: unset;
+    bottom: -3000px;
 }
 .figure {
     min-height: unset;
@@ -437,14 +440,18 @@ input::placeholder {
 
 .swipe {
     position: absolute;
+    border-radius: 20px;
+}
+.card-content-container.open .card {
+    box-shadow: none;
 }
 .swipe-card-container {
     width: 90vw;
     margin-left: 5vw;
     display: flex;
+    border-radius: 20px;
     justify-content: center;
     max-height: 30vh;
-    overflow: hidden;
     min-height: calc(350px + 30px);
 }
 .card:hover {
@@ -461,7 +468,7 @@ input::placeholder {
 .swipeCard {
     position: relative;
     width: 90vw;
-    height: 300px;
+    height: 350px;
     border-radius: 20px;
     background-size: cover;
     background-position: center;

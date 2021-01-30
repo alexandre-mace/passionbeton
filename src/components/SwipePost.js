@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {motion, useMotionValue, useTransform} from "framer-motion";
 import Post from "./Post";
-import ControlledExpandPost from "./ControlledExpandPost";
 
-const SwipePost = ({post, small = false, ...props}) => {
-    const [isSelected, setIsSelected] = useState(false);
+const SwipePost = ({post, setExpandedPost, small = false, ...props}) => {
 
     const x = useMotionValue(0);
     const scale = useTransform(x, [-150, 0, 150], [0.5, 1, 0.5]);
@@ -12,9 +10,8 @@ const SwipePost = ({post, small = false, ...props}) => {
         clamp: false
     });
 
-    return (<>
+    return (
         <motion.div
-            className={isSelected ? "selectedPost" : ""}
             style={{
                 position: "absolute",
                 top: 0,
@@ -47,25 +44,13 @@ const SwipePost = ({post, small = false, ...props}) => {
                 transition: { duration: 0.2 }
             }}
         >
-            <motion.div
-                style={{
-                    scale: scale
-                }}
-            />
-            <>
-                <div className={`card-content-container`} onClick={() => {setIsSelected(!isSelected)}}>
-                    <motion.div
-                        className={"card-content"}
-                    >
-                        <Post small={small} post={post}/>
-                    </motion.div>
-                </div>
-            </>
+            <div className={`card-content-container`} onClick={() => {setExpandedPost(post)}}>
+                <motion.div className={"card-content"}>
+                    <Post small={small} post={post}/>
+                </motion.div>
+            </div>
         </motion.div>
-            {/*{<ControlledExpandPost deport={!isSelected} isSelectedProp={isSelected} setIsSelectedProp={setIsSelected} post={post}/>}*/}
-        </>
     )
 };
-
 
 export default SwipePost;
