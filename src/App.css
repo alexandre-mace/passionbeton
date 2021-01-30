@@ -80,10 +80,11 @@ body * {
 .post-title {
     font-family: 'tt_normsbold', sans-serif;
     font-weight: 800;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
+    word-break: keep-all;
 }
-.post-content {
-    font-size: 1.1rem;
+.post-content, .figure-content {
+    font-size: 1.07rem;
 }
 .full-height {
     height: 100vh;
@@ -254,10 +255,11 @@ a {
     border-radius: 50%;
 }
 .figure-name {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-family: 'tt_normsbold', sans-serif;
+    font-size: 1.25rem;
     margin-bottom: 0.7rem;
     text-transform: capitalize;
+    word-break: keep-all;
 }
 .MuiBottomNavigationAction-root .MuiBottomNavigationAction-wrapper > div {
     color: #A9A7BC !important;
@@ -431,6 +433,7 @@ input::placeholder {
 }
 .card-fullcontent {
     background-color: white;
+    color: black;
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 210px);
@@ -519,6 +522,12 @@ button:focus {
     margin-top: 0.5rem;
 }
 @media screen and (min-width: 800px) {
+    .post-title, .figure-name {
+        font-size: 1.15rem;
+    }
+    .post-content, .figure-content {
+        font-size: 1rem;
+    }
     .card-content-container.open .figure {
         box-shadow: none;
     }

@@ -7,7 +7,7 @@ import DescriptionIcon from "@material-ui/icons/Description";
 import PostFooter from "./PostFooter";
 import getDomain from "../../utils/getDomain";
 
-const PostFullContent = ({post, isSelected}) => {
+const PostFullContent = ({post, isSelected, withFooter = false}) => {
     const domain = getDomain(post.link)
 
     return (
@@ -33,7 +33,9 @@ const PostFullContent = ({post, isSelected}) => {
                     </a>
                     <div className={"domain-helper"}>({domain === null ? 'lien invalide' : domain})</div>
                 </div>
-                <PostFooter post={post}/>
+                {withFooter &&
+                    <PostFooter post={post}/>
+                }
             </motion.div>
         </>
     )

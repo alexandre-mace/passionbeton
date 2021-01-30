@@ -52,7 +52,7 @@ const HoverExpandPost = ({post, small, lastScroll, setLastScroll}) => {
             }
 
             {isSelected &&
-                <PostFullContent post={post} isSelected={isSelected}/>
+                <PostFullContent post={post} isSelected={isSelected} withFooter={true}/>
             }
         </motion.div>
     )
