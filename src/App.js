@@ -44,6 +44,12 @@ const App = () => {
     }, [])
 
     useEffect(() => {
+        if (width < 800 && mode === 0) {
+            document.body.style.overflowY = 'hidden';
+        } else {
+            document.body.style.overflowY = 'scroll';
+        }
+
         window.scrollTo({
             top: 0
         });
