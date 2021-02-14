@@ -16,7 +16,9 @@ import DesktopFigures from "./components/modes/DesktopFigures";
 import { getToken, onMessageListener } from './firebase';
 import MuiAlert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
-import CustomCursor from "./components/CustomCursor";
+import {useRecoilValue, useRecoilValueLoadable} from "recoil";
+import {postsAtom} from "./data/atom/postsAtom";
+import {figuresAtom} from "./data/atom/figuresAtom";
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -26,14 +28,11 @@ const App = () => {
     const [mode, setMode] = React.useState(0);
     const [isTokenFound, setTokenFound] = useState(false);
     const [newNotficiation, setNewNotification] = useState(false);
-
-    const latestPosts = useLatestPost().posts
-    const latestPostsLoading = useLatestPost().loading
-    const posts = usePosts().posts
-    const postsLoading = usePosts().loading
-    const figures = useFigures().figures
-    const figuresLoading = useFigures().loading
     const { width, height } = useWindowSize()
+    const {data: posts, loading: postsLoading} = useRecoilValue(postsAtom);
+    const {data: figures, loading: figuresLoading} = useRecoilValue(figuresAtom);
+    usePosts();
+    useFigures();
 
     useEffect(() => {
         getToken(setTokenFound);
@@ -51,7 +50,8 @@ const App = () => {
         }
 
         window.scrollTo({
-            top: 0
+            top: 0,
+            behavior: "smooth"
         });
     }, [mode])
 
@@ -66,28 +66,27 @@ const App = () => {
     return (
         <div>
             {(width >= 800 && mode !==0) && <TopNavigation mode={mode} setMode={setMode}/>}
-            {(latestPostsLoading || postsLoading || figuresLoading) && <Loader/>}
-            {(!latestPostsLoading && latestPosts && latestPosts.length > 0 && mode === 0) &&
+            {(postsLoading || figuresLoading) && <Loader/>}
+            {(!postsLoading && posts.length > 0 && mode === 0) &&
                 (<>
-                    {width < 800 && <Latest postsProp={latestPosts}/>}
-                    {width >= 800 && <DesktopLatest postsProp={latestPosts} mode={mode} setMode={setMode}/>}
+                    {width < 800 && <Latest posts={[...posts].slice(0, 5)}/>}
+                    {width >= 800 && <DesktopLatest posts={[...posts].slice(0, 5)} mode={mode} setMode={setMode}/>}
                 </>)
             }
             {(!postsLoading && posts && posts.length > 0 && mode === 1) &&
                 (<>
-                    {width < 800 && <Archives postsProp={posts}/>}
-                    {width >= 800 && <DesktopArchives postsProp={posts}/>}
+                    {width < 800 && <Archives posts={posts}/>}
+                    {width >= 800 && <DesktopArchives posts={[...posts]}/>}
                 </>)
-
             }
             {(!figuresLoading && figures && figures.length > 0 && mode === 2) &&
                 (<>
-                    {width < 800 && <Figures figuresProp={figures}/>}
-                    {width >= 800 && <DesktopFigures figuresProp={figures}/>}
+                    {width < 800 && <Figures figures={figures}/>}
+                    {width >= 800 && <DesktopFigures figures={figures}/>}
                 </>)
             }
             {width < 800 && <BottomNavigation mode={mode} setMode={setMode}/>}
-            {(width >= 800 && !latestPostsLoading) && <div id="custom-cursor"/>}
+            {(width >= 800 && !postsLoading) && <div id="custom-cursor"/>}
             {newNotficiation &&
             <Snackbar open={newNotficiation !== false} autoHideDuration={6000} onClose={handleCloseNotification}>
                 <Alert onClose={handleCloseNotification} severity="success">

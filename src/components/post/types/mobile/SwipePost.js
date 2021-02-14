@@ -1,6 +1,6 @@
 import React from 'react';
 import {motion, useMotionValue, useTransform} from "framer-motion";
-import Post from "./Post";
+import Post from "../../Post";
 
 const SwipePost = ({post, setExpandedPost, small = false, ...props}) => {
 
@@ -46,7 +46,7 @@ const SwipePost = ({post, setExpandedPost, small = false, ...props}) => {
         >
             <div className={`card-content-container`} onClick={() => {setExpandedPost(post)}}>
                 <motion.div className={"card-content"}>
-                    <Post small={small} post={post}/>
+                    <Post small={small} post={post} setIsSelected={setExpandedPost}/>
                 </motion.div>
             </div>
         </motion.div>

@@ -1,10 +1,10 @@
 import React, {useRef, useState} from 'react';
 import {motion, useMotionValue} from "framer-motion";
-import { useScrollConstraints } from "../utils/use-scroll-constraints";
-import { useWheelScroll } from "../utils/use-wheel-scroll";
-import { openSpring, closeSpring } from "../utils/cardAnimations";
-import Post from "./Post";
-import PostFullContent from "./post/PostFullContent";
+import { useScrollConstraints } from "../../../../utils/use-scroll-constraints";
+import { useWheelScroll } from "../../../../utils/use-wheel-scroll";
+import { openSpring, closeSpring } from "../../../../utils/cardAnimations";
+import Post from "../../Post";
+import PostFullContent from "../../blocks/PostFullContent";
 
 const dismissDistance = 250;
 const bottomDismissDistance = 50
@@ -65,12 +65,14 @@ const ExpandPost = ({post, small}) => {
 
     return (
             <>
+                {isSelected &&
+                <Post small={small} post={post} isSelected={false} setIsSelected={setIsSelected}/>
+                }
                 <Overlay isSelected={isSelected} />
                 <div ref={containerRef} className={`card-content-container ${isSelected && "open"}`}>
                     <motion.div
                         ref={cardRef}
                         className={"card-content"}
-                        // style={{ ...inverted, zIndex, y }}
                         layout={true}
                         layoutTransition={isSelected ? openSpring : closeSpring}
                         drag={isSelected ? "y" : false}
@@ -93,7 +95,7 @@ const Overlay = ({ isSelected, setIsSelected }) => (
     <motion.div
         initial={false}
         animate={{ opacity: isSelected ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.4 }}
         style={{ pointerEvents: isSelected ? "auto" : "none" }}
         onClick={() => setIsSelected}
         className="overlay"

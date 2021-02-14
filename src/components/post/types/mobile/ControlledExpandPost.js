@@ -1,10 +1,10 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {motion, useMotionValue} from "framer-motion";
-import { useScrollConstraints } from "../utils/use-scroll-constraints";
-import { openSpring, closeSpring } from "../utils/cardAnimations";
-import Post from "./Post";
-import getDomain from "../utils/getDomain";
-import PostFullContent from "./post/PostFullContent";
+import { useScrollConstraints } from "../../../../utils/use-scroll-constraints";
+import { openSpring, closeSpring } from "../../../../utils/cardAnimations";
+import Post from "../../Post";
+import getDomain from "../../../../utils/getDomain";
+import PostFullContent from "../../blocks/PostFullContent";
 
 const dismissDistance = 250;
 const bottomDismissDistance = 50;
@@ -59,13 +59,12 @@ const ControlledExpandPost = ({post, setExpandedPost, isExpanded}) => {
                     className={"card-content"}
                     style={{ zIndex, y }}
                     layout={true}
-                    transition={isExpanded ? openSpring : closeSpring}
                     drag={"y"}
                     onClick={() => {setExpandedPost(false)}}
                     dragConstraints={constraints}
                     onDrag={(event, info) => checkSwipeToDismiss(event, info, cardRef) }
                 >
-                    <Post small={true} post={post} isSelected={true}/>
+                    <Post small={true} post={post} isSelected={isExpanded} setIsSelected={setExpandedPost}/>
                     <PostFullContent post={post} isSelected={isExpanded}/>
                 </motion.div>
             </div>

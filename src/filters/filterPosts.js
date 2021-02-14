@@ -1,6 +1,6 @@
 const filterPosts = (terms, item) => {
     return terms.every(term =>
-        ['tags', 'author', 'description', 'link', 'createdAt']
+        ['tags', 'title', 'author', 'description', 'link', 'createdAt']
             .some(attribute => {
                 if (item[attribute] !== null) {
                     if (typeof item[attribute] !== 'object') {

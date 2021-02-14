@@ -3,12 +3,16 @@ import getDomain from "../../utils/getDomain";
 import {Chip} from "@material-ui/core";
 import getTagColor from "../../domain/getTagColor";
 import FigureContent from "./FigureContent";
+import FigureLikesIndicator from "./FigureLikesIndicator";
 
 const Figure = ({figure, small = false}) => {
     const domain = getDomain(figure.link)
     return (
         <div className={"card figure" + (small ? ' card-archive' : "")}>
-            <div className={"figure-name"}>{figure.name}</div>
+            <div className={"d-flex justify-content-between"}>
+                <div className={"figure-name"}>{figure.name}</div>
+                <FigureLikesIndicator figure={figure}/>
+            </div>
             <div style={{marginBottom: '0.8rem'}}>
                 {(figure.tags !== null) && figure.tags.map((tag, index) => (
                     <Chip

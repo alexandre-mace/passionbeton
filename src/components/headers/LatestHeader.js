@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Header = () => {
+const LatestHeader = () => {
     return (
         <div className={"header"}>
             <div className={"header-title"}>
@@ -10,4 +10,4 @@ const Header = () => {
         </div>
     )
 }
-export default Header
+export default LatestHeader

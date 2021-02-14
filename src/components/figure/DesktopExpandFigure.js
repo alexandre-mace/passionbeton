@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {motion} from "framer-motion";
-import { useScrollConstraints } from "../utils/use-scroll-constraints";
-import { openSpring, closeSpring } from "../utils/cardAnimations";
-import Figure from "./figure/Figure";
+import { useScrollConstraints } from "../../utils/use-scroll-constraints";
+import { openSpring, closeSpring } from "../../utils/cardAnimations";
+import Figure from "./Figure";
 import CloseIcon from "@material-ui/icons/Close";
 
 const DesktopExpandFigure = ({figure}) => {

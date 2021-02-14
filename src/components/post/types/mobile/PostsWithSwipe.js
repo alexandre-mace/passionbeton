@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
-import TinderCard from "./react-tinder-card";
-import SeenAll from "./animations/SeenAll";
+import TinderCard from "../../../react-tinder-card";
+import SeenAll from "../../../animations/SeenAll";
 import SwipePost from "./SwipePost";
 import {motion} from "framer-motion";
 import ControlledExpandPost from "./ControlledExpandPost";
@@ -38,7 +38,7 @@ const PostsWithSwipe = ({ posts, throwConfettis, setSwipe, postIndex }) => {
 
                 </div>
             </TinderCard>
-            {(posts.length > 0) && [...posts].reverse().map((post, loopIndex) => (
+            {(posts.length > 0) && [...posts].map((post, loopIndex) => (
                 <TinderCard
                     key={loopIndex}
                     className='swipe'

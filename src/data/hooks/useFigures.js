@@ -1,24 +1,20 @@
 import React, { useEffect } from 'react';
 import getFigures from "../http/getFigures";
+import {
+    useRecoilState,
+} from 'recoil';
+import {figuresAtom} from "../atom/figuresAtom";
 
 export function useFigures() {
-    const [figures, setFigures] = React.useState([]);
-    const [loading, setLoading] = React.useState(true);
+    const [_figuresPayload, setFiguresPayload] = useRecoilState(figuresAtom);
 
     useEffect(() => {
         getFigures()
-            .then(data => {
-                setFigures(data)
-                setLoading(false)
+            .then(response => {
+                setFiguresPayload({
+                    data: response,
+                    loading: false
+                })
             });
     }, []);
-
-    useEffect(() => {
-        setLoading(false)
-    }, [figures]);
-
-    return {
-        'figures': figures,
-        'loading': loading
-    };
 }

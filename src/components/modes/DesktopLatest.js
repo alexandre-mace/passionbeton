@@ -1,17 +1,21 @@
-import React, {useCallback, useLayoutEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import Confetti from "../animations/Confetti";
-import Header from "../post/Header";
+import LatestHeader from "../headers/LatestHeader";
 import TopNavigation from "../navigation/TopNavigation";
 import {motion, useSpring, useTransform, useViewportScroll} from "framer-motion";
-import HoverExpandPostContainer from "../HoverExpandPostContainer";
 import ResizeObserver from "resize-observer-polyfill";
+import DesktopPost from "../post/types/desktop/DesktopPost";
 
-const DesktopLatest = ({ postsProp, mode, setMode }) => {
+const DesktopLatest = ({ posts, mode, setMode }) => {
     const [confetti, setConfetti] = useState(false);
     const ghostRef = useRef(null)
     const [scrollRange, setScrollRange] = useState(0)
     const scrollRef = useRef(null)
     const [viewportW, setViewportW] = useState(0)
+    const [lastPreview, setLastPreview] = useState(new Date())
+    const [previewMeasurements, setPreviewMeasurements] = useState({
+        scrollTo: null
+    })
 
     useLayoutEffect(() => {
         scrollRef && setScrollRange(scrollRef.current.scrollWidth)
@@ -38,24 +42,33 @@ const DesktopLatest = ({ postsProp, mode, setMode }) => {
     const physics = { damping: 10, mass: 0.27, stiffness: 60 };
     const spring = useSpring(transform, physics)
 
+    useEffect(() => {
+        let lastPreviewCopy = new Date(lastPreview)
+        lastPreviewCopy.setMilliseconds(lastPreview.getMilliseconds() + 500)
+        if (previewMeasurements.scrollTo && (!lastPreview || (new Date() > lastPreviewCopy))) {
+            window.scroll(0, previewMeasurements.scrollTo);
+            setLastPreview(new Date())
+        }
+    }, [previewMeasurements])
+
     return (
         <>
-        <div className="scroll-container">
-            <TopNavigation mode={mode} setMode={setMode}/>
-            <Header/>
-            <motion.div className={"desktop-posts-wrapper"}
-                        ref={scrollRef}
-                        style={{ x: spring }}
-            >
-                {(postsProp.length > 0) && postsProp.map((post, loopIndex) => (
-                    <div key={loopIndex}>
-                        <HoverExpandPostContainer post={post}/>
-                    </div>
-                ))}
-            </motion.div>
-            {confetti && <Confetti stop={() => setConfetti(false)}/>}
-        </div>
-        <div ref={ghostRef} style={{ height: scrollRange }} className="ghost" />
+            <div className="scroll-container">
+                <TopNavigation mode={mode} setMode={setMode}/>
+                <LatestHeader/>
+                <motion.div className={"desktop-posts-wrapper"}
+                            ref={scrollRef}
+                            style={{ x: spring }}
+                >
+                    {(posts.length > 0) && posts.map((post, loopIndex) => (
+                        <div key={loopIndex}>
+                            <DesktopPost post={post} withPreview={true} setPreviewMeasurements={setPreviewMeasurements}/>
+                        </div>
+                    ))}
+                </motion.div>
+                {confetti && <Confetti stop={() => setConfetti(false)}/>}
+            </div>
+            <div ref={ghostRef} style={{ height: scrollRange }} className="ghost" />
         </>
     )
 }

@@ -73,6 +73,7 @@ body {
     font-size: 1rem;
     margin-top: 25px;
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 body * {
     font-family: 'tt_normsmedium', sans-serif;
@@ -101,6 +102,19 @@ textarea {
 textarea:focus {
     outline: none;
 }
+input {
+    padding: 15px;
+}
+input, textarea {
+    background-color: #eff0f1;
+    color: #A5A5A5;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 10px;
+}
+input::placeholder, textarea::placeholder {
+    color: #A5A5A5;
+}
 .label {
     position: fixed;
     top: 15vh;
@@ -115,6 +129,15 @@ textarea:focus {
 }
 .justify-content-end {
     justify-content: end;
+}
+.overflow-hidden {
+    overflow: hidden !important;
+}
+.margin-0 {
+    margin: 0 !important;
+}
+.transform-none {
+    transform: none !important;
 }
 .opacity-1 {
     opacity: 1 !important;
@@ -136,10 +159,20 @@ textarea:focus {
     flex-direction: column;
     word-break: break-all;
     background-color: #ffffff;
-    padding: 15px;
-    min-height: 350px;
+    min-height: 335px;
     min-width: 280px;
     border-radius: 16px;
+}
+.comment-item {
+    min-height: 100px;
+    border-radius: 15px;
+}
+.card-content-wrapper {
+    padding: 15px;
+    padding-bottom: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .back {
     text-align: right;
@@ -217,9 +250,6 @@ a {
 .domain-helper {
     color: #989898;
 }
-.overflow-hidden {
-    overflow: hidden;
-}
 .domain-helper {
     text-align: center;
     margin-top: 1rem;
@@ -237,9 +267,10 @@ a {
     display: inline-block;
     z-index: 10;
     font-weight: bold;
-    /*background-color: #E5E7FE;*/
     border-radius: 5px;
-    padding: 9px 48px;
+    word-break: keep-all;
+    padding: 12px 55px;
+    border: none;
 }
 .card a {
     text-decoration: none;
@@ -310,10 +341,16 @@ input::placeholder {
 .big-emoji {
     max-height: 140px;
 }
-.post-footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1.5rem;
+.post-content {
+    min-height: 40px;
+}
+.post-written-metadata {
+    border-radius: 14px;
+    padding: 15px;
+    margin-top: auto;
+}
+.card-content-container.open .post-written-metadata {
+    margin: auto 18px 5px;
 }
 .opacity-transition * {
     animation-name: animation-opacity;
@@ -343,7 +380,7 @@ input::placeholder {
 }
 .card-content-container.open .card {
     margin: 0;
-    width: calc(100vw);
+    width: calc(100vw) !important;
     max-width: unset;
     min-height: unset;
     padding-top: 5vh;
@@ -356,9 +393,8 @@ input::placeholder {
 }
 .card-content-visible {
 }
-.card-content-container.open .card .post-footer {
-    margin-bottom: 1vh;
-    margin-top: 0;
+.card-content-container.open .card .post-written-metadata {
+    margin-top: auto;
 }
 .card-content-container.open .card .post-tags {
     margin-bottom: 3vh;
@@ -409,6 +445,7 @@ input::placeholder {
     min-height: unset;
     max-height: 250px;
     margin-bottom: 20px;
+    padding: 15px;
 }
 .card-actions {
     text-align: center;
@@ -426,6 +463,7 @@ input::placeholder {
 .medias-indicator {
     display: flex;
     margin-top: auto;
+    align-items: flex-end;
 }
 .media-image img {
     max-width: 100%;
@@ -465,7 +503,6 @@ input::placeholder {
 }
 .card:hover {
     box-shadow: 0 20px 40px 0 rgba(41,41,211,.70);
-    transition: box-shadow 0.2s ease 0s;
 }
 .swipe .card, .swipe .card:hover {
     box-shadow: none;
@@ -510,20 +547,66 @@ button:focus {
 .mb-3 {
     margin-bottom: 1.5rem;
 }
+.color-black {
+    color: black !important;
+}
 .logo {
     color: white;
     font-size: 1rem;
     font-family: 'monument-bold', sans-serif;
 }
-.medias-indicator {
-    margin-bottom: 0.5rem;
-}
 .domain-helper {
     margin-top: 0.5rem;
+}
+.comment-section {
+    padding: 15px;
+    color: black;
+}
+.submit-button:hover {
+    cursor: pointer;
+}
+.comment-author {
+    font-family: 'tt_normsbold', sans-serif;
+    margin-bottom: 0.5rem;
+}
+.comment-content {
+    font-family: 'tt_normsmedium', sans-serif;
+}
+.post-likes .like-button {
+    transform: translate(-10px, 10px);
+}
+.post-likes .like-indicator {
+    transform: translateX(-10px);
+}
+.comment-likes .like-button {
+    transform: translate(10px, 10px);
+}
+.comment-likes {
+    height: 1px;
+}
+.comment-likes .like-indicator {
+    transform: translate(5px, -2px);
+}
+.figure-likes .like-button {
+    transform: translate(10px, 0px);
+}
+.figure-likes {
+    height: 1px;
+}
+.figure-likes .like-indicator {
+    transform: translate(10px, -12px);
 }
 @media screen and (min-width: 800px) {
     .post-title, .figure-name {
         font-size: 1.15rem;
+    }
+    .card {
+        transition: width ease-out 0.5s, height ease-out 0.4s;
+    }
+    .previewed {
+        width: 45vw !important;
+        /*max-height: unset !important;*/
+        overflow-y: auto;
     }
     .post-content, .figure-content {
         font-size: 1rem;
@@ -561,7 +644,7 @@ button:focus {
         position: initial;
     }
     html {
-        font-size: 20px;
+        font-size: 17px;
     }
     body {
         max-width: 80vw;
@@ -601,11 +684,14 @@ button:focus {
         margin-right: 30px;
     }
     .card-content-container.open .card {
-        width: calc(80vw);
+        width: calc(80vw) !important;
+        height: auto !important;
+        overflow-y: visible !important;
         padding-top: 1rem;
     }
     .open .card-content {
-        max-width: 80vw;
+        max-width: calc(80vw + 200px);
+        padding: 50px 100px;
     }
     .card:hover {
         cursor: pointer;
@@ -636,9 +722,7 @@ button:focus {
     }
     .card {
         margin-bottom: 40px;
-        padding: 20px;
-        min-height: 400px;
-        max-height: 400px;
+        height: 400px;
     }
     @media screen and (max-height: 800px) {
         .card {
@@ -658,13 +742,13 @@ button:focus {
         min-height: 270px;
         max-height: 270px;
     }
-    .card.selected, .card.small.selected {
+    .card.selected .card.previewed {
         height: auto;
         max-height: unset;
         max-width: unset;
     }
     .card-small {
-        min-height: 330px;
+        height: 350px;
         max-height: unset;
     }
     .open .card {
@@ -704,11 +788,14 @@ button:focus {
         position: fixed;
         top: 0;
         margin: auto;
-        width: 90vw;
+        width: 100vw;
         z-index: 3;
-        background-color: white;
+        background-color: #3860FF;
         overflow-y: scroll;
         height: 100vh;
+    }
+    .scroll-container .card-content-container.open {
+        top: -3rem;
     }
     .card-content {
         background-color: white;
@@ -737,7 +824,7 @@ button:focus {
         max-width: 70vw;
     }
     .open .card-content {
-        max-width: 70vw;
+        max-width: calc(70vw + 200px);
     }
     .header, .overlay {
         width: 70vw;
@@ -749,10 +836,15 @@ button:focus {
         max-width: 70vw;
     }
     .card-content-container.open .card {
-        width: calc(70vw);
+        width: calc(70vw) !important;
+        height: auto !important;
+        overflow-y: visible !important;
+        overflow-x: visible !important;
     }
-    .card-content-container.open {
-        width: 80vw;
+}
+@media screen and (min-width: 1400px) {
+    html {
+        font-size: 20px;
     }
 }
 @media screen and (min-width: 1450px) {
@@ -766,7 +858,7 @@ button:focus {
         max-width: 60vw;
     }
     .open .card-content {
-        max-width: 60vw;
+        max-width: calc(60vw + 200px);
     }
     .header, .overlay {
         width: 60vw;
@@ -776,8 +868,5 @@ button:focus {
     }
     .top-navigation {
         max-width: 60vw;
-    }
-    .card-content-container.open {
-        width: 70vw;
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Chip} from "@material-ui/core";
-import getTagColor from "../../domain/getTagColor";
+import getTagColor from "../../../domain/getTagColor";
 
 const PostTags = ({post}) => {
     return (

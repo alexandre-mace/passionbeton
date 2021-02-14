@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
+import {
+    RecoilRoot,
+} from 'recoil';
 
 const theme = createMuiTheme({
     palette: {
@@ -27,7 +30,9 @@ const theme = createMuiTheme({
 ReactDOM.render(
   <React.StrictMode>
       <MuiThemeProvider theme={theme}>
-      <App />
+          <RecoilRoot>
+              <App />
+          </RecoilRoot>
       </MuiThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

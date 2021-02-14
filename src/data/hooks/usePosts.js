@@ -1,24 +1,20 @@
 import React, { useEffect } from 'react';
 import getPosts from "../http/getPosts";
+import {
+    useRecoilState,
+} from 'recoil';
+import {postsAtom} from "../atom/postsAtom";
 
 export function usePosts() {
-    const [posts, setPosts] = React.useState([]);
-    const [loading, setLoading] = React.useState(true);
+    const [_postsPayload, setPostsPayload] = useRecoilState(postsAtom);
 
     useEffect(() => {
         getPosts()
-            .then(data => {
-                setPosts(data)
-                setLoading(false)
+            .then(response => {
+                setPostsPayload({
+                    data: response,
+                    loading: false
+                })
             });
     }, []);
-
-    useEffect(() => {
-        setLoading(false)
-    }, [posts]);
-
-    return {
-        'posts': posts,
-        'loading': loading
-    };
 }

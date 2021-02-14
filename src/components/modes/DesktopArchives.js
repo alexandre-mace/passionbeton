@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import filterPosts from "../../filters/filterPosts";
 import ArchivesHeader from "../archive/ArchivesHeader";
-import DesktopExpandPost from "../DesktopExpandPost";
+import DesktopPost from "../post/types/desktop/DesktopPost";
 
-const Archives = ({ postsProp }) => {
-    const [posts, setPosts] = useState(postsProp);
-    const [allPosts, setAllPosts] = useState(postsProp);
+const Archives = ({ posts }) => {
     const [search, setSearch] = useState('');
-
-    useEffect(() => {
-        setPosts(allPosts.filter(post => filterPosts(search.split(' '), post)))
-    }, [search]);
 
     return (
         <div>
@@ -20,9 +14,9 @@ const Archives = ({ postsProp }) => {
                     <input type="text" placeholder={"Rechercher dans les archives"} value={search} onChange={(event => {setSearch(event.target.value)})} />
                 </div>
                 <div className={"row"}>
-                    {[...posts].map((post, index) => (
+                    {[...posts].filter(post => filterPosts(search.split(' '), post)).map((post, index) => (
                         <div className={"card-wrapper col-md-6 col-lg-4"} key={index}>
-                            <DesktopExpandPost post={post} small={true}/>
+                            <DesktopPost post={post} small={true}/>
                         </div>
                     ))}
                 </div>

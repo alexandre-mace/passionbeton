@@ -2,37 +2,34 @@ import React, {useEffect, useState} from 'react';
 import Confetti from "../animations/Confetti";
 import xSwipe from '../../assets/xSwipe.png';
 import SwipeActions from "../animations/SwipeActions";
-import PostIndexIndicator from "../post/PostIndexIndicator";
-import Header from "../post/Header";
-import PostsWithSwipe from "../PostsWithSwipe";
+import PostIndexIndicator from "../post/blocks/PostIndexIndicator";
+import LatestHeader from "../headers/LatestHeader";
+import PostsWithSwipe from "../post/types/mobile/PostsWithSwipe";
 
-const Latest = ({ postsProp }) => {
-    const [posts, setPosts] = useState(postsProp);
+const Latest = ({ posts }) => {
     const [removedPosts, setRemovedPosts] = useState([]);
     const [confetti, setConfetti] = useState(false);
     const [postIndex, setPostIndex] = React.useState(0);
     const [swipe, setSwipe] = useState(null)
 
     useEffect(() => {
-        if (postIndex === postsProp.length) {
+        if (posts.filter((post) => !removedPosts.includes(post.id)).length === 0) {
             throwConfettis()
         }
     }, [postIndex])
 
     const getLastRemovedPost = () => {
-        if ((posts.length > 0 || posts.length === 0) && removedPosts.length > 0) {
-            setPosts([removedPosts[removedPosts.length - 1], ...posts])
-            setRemovedPosts((removedPosts.filter((post, loopIndex) => loopIndex !== removedPosts.length - 1)))
+        if (removedPosts.length > 0) {
+            const newRemovedPosts = [...removedPosts];
+            newRemovedPosts.pop()
+            setRemovedPosts(newRemovedPosts)
             setPostIndex(postIndex - 1)
         }
     }
 
     useEffect(() => {
         if (swipe !== null) {
-            if (posts.length > 0 || (posts.length === 0 && removedPosts.length > 0)) {
-                setRemovedPosts([...removedPosts, posts.find((post, loopIndex) => loopIndex === 0)])
-                setPosts(posts.filter((post, loopIndex) => loopIndex !== 0))
-            }
+            setRemovedPosts([...removedPosts, posts[postIndex].id])
             setPostIndex(postIndex + 1)
             setSwipe(null)
         }
@@ -52,10 +49,15 @@ const Latest = ({ postsProp }) => {
 
     return (
         <div>
-            <Header/>
+            <LatestHeader/>
             <>
                 <PostIndexIndicator postIndex={postIndex} steps={6}/>
-                <PostsWithSwipe posts={posts} setSwipe={setSwipe} throwConfettis={throwConfettis} postIndex={postIndex}/>
+                <PostsWithSwipe
+                    posts={posts.filter((post) => !removedPosts.includes(post.id)).reverse()}
+                    setSwipe={setSwipe}
+                    throwConfettis={throwConfettis}
+                    postIndex={postIndex}
+                />
                 <SwipeActions swipeBack={getLastRemovedPost}/>
                 <div className={"swipe-indicator"}><img className={""} src={xSwipe} alt=""/></div>
             </>

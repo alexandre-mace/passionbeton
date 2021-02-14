@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import FiguresHeader from "../figure/FIguresHeader";
-import DesktopExpandFigure from "../DesktopExpandFigure";
+import FiguresHeader from "../headers/FIguresHeader";
+import DesktopExpandFigure from "../figure/DesktopExpandFigure";
 
-const DesktopFigures = ({ figuresProp }) => {
-    const [figures, setFigures] = useState(figuresProp);
+const DesktopFigures = ({ figures }) => {
 
     return (
         <div>
