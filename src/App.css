@@ -150,17 +150,15 @@ input::placeholder, textarea::placeholder {
 }
 .card {
     color: black;
-    max-height: 550px;
     text-align: left;
+    height: 335px;
     margin: auto;
     display: flex;
-    max-width: calc(90vw);
+    width: calc(90vw);
     box-shadow: 0 20px 40px 0 rgba(41,41,211,.55);
     flex-direction: column;
     word-break: break-all;
     background-color: #ffffff;
-    min-height: 335px;
-    min-width: 280px;
     border-radius: 16px;
 }
 .comment-item {
@@ -182,8 +180,7 @@ input::placeholder, textarea::placeholder {
     font-size: 1.7rem;
 }
 .card-small {
-    max-height: 280px;
-    min-height: 100px;
+    height: 250px;
     margin-bottom: calc(20px);
 }
 .overlay {
@@ -418,13 +415,11 @@ input::placeholder {
     position: relative;
     display: block;
     transition:
-            top 1s linear;
+            bottom 0.1s linear;
     background-color: transparent;
 }
 .card-content-container.open {
-    transition:
-            top 1s linear,
-            background-color 0.4s ease-out 0.2s;
+    transition:background-color 0.4s ease-out
 }
 @media only screen and (max-width: 600px) {
     .card-content-container.open {
@@ -439,7 +434,7 @@ input::placeholder {
 }
 .deport {
     position: absolute;
-    bottom: -3000px;
+    bottom: -1000px;
 }
 .figure {
     min-height: unset;
@@ -576,7 +571,7 @@ button:focus {
     transform: translate(-10px, 10px);
 }
 .post-likes .like-indicator {
-    transform: translateX(-10px);
+    transform: translateX(-17px);
 }
 .comment-likes .like-button {
     transform: translate(10px, 10px);

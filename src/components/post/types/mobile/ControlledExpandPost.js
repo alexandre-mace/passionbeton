@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import {motion, useMotionValue} from "framer-motion";
 import { useScrollConstraints } from "../../../../utils/use-scroll-constraints";
 import { openSpring, closeSpring } from "../../../../utils/cardAnimations";
-import Post from "../../Post";
+import Post from "./Post";
 import getDomain from "../../../../utils/getDomain";
 import PostFullContent from "../../blocks/PostFullContent";
 
@@ -51,9 +51,9 @@ const ControlledExpandPost = ({post, setExpandedPost, isExpanded}) => {
     }
 
     return (
-        <div className={`controlled-expand-post ${!isExpanded && "deport"}`}>
+        <>
             <Overlay isSelected={isExpanded} />
-            <div ref={containerRef} className={`card-content-container ${isExpanded && "open"}`}>
+            <div ref={containerRef} className={`card-content-container ${isExpanded && "open"} ${!isExpanded && "deport"}`}>
                 <motion.div
                     ref={cardRef}
                     className={"card-content"}
@@ -68,7 +68,7 @@ const ControlledExpandPost = ({post, setExpandedPost, isExpanded}) => {
                     <PostFullContent post={post} isSelected={isExpanded}/>
                 </motion.div>
             </div>
-        </div>
+        </>
     )
 }
 
@@ -76,7 +76,6 @@ const Overlay = ({ isSelected, setExpandedPost }) => (
     <motion.div
         initial={false}
         animate={{ opacity: isSelected ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
         style={{ pointerEvents: isSelected ? "auto" : "none" }}
         onClick={() => setExpandedPost(false)}
         className={"overlay" + isSelected ? " open" : ""}

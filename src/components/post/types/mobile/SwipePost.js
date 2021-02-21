@@ -1,6 +1,6 @@
 import React from 'react';
 import {motion, useMotionValue, useTransform} from "framer-motion";
-import Post from "../../Post";
+import Post from "./Post";
 
 const SwipePost = ({post, setExpandedPost, small = false, ...props}) => {
 

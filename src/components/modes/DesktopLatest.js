@@ -4,7 +4,7 @@ import LatestHeader from "../headers/LatestHeader";
 import TopNavigation from "../navigation/TopNavigation";
 import {motion, useSpring, useTransform, useViewportScroll} from "framer-motion";
 import ResizeObserver from "resize-observer-polyfill";
-import DesktopPost from "../post/types/desktop/DesktopPost";
+import DesktopPostWrapper from "../post/types/desktop/DesktopPostWrapper";
 
 const DesktopLatest = ({ posts, mode, setMode }) => {
     const [confetti, setConfetti] = useState(false);
@@ -62,7 +62,7 @@ const DesktopLatest = ({ posts, mode, setMode }) => {
                 >
                     {(posts.length > 0) && posts.map((post, loopIndex) => (
                         <div key={loopIndex}>
-                            <DesktopPost post={post} withPreview={true} setPreviewMeasurements={setPreviewMeasurements}/>
+                            <DesktopPostWrapper post={post} withPreview={true} setPreviewMeasurements={setPreviewMeasurements}/>
                         </div>
                     ))}
                 </motion.div>

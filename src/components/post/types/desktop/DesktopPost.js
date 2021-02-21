@@ -1,60 +1,87 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {motion} from "framer-motion";
-import Post from "../../Post";
-import PostFullContent from "../../blocks/PostFullContent";
+import CloseIcon from '@material-ui/icons/Close';
+import PostTags from "../../blocks/PostTags";
+import PostTitle from "../../blocks/PostTitle";
+import PostContent from "../../blocks/PostContent";
+import PostLink from "../../blocks/PostLink";
+import PostMetadata from "../../blocks/PostMetadata";
+import Comments from "../../../comment/Comments";
+import PostClose from "../../blocks/PostClose";
 
-const DesktopPost = ({post, small, withPreview = false, setPreviewMeasurements}) => {
-    const [isSelected, setIsSelected] = useState(false);
+function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+        ref.current = value;
+    });
+    return ref.current;
+}
+
+const DesktopPost = ({post, small = false, isSelected = false, setIsSelected, withPreview}) => {
+    const prevSelected = usePrevious(isSelected)
+    let closeContext = false;
+    if (prevSelected === true && isSelected === false) {
+        closeContext = true;
+    }
     const [isPreviewed, setIsPreviewed] = useState(false)
-    const cardRef = useRef(null);
-    const containerRef = useRef(null);
+    const [animating, setAnimating] = useState(isSelected || closeContext);
+    const [currentFlow, setCurrentFlow] = useState('closed');
+
+    if (currentFlow === 'closed' && isSelected) {
+        setCurrentFlow('opening')
+        setTimeout(() => {
+            setCurrentFlow('opened')
+        }, 100)
+    }
+
+    if (closeContext && (currentFlow !== 'closing' && currentFlow !== 'closed')) {
+        setCurrentFlow('closing')
+        setTimeout(() => {
+            setCurrentFlow('closed')
+        }, 300)
+    }
+
+    if (currentFlow === 'closing' && !animating) {
+        setAnimating(true)
+    }
+    if (currentFlow === 'opening' && !animating) {
+        setAnimating(true)
+    }
 
     useEffect(() => {
-        if (withPreview && isPreviewed) {
-            let screenWidth = window.innerWidth
-                || document.documentElement.clientWidth
-                || document.body.clientWidth;
+        if (animating) {
             setTimeout(() => {
-                setPreviewMeasurements({
-                scrollTo: (window.pageYOffset +
-                    (cardRef.current.getBoundingClientRect().left - (screenWidth/2 - cardRef.current.getBoundingClientRect().width/2)))
-            });
-            }, 250)
+                setAnimating(false)
+            }, 400)
         }
-    }, [isPreviewed, withPreview])
-
-    useEffect(() => {
-        if (isSelected) {
-            if (withPreview) {
-                document.getElementsByClassName('desktop-posts-wrapper')[0].classList.add('transform-none')
-            }
-            document.body.classList.add('overflow-hidden');
-            return
-        }
-        if (withPreview) {
-            document.getElementsByClassName('desktop-posts-wrapper')[0].classList.remove('transform-none')
-        }
-        document.body.classList.remove('overflow-hidden');
-    }, [isSelected])
+    }, [animating])
 
     return (
-        <>
-            <div ref={containerRef} className={`card-content-container ${isSelected && "open"}`}>
-                <motion.div
-                    ref={cardRef}
-                    className={`card-content`}
-                    layout={true}
-                    onHoverStart={() => {if (withPreview && !isSelected) setIsPreviewed(true)}}
-                    onHoverEnd={() => {if (withPreview && !isSelected) setIsPreviewed(false)}}
-                    onClick={() => {if (!isSelected) setIsSelected(!isSelected)}}
-                >
-                    <Post withPreview={withPreview} small={small} post={post} isSelected={isSelected} setIsSelected={setIsSelected}/>
-                    {isSelected &&
-                        <PostFullContent post={post} isSelected={isSelected} withFooter={true}/>
-                    }
-                </motion.div>
+        <motion.div
+            className={
+                "card" +
+                (small ? ' card-small' : "") +
+                (animating ? ' card-content-invisible': ' card-content-visible') +
+                (isPreviewed ? ' previewed' : ' overflow-hidden')
+            }
+            onHoverStart={() => {if (!isSelected && withPreview) setIsPreviewed(true)}}
+            onHoverEnd={() => {if (!isSelected && withPreview) setIsPreviewed(false)}}
+            transition={{ type: "spring", stiffness: 40, duration: 0.05 }}
+        >
+            <div className="card-content-wrapper">
+                {isSelected &&  <PostClose post={post} setIsSelected={setIsSelected}/>}
+                <PostTags post={post}/>
+                <PostTitle post={post}/>
+                {(!isSelected && !small)  &&
+                <PostContent post={post}/>
+                }
+                {!isSelected &&
+                <PostLink post={post} />
+                }
             </div>
-        </>
+
+            <PostMetadata post={post}/>
+        </motion.div>
     )
 }
 
