@@ -69,7 +69,7 @@ const DesktopPost = ({post, small = false, isSelected = false, setIsSelected, wi
             transition={{ type: "spring", stiffness: 40, duration: 0.05 }}
         >
             <div className="card-content-wrapper">
-                {isSelected &&  <PostClose post={post} setIsSelected={setIsSelected}/>}
+                {isSelected &&  <PostClose post={post} close={() => setIsSelected(false)}/>}
                 <PostTags post={post}/>
                 <PostTitle post={post}/>
                 {(!isSelected && !small)  &&

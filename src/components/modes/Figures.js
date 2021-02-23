@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Figure from "../figure/Figure";
 import FiguresHeader from "../headers/FIguresHeader";
 
 const Figures = ({ figures }) => {
+
+    useEffect(() => {
+        document.getElementsByClassName('MuiBottomNavigation-root')[0].style.position = 'fixed'
+    }, [])
 
     return (
         <div>

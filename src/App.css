@@ -71,9 +71,11 @@ body {
     background-color: #3860ff;
     color: white;
     font-size: 1rem;
-    margin-top: 25px;
     overflow-y: scroll;
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    margin: 25px auto 0;
 }
 body * {
     font-family: 'tt_normsmedium', sans-serif;
@@ -198,6 +200,22 @@ input::placeholder, textarea::placeholder {
 .card-wrapper:last-child {
     margin-bottom: 200px;
 }
+.react-swipeable-view-container > div:first-child {
+    padding-left: 18px !important;
+}
+.react-swipeable-view-container > div {
+    transition: padding 0.2s 0.1s ease-in;
+}
+.react-swipeable-view-container > div.xswipe-context {
+    transition: padding 0.3s 0.1s linear;
+    padding-left: 0 !important;
+}
+.react-swipeable-view-container > div:first-child .card {
+    width: calc(85vw);
+}
+.last-latest-post .card {
+    width: calc(80vw);
+}
 @media screen and (max-width: 640px) {
     .card {
         width: calc(90vw);
@@ -234,7 +252,7 @@ a {
     word-break: keep-all;
 }
 .header-title {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.3rem;
 }
 .header-title, .header-title * {
     font-family: 'monument-bold', sans-serif;
@@ -589,7 +607,18 @@ button:focus {
     height: 1px;
 }
 .figure-likes .like-indicator {
-    transform: translate(10px, -12px);
+    transform: translate(16px, -12px);
+}
+.back-wrapper {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+@media screen and (max-width: 799px) {
+    .card {
+        transition: transform 0.1s linear, padding-top 0.1s ease-out;
+
+    }
 }
 @media screen and (min-width: 800px) {
     .post-title, .figure-name {
@@ -728,6 +757,7 @@ button:focus {
     .figure {
         min-height: 275px;
         max-height: 275px;
+        max-width: 100%;
     }
     .col-lg-4, .col-md-6 {
         position: initial;
@@ -743,8 +773,9 @@ button:focus {
         max-width: unset;
     }
     .card-small {
-        height: 350px;
+        height: 320px;
         max-height: unset;
+        max-width: 100%;
     }
     .open .card {
         height: auto;

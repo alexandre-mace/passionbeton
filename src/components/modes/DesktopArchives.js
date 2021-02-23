@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import filterPosts from "../../filters/filterPosts";
 import ArchivesHeader from "../archive/ArchivesHeader";
-import DesktopPostWrapper from "../post/types/desktop/DesktopPost";
+import DesktopPostWrapper from "../post/types/desktop/DesktopPostWrapper";
 
 const Archives = ({ posts }) => {
     const [search, setSearch] = useState('');

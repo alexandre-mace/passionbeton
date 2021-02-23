@@ -38,16 +38,18 @@ const DesktopPostWrapper = ({post, small, withPreview = false, setPreviewMeasure
         document.body.classList.remove('overflow-hidden');
     }, [isSelected])
 
+    console.log(isSelected)
     return (
         <>
-            <div ref={containerRef} className={`card-content-container ${isSelected && "open"}`}>
+            <div ref={containerRef}
+                 className={`card-content-container ${isSelected && "open card-selected"}`}>
                 <motion.div
                     ref={cardRef}
                     className={`card-content`}
                     layout={true}
                     onHoverStart={() => {if (withPreview && !isSelected) setIsPreviewed(true)}}
                     onHoverEnd={() => {if (withPreview && !isSelected) setIsPreviewed(false)}}
-                    onClick={() => {if (!isSelected) setIsSelected(!isSelected)}}
+                    onClick={() => {if (!isSelected) setIsSelected(true)}}
                 >
                     <DesktopPost
                         withPreview={withPreview}

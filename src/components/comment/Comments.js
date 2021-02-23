@@ -49,9 +49,12 @@ const Comments = ({post}) => {
                         setStatus(INITIAL)
                     }, 2000)
                     setTimeout(() => {
-                        let postContainer = document.querySelector('.card-content-container.open')
-                        postContainer.scrollTo(0, postContainer.scrollTop - 1);
-                    },500)
+                        let postContainer = document.querySelector('.card-selected')
+                        postContainer.scrollTo({
+                            top: postContainer.scrollTop + parseFloat(postContainer.style.paddingTop) + 100 - 1,
+                            behavior: "smooth"
+                        });
+                    },400)
 
                     // dispatchNotification(data)
                 })
