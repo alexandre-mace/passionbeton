@@ -50,6 +50,7 @@ const Post = ({
         handleSelected(false)
         document.body.classList.remove('overflow-hidden')
         if (context === 'xswipe') {
+            document.getElementsByClassName('react-swipeable-view-container')[0].parentElement.classList.remove('overflow-visible')
             document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.remove('xswipe-context')
             document.getElementsByClassName('MuiBottomNavigation-root')[0].style.zIndex = 0
         }
@@ -67,6 +68,7 @@ const Post = ({
                     setIsSelected(true)
                     handleSelected(true)
                     if (context === 'xswipe') {
+                        document.getElementsByClassName('react-swipeable-view-container')[0].parentElement.classList.add('overflow-visible')
                         document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.add('xswipe-context')
                         document.getElementsByClassName('MuiBottomNavigation-root')[0].style.zIndex = -1
                     }

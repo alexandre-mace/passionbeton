@@ -135,6 +135,9 @@ input, textarea {
 .overflow-hidden {
     overflow: hidden !important;
 }
+.overflow-visible {
+    overflow: visible !important;
+}
 .margin-0 {
     margin: 0 !important;
 }
