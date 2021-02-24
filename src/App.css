@@ -132,6 +132,13 @@ input, textarea {
 .justify-content-end {
     justify-content: end;
 }
+.tinify {
+    width: 1px;
+}
+.transparent {
+    background-color: transparent;
+    transition: background-color .3s ease-out;
+}
 .overflow-hidden {
     overflow: hidden !important;
 }
@@ -489,6 +496,7 @@ input::placeholder {
     background-color: white;
     color: black;
     display: flex;
+    padding: 15px;
     flex-direction: column;
     text-align: left;
 }
@@ -617,6 +625,14 @@ button:focus {
     top: 15px;
 }
 @media screen and (max-width: 799px) {
+    .back-wrapper {
+        position: absolute;
+        right: 15px;
+        top: 35px;
+    }
+    #root {
+        overflow-x: hidden;
+    }
     .card {
         transition: transform 0.3s linear, padding-top 0.1s ease-out;
     }
