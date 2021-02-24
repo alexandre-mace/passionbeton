@@ -490,7 +490,6 @@ input::placeholder {
     color: black;
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 210px);
     text-align: left;
 }
 .card-button-section {

@@ -87,7 +87,7 @@ const Comments = ({post}) => {
             </List>
             }
             {post.comments.length - commentsShown > 0 &&
-            <div className={"mt-3 mb-4"}>
+            <div className={"mt-3 mb-4 text-center"}>
                 <button
                     className={`button`}
                     onClick={() => setCommentsShown((commentsShown + 5 > post.comments.length) ? post.comments.length : (commentsShown + 5))}
