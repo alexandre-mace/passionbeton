@@ -79,7 +79,7 @@ const Comments = ({post}) => {
                             </div>
                             <div>{comment.content}</div>
                         </ListItem>
-                        {index + 1 !== commentsShown &&
+                        {(index + 1 !== commentsShown && !(post.comments.length < commentsShown && index + 1 === post.comments.length)) &&
                             <Divider />
                         }
                     </React.Fragment>

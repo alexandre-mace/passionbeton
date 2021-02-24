@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import SeenAll from "../../../animations/SeenAll";
 import Post from "./Post";
 import SwipeableViews from "react-swipeable-views";
@@ -15,10 +15,12 @@ const styles = {
 
 
 const XSwipeWrapper = ({ posts, throwConfettis, setSwipe, postIndex }) => {
+    const [expandedPost, setExpandedPost] = React.useState(false);
 
     return (
         <SwipeableViews
             style={styles.root}
+            disabled={expandedPost}
             slideStyle={styles.slideContainer}
             onChangeIndex={(index, last) => setSwipe(index < last ? 'prev' : 'next')}
         >
@@ -29,6 +31,7 @@ const XSwipeWrapper = ({ posts, throwConfettis, setSwipe, postIndex }) => {
                     post={post}
                     id={loopIndex}
                     context={'xswipe'}
+                    handleSelected={setExpandedPost}
                     defaultWidth={loopIndex !== 0 ? 80 : 85}
                 />
             ))}
