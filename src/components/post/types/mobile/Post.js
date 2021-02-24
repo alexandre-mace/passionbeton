@@ -7,6 +7,7 @@ import PostLink from "../../blocks/PostLink";
 import PostMetadata from "../../blocks/PostMetadata";
 import PostClose from "../../blocks/PostClose";
 import PostFullContent from "../../blocks/PostFullContent";
+import {usePrevious} from "react-use";
 
 const Post = ({
                   post,
@@ -18,6 +19,8 @@ const Post = ({
 }) => {
     const cardRef = useRef(null)
     const [isSelected, setIsSelected] = useState(false)
+    const prevSelected = usePrevious(isSelected)
+
     const [animate, cycleCard] = useCycle(
         {
             card: {
@@ -50,7 +53,9 @@ const Post = ({
         handleSelected(false)
         document.body.classList.remove('overflow-hidden')
         if (context === 'xswipe') {
-            document.getElementsByClassName('react-swipeable-view-container')[0].parentElement.classList.remove('overflow-visible')
+            setTimeout(() => {
+                document.getElementsByClassName('react-swipeable-view-container')[0].parentElement.classList.remove('overflow-visible')
+            }, 500)
             document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.remove('xswipe-context')
             document.getElementsByClassName('MuiBottomNavigation-root')[0].style.zIndex = 0
         }
@@ -60,6 +65,7 @@ const Post = ({
             className={
                 "card" +
                 (small ? ' card-small' : "") +
+                ((prevSelected === true && isSelected === false) ? ' fadeIn' : "") +
                 (isSelected ? ' card-selected' : "")
             }
             onClick={() => {

@@ -624,8 +624,25 @@ button:focus {
     .card-selected {
         transition: transform 0.1s linear, padding-top 0.1s ease-out;
     }
-    .card-selected * {
-        opacity: 0;
+    .card-selected > * {
+        -webkit-animation: 1s ease-in 0s fadeInOpen;
+        animation: 1s ease-in 0s fadeInOpen;
+    }
+
+    .card.fadeIn > * {
+        -webkit-animation: 1s ease-in 0s fadeInClose;
+        animation: 1s ease-in 0s fadeInClose;
+    }
+
+    @keyframes fadeInOpen {
+        0%   {opacity: 0;}
+        75%  {opacity: 0;}
+        100% {opacity: 1;}
+    }
+    @keyframes fadeInClose {
+        0%   {opacity: 0;}
+        75%  {opacity: 0;}
+        100% {opacity: 1;}
     }
 }
 @media screen and (min-width: 800px) {
