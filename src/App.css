@@ -109,12 +109,12 @@ input {
 }
 input, textarea {
     background-color: #eff0f1;
-    color: #A5A5A5;
+    color: #3f3f3f;
     font-size: 0.9rem;
     border: none;
     border-radius: 10px;
 }
-input::placeholder, textarea::placeholder {
+::placeholder {
     color: #A5A5A5;
 }
 .label {
@@ -616,8 +616,10 @@ button:focus {
 }
 @media screen and (max-width: 799px) {
     .card {
+        transition: transform 0.3s linear, padding-top 0.1s ease-out;
+    }
+    .card-selected {
         transition: transform 0.1s linear, padding-top 0.1s ease-out;
-
     }
 }
 @media screen and (min-width: 800px) {

@@ -77,7 +77,7 @@ const Post = ({
                 height: 'calc(100vh + 2px)',
                 transform: 'translateY(-'+  (cardRef.current ? parseFloat(Math.ceil(cardRef.current.getBoundingClientRect().top)) + 2 + 'px' : '4rem') +')',
             })}
-            transition={{ ease: "easeOut", duration: 0.2, delay: 0.1 }}
+            transition={{ ease: "easeOut", duration: 0.35, delay: 0.1 }}
             ref={cardRef}
         >
             <div className="card-content-wrapper">

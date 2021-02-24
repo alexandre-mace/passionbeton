@@ -38,7 +38,6 @@ const DesktopPostWrapper = ({post, small, withPreview = false, setPreviewMeasure
         document.body.classList.remove('overflow-hidden');
     }, [isSelected])
 
-    console.log(isSelected)
     return (
         <>
             <div ref={containerRef}

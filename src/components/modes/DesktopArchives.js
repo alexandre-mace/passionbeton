@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import filterPosts from "../../filters/filterPosts";
 import ArchivesHeader from "../archive/ArchivesHeader";
 import DesktopPostWrapper from "../post/types/desktop/DesktopPostWrapper";

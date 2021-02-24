@@ -30,6 +30,7 @@ const Comments = ({post}) => {
     const [status, setStatus] = useState(INITIAL);
     const [author, setAuthor] = useState('');
     const [content, setContent] = useState('');
+    const [commentsShown, setCommentsShown] = useState(5);
 
     useEffect(() => {
         if (status === SENDING) {
@@ -51,7 +52,7 @@ const Comments = ({post}) => {
                     setTimeout(() => {
                         let postContainer = document.querySelector('.card-selected')
                         postContainer.scrollTo({
-                            top: postContainer.scrollTop + parseFloat(postContainer.style.paddingTop) + 100 - 1,
+                            top: postContainer.scrollTop + 150,
                             behavior: "smooth"
                         });
                     },400)
@@ -69,7 +70,7 @@ const Comments = ({post}) => {
             {((post.comments && post.comments.length === 0) || !post.comments)  && <div className={"mb-4"}>Aucun commentaire.</div>}
             {post.comments && post.comments.length > 0 &&
             <List className={classes.root} aria-label="post comments">
-                {post.comments.map((comment, index) => (
+                {[...post.comments].slice(0, commentsShown).map((comment, index) => (
                     <React.Fragment key={index}>
                         <ListItem className={"comment-item d-flex flex-column text-left align-items-start justify-content-start w-100"}>
                             <div className="d-flex justify-content-between w-100">
@@ -78,12 +79,22 @@ const Comments = ({post}) => {
                             </div>
                             <div>{comment.content}</div>
                         </ListItem>
-                        {index + 1 !== post.comments.length &&
+                        {index + 1 !== commentsShown &&
                             <Divider />
                         }
                     </React.Fragment>
                 ))}
             </List>
+            }
+            {post.comments.length - commentsShown > 0 &&
+            <div className={"mt-3 mb-4"}>
+                <button
+                    className={`button`}
+                    onClick={() => setCommentsShown((commentsShown + 5 > post.comments.length) ? post.comments.length : (commentsShown + 5))}
+                >
+                    Voir plus ({post.comments.length - commentsShown})
+                </button>
+            </div>
             }
             <div className={"my-3"}>
                 <textarea style={{minHeight: '2rem'}} className={'w-100'} type="text" placeholder={"Votre message"} value={content} onChange={(event => setContent(event.target.value))}/>
