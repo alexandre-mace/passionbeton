@@ -624,6 +624,9 @@ button:focus {
     .card-selected {
         transition: transform 0.1s linear, padding-top 0.1s ease-out;
     }
+    .card-selected * {
+        opacity: 0;
+    }
 }
 @media screen and (min-width: 800px) {
     .post-title, .figure-name {
