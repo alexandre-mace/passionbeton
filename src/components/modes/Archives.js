@@ -1,14 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import filterPosts from "../../filters/filterPosts";
 import ArchivesHeader from "../archive/ArchivesHeader";
 import Post from "../post/types/mobile/Post";
 
-const Archives = ({ posts }) => {
-    const [search, setSearch] = useState('');
-
-    useEffect(() => {
-        document.getElementsByClassName('MuiBottomNavigation-root')[0].style.position = 'fixed'
-    }, [])
+const Archives = ({ posts, searchDefault = '' }) => {
+    const [search, setSearch] = useState(searchDefault);
 
     return (
         <div>
@@ -21,7 +17,7 @@ const Archives = ({ posts }) => {
                     onChange={(event => {setSearch(event.target.value)})}
                 />
             </div>
-            {[...posts].slice(0, 5).filter(post => filterPosts(search.split(' '), post)).map((post, index) => (
+            {[...posts].filter(post => filterPosts(search.split(' '), post)).map((post, index) => (
                 <Post
                     post={post}
                     small={true}

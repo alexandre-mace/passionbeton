@@ -5,7 +5,7 @@ import SwipeableViews from "react-swipeable-views";
 
 const styles = {
     root: {
-        padding: '0 60px 60px 0',
+        padding: '0 60px 28px 0',
     },
     slideContainer: {
         overflow: 'visible',
@@ -14,13 +14,14 @@ const styles = {
 };
 
 
-const XSwipeWrapper = ({ posts, throwConfettis, setSwipe, postIndex }) => {
+const XPostSwipeWrapper = ({ posts, throwConfettis, setSwipe, postIndex }) => {
     const [expandedPost, setExpandedPost] = React.useState(false);
 
     return (
         <SwipeableViews
             style={styles.root}
             disabled={expandedPost}
+            slideClassName={"post-slide"}
             slideStyle={styles.slideContainer}
             onChangeIndex={(index, last) => setSwipe(index < last ? 'prev' : 'next')}
         >
@@ -45,4 +46,4 @@ const XSwipeWrapper = ({ posts, throwConfettis, setSwipe, postIndex }) => {
     )
 };
 
-export default XSwipeWrapper
+export default XPostSwipeWrapper

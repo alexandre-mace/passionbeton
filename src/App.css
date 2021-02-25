@@ -86,6 +86,16 @@ body * {
     font-size: 1.25rem;
     word-break: keep-all;
 }
+.categories-title {
+    font-family: 'tt_normsbold', sans-serif;
+    font-size: 1.25rem;
+    word-break: keep-all;
+    margin-bottom: 1rem;
+    margin-left: 5vw;
+}
+.category-tag-label {
+    font-family: 'tt_normsbold', sans-serif;
+}
 .post-content, .figure-content {
     font-size: 1.07rem;
 }
@@ -139,6 +149,9 @@ input, textarea {
     background-color: transparent;
     transition: background-color .3s ease-out;
 }
+.zIndexNeg {
+    z-index: -1 !important;
+}
 .overflow-hidden {
     overflow: hidden !important;
 }
@@ -176,6 +189,9 @@ input, textarea {
     background-color: #ffffff;
     border-radius: 16px;
 }
+.react-swipeable-view-container .card {
+    box-shadow: 0 20px 10px 0 rgba(41,41,211,.25);
+}
 .comment-item {
     min-height: 100px;
     border-radius: 15px;
@@ -210,20 +226,38 @@ input, textarea {
     width: 100%;
     max-width: 990px;
 }
+.categories {
+    text-align: left;
+    position: relative;
+}
+.category-emoji-wrapper {
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 5px 5px 0 rgba(41,41,211,.15);
+}
+.category-emoji-wrapper img {
+    margin: auto;
+    max-height: 25px;
+    max-width: 25px;
+}
 .card-wrapper:last-child {
     margin-bottom: 200px;
 }
-.react-swipeable-view-container > div:first-child {
+.react-swipeable-view-container > div:first-child.post-slide {
     padding-left: 18px !important;
 }
 .react-swipeable-view-container > div {
     transition: padding 0.2s 0.1s linear;
 }
-.react-swipeable-view-container > div.xswipe-context {
+.react-swipeable-view-container > div.xswipe-context.post-slide {
     transition: padding 0.2s 0.1s linear;
     padding-left: 0 !important;
 }
-.react-swipeable-view-container > div:first-child .card {
+.react-swipeable-view-container > div:first-child .card:not('.card-category') {
     width: calc(85vw);
 }
 .last-latest-post .card {
@@ -254,6 +288,7 @@ a {
     position: fixed;
     width: 100vw;
     bottom: 0;
+    box-shadow: 0 20px 40px 0 rgba(41,41,211,.55);
 }
 .header {
     max-width: 90vw;
@@ -643,10 +678,11 @@ button:focus {
         border-radius: 16px;
     }
     .card-selected {
-        height: 100vh;
+        height: 100vh !important;
         width: 100vw !important;
         z-index: 30;
         border-radius: 0;
+        position: absolute;
         padding-top: 20px;
         padding-bottom: 2px;
         overflow: scroll;
@@ -657,9 +693,19 @@ button:focus {
     .card.card-small {
         height: 280px;
     }
+    .card-category {
+        height: 160px;
+        width: 160px;
+        padding: 20px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     body {
-        padding: 25px 0 0;
         margin: 0;
+        padding: 25px 0 100px;
     }
     .back-wrapper {
         position: absolute;

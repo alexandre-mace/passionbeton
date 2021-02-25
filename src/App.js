@@ -28,11 +28,17 @@ const App = () => {
     const [mode, setMode] = React.useState(0);
     const [isTokenFound, setTokenFound] = useState(false);
     const [newNotficiation, setNewNotification] = useState(false);
+    const [search, setSearch] = useState('');
     const { width, height } = useWindowSize()
     const {data: posts, loading: postsLoading} = useRecoilValue(postsAtom);
     const {data: figures, loading: figuresLoading} = useRecoilValue(figuresAtom);
     usePosts();
     useFigures();
+
+    const handleSearch = (search) => {
+        setMode(1)
+        setSearch(search)
+    }
 
     useEffect(() => {
         getToken(setTokenFound);
@@ -69,13 +75,13 @@ const App = () => {
             {(postsLoading || figuresLoading) && <Loader/>}
             {(!postsLoading && posts.length > 0 && mode === 0) &&
                 (<>
-                    {width < 800 && <Latest posts={[...posts].slice(0, 5)}/>}
+                    {width < 800 && <Latest posts={[...posts]} handleSearch={handleSearch}/>}
                     {width >= 800 && <DesktopLatest posts={[...posts].slice(0, 5)} mode={mode} setMode={setMode}/>}
                 </>)
             }
             {(!postsLoading && posts && posts.length > 0 && mode === 1) &&
                 (<>
-                    {width < 800 && <Archives posts={posts}/>}
+                    {width < 800 && <Archives posts={posts} searchDefault={search}/>}
                     {width >= 800 && <DesktopArchives posts={[...posts]}/>}
                 </>)
             }
