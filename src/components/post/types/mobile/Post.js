@@ -22,7 +22,7 @@ const Post = ({
     const prevSelected = usePrevious(isSelected)
 
     const handleClose = () => {
-        // handleSelected(false)
+        handleSelected(false)
         setIsSelected(false)
         if (context === 'xswipe') {
             setTimeout(() => {
@@ -41,14 +41,14 @@ const Post = ({
                 ((prevSelected === true && isSelected === false) ? ' fadeIn' : "") +
                 (isSelected === true ? ' card-selected' : "")
             }
-            // style={{
-                // width: defaultWidth + 'vw',
-                // transform: isSelected ? 'translateY(-'+  (cardRef.current ? parseFloat(Math.ceil(cardRef.current.getBoundingClientRect().top))  + 'px' : '7.3rem') +')' : 'none'
-            // }}
+            style={{
+                width: defaultWidth + 'vw',
+                transform: isSelected ? 'translateY(-'+  (cardRef.current ? parseFloat(Math.ceil(cardRef.current.getBoundingClientRect().top))  + 'px' : '7.3rem') +')' : 'none'
+            }}
             onClick={() => {
                 if (!isSelected) {
                     setIsSelected(true)
-                    // handleSelected(true)
+                    handleSelected(true)
                     if (context === 'xswipe') {
                         document.getElementsByClassName('react-swipeable-view-container')[0].parentElement.classList.add('overflow-visible')
                         document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.add('xswipe-context')
