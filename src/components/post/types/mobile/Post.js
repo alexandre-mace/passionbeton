@@ -31,7 +31,6 @@ const Post = ({
             document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.remove('xswipe-context')
             document.getElementsByClassName('MuiBottomNavigation-root')[0].style.zIndex = 0
         }
-        // cardRef.current.style.transform = 'none'
     }
 
     return (
@@ -43,7 +42,8 @@ const Post = ({
                 (isSelected === true ? ' card-selected' : "")
             }
             style={{
-                width: defaultWidth + 'vw'
+                width: defaultWidth + 'vw',
+                transform: isSelected ? 'translateY(-'+  (cardRef.current ? parseFloat(Math.ceil(cardRef.current.getBoundingClientRect().top))  + 'px' : '7.3rem') +')' : 'none'
             }}
             onClick={() => {
                 if (!isSelected) {
@@ -54,7 +54,6 @@ const Post = ({
                         document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.add('xswipe-context')
                         document.getElementsByClassName('MuiBottomNavigation-root')[0].style.zIndex = -1
                     }
-                    // cardRef.current.style.transform = 'translateY(-'+  (cardRef.current ? parseFloat(Math.ceil(cardRef.current.getBoundingClientRect().top))  + 'px' : '7.3rem') +')'
                 }
             }}
             ref={cardRef}
