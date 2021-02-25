@@ -651,6 +651,12 @@ button:focus {
         padding-bottom: 2px;
         overflow: scroll;
     }
+    .card.figure {
+        padding-top: 15px;
+    }
+    .card.card-small {
+        height: 280px;
+    }
     body {
         padding: 25px 0 0;
         margin: 0;
