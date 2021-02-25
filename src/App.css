@@ -767,7 +767,6 @@ button:focus {
     }
     .previewed {
         width: 45vw !important;
-        /*max-height: unset !important;*/
         overflow-y: auto;
     }
     .post-content, .figure-content {
@@ -818,6 +817,44 @@ button:focus {
         display: flex;
         justify-content: flex-end;
         padding: 10px 10px 0 0;
+    }
+    .inline-categories {
+        display: flex;
+        justify-content: space-between;
+    }
+    .inline-categories .card {
+        height: 150px;
+    }
+    .category-emoji-wrapper {
+        background-color: white;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        border-radius: 50%;
+        text-align: center;
+        box-shadow: 0 5px 5px 0 rgba(41,41,211,.15);
+    }
+    .category-emoji-wrapper img {
+        margin: auto;
+        max-height: 25px;
+        max-width: 25px;
+    }
+    .card-category {
+        height: 140px !important;
+        width: 100%;
+        padding: 20px;
+        margin: unset;
+        margin-bottom: 30px !important;
+        color: white;
+        word-break: keep-all;
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .category-tag-label {
+        font-family: 'tt_normsbold', sans-serif;
     }
     .top-navigation-item * {
         font-family: 'monument-bold', sans-serif;
