@@ -145,6 +145,9 @@ input, textarea {
 .overflow-visible {
     overflow: visible !important;
 }
+.overflowy-visible {
+    overflow-y: visible !important;
+}
 .margin-0 {
     margin: 0 !important;
 }
@@ -625,13 +628,21 @@ button:focus {
     top: 15px;
 }
 @media screen and (max-width: 799px) {
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    body {
+        padding: 25px 0 0;
+        margin: 0;
+    }
     .back-wrapper {
         position: absolute;
         right: 15px;
-        top: 35px;
+        top: 15px;
     }
-    #root {
-        overflow-x: hidden;
+    .back-wrapper svg {
+        font-size: 1.9rem;
     }
     .card {
         transition: transform 0.3s linear, padding-top 0.1s ease-out;

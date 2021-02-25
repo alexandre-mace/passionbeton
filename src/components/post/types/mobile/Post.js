@@ -52,7 +52,6 @@ const Post = ({
         cycleCard();
         setIsSelected(false)
         handleSelected(false)
-        document.body.classList.remove('overflow-hidden')
         if (context === 'xswipe') {
             setTimeout(() => {
                 document.getElementsByClassName('react-swipeable-view-container')[0].parentElement.classList.remove('overflow-visible')
@@ -79,7 +78,6 @@ const Post = ({
                         document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.add('xswipe-context')
                         document.getElementsByClassName('MuiBottomNavigation-root')[0].style.zIndex = -1
                     }
-                    document.body.classList.add('overflow-hidden')
                 }
             }}
             animate={animate.card.zIndex !== 30 ? animate.card : Object.assign(animate.card, {
