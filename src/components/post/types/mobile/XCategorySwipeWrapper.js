@@ -5,11 +5,11 @@ import filterPosts from "../../../../filters/filterPosts";
 
 const styles = {
     root: {
-        padding: '0 186px 50px 18px',
+        padding: '0 51vw 50px 18px',
     },
     slideContainer: {
         overflow: 'visible',
-        padding: '0 35px 0 0'
+        padding: '0 35px 0 0',
     },
 };
 

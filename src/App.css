@@ -269,11 +269,6 @@ input, textarea {
         min-width: unset;
     }
 }
-@media screen and (max-width: 345px) {
-    .card {
-        min-height: 230px;
-    }
-}
 a {
     color: black;
 }
@@ -698,6 +693,7 @@ button:focus {
         width: 160px;
         padding: 20px;
         color: white;
+        word-break: keep-all;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -740,6 +736,20 @@ button:focus {
         0%   {opacity: 0;}
         75%  {opacity: 0;}
         100% {opacity: 1;}
+    }
+}
+@media screen and (max-width: 370px) {
+    .card-category {
+        height: 140px;
+        width: 140px;
+        font-size: 0.8rem;
+    }
+}
+@media screen and (max-width: 340px) {
+    .card-category {
+        height: 120px;
+        width: 120px;
+        font-size: 0.7rem;
     }
 }
 @media screen and (min-width: 800px) {
