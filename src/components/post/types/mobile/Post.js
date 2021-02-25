@@ -24,6 +24,7 @@ const Post = ({
     const handleClose = () => {
         handleSelected(false)
         setIsSelected(false)
+        document.getElementsByClassName('card-selected')[0].style.position = 'relative'
         if (context === 'xswipe') {
             setTimeout(() => {
                 document.getElementsByClassName('react-swipeable-view-container')[0].parentElement.classList.remove('overflow-visible')
@@ -32,6 +33,7 @@ const Post = ({
             document.getElementsByClassName('MuiBottomNavigation-root')[0].style.zIndex = 0
             document.getElementsByClassName('categories')[0].classList.remove('zIndexNeg')
         }
+        document.body.classList.remove('lock-scrolly')
     }
 
     return (
@@ -61,6 +63,10 @@ const Post = ({
                         document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.add('xswipe-context')
                         document.getElementsByClassName('MuiBottomNavigation-root')[0].style.zIndex = -1
                     }
+                    setTimeout(() => {
+                        document.body.classList.add('lock-scrolly')
+                        document.getElementsByClassName('card-selected')[0].style.position = 'absolute'
+                    }, 700)
                 }
             }}
             ref={cardRef}

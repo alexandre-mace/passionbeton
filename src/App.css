@@ -161,6 +161,10 @@ input, textarea {
 .overflowy-visible {
     overflow-y: visible !important;
 }
+.lock-scrolly {
+    max-height: 100vh;
+    overflow-y: hidden;
+}
 .margin-0 {
     margin: 0 !important;
 }
