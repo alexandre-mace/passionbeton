@@ -42,9 +42,9 @@ const Post = ({
                 ((prevSelected === true && isSelected === false) ? ' fadeIn' : "") +
                 (isSelected === true ? ' card-selected' : "")
             }
-            style={{
-                width: defaultWidth + 'vw'
-            }}
+            // style={{
+            //     width: defaultWidth + 'vw'
+            // }}
             onClick={() => {
                 if (!isSelected) {
                     setIsSelected(true)
