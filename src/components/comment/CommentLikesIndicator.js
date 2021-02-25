@@ -33,12 +33,23 @@ const CommentLikesIndicator = ({comment, post}) => {
         if (!likes) {
             return false
         }
+
+        if (typeof likes === 'object') {
+            return Object.values(likes).includes(ip)
+        }
+
         return likes.includes(ip)
     }
 
     return (
         <div className={"medias-indicator comment-likes"}>
-            <div className={"like-indicator"}>{comment.likes ? comment.likes.length : 0}</div>
+            <div className={"like-indicator"}>{
+                comment.likes
+                    ? typeof comment.likes === 'object'
+                        ? Object.values(comment.likes).length
+                        : comment.likes.length
+                    : 0
+            }</div>
             <IconButton aria-label="like" className={"like-button"} name={'like'}  onClick={(e) => handleLike(e, !userAlreadyLikedComment(ip, comment.likes))}>
                 {userAlreadyLikedComment(ip, comment.likes)
                     ? <FavoriteIcon className={'color-black'}/>

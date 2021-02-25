@@ -33,6 +33,11 @@ const PostLikesIndicator = ({post}) => {
         if (!likes || !ip) {
             return false
         }
+
+        if (typeof likes === 'object') {
+            return Object.values(likes).includes(ip)
+        }
+
         return likes.includes(ip)
     }
 
@@ -44,7 +49,15 @@ const PostLikesIndicator = ({post}) => {
                     : <FavoriteBorderIcon  className={'color-black'}/>
                 }
             </IconButton>
-            <div className={"like-indicator"}>{post.likes ? post.likes.length : 0}</div>
+            <div className={"like-indicator"}>
+                {
+                    post.likes
+                        ? typeof post.likes === 'object'
+                        ? Object.values(post.likes).length
+                        : post.likes.length
+                        : 0
+                }
+            </div>
         </div>
     )
 }

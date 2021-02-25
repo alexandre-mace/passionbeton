@@ -641,7 +641,7 @@ button:focus {
     height: 1px;
 }
 .comment-likes .like-indicator {
-    transform: translate(5px, -2px);
+    transform: translate(10px, -2px);
 }
 .figure-likes .like-button {
     transform: translate(10px, 0px);
