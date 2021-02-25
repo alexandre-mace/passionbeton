@@ -44,7 +44,12 @@ const Post = ({
             }
             style={{
                 width: defaultWidth + 'vw',
-                transform: isSelected ? 'translateY(-'+  (cardRef.current ? parseFloat(Math.ceil(cardRef.current.getBoundingClientRect().top))  + 'px' : '7.3rem') +')' : 'none'
+                transform:
+                    isSelected
+                    ? cardRef.current.style.transform !== 'none' ? cardRef.current.style.transform :'translateY(-' +  (cardRef.current
+                            ? parseFloat(Math.ceil(cardRef.current.getBoundingClientRect().top))  + 'px'
+                            : '7.3rem') +')'
+                    : 'none'
             }}
             onClick={() => {
                 if (!isSelected) {

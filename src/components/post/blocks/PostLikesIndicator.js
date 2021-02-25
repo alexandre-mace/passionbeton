@@ -30,7 +30,7 @@ const PostLikesIndicator = ({post}) => {
     }
 
     const userAlreadyLikedPost = (ip, likes) => {
-        if (!likes) {
+        if (!likes || !ip) {
             return false
         }
         return likes.includes(ip)
