@@ -22,7 +22,7 @@ const Post = ({
     const prevSelected = usePrevious(isSelected)
 
     const handleClose = () => {
-        handleSelected(false)
+        // handleSelected(false)
         setIsSelected(false)
         if (context === 'xswipe') {
             setTimeout(() => {
@@ -48,7 +48,7 @@ const Post = ({
             onClick={() => {
                 if (!isSelected) {
                     setIsSelected(true)
-                    handleSelected(true)
+                    // handleSelected(true)
                     if (context === 'xswipe') {
                         document.getElementsByClassName('react-swipeable-view-container')[0].parentElement.classList.add('overflow-visible')
                         document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.add('xswipe-context')
