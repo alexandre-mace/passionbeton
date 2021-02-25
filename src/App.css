@@ -214,10 +214,10 @@ input, textarea {
     padding-left: 18px !important;
 }
 .react-swipeable-view-container > div {
-    transition: padding 0.2s 0.1s ease-in;
+    transition: padding 0.1s 0.1s ease-in;
 }
 .react-swipeable-view-container > div.xswipe-context {
-    transition: padding 0.3s 0.1s linear;
+    transition: padding 0.1s 0.1s linear;
     padding-left: 0 !important;
 }
 .react-swipeable-view-container > div:first-child .card {

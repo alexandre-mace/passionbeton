@@ -28,9 +28,9 @@ const Post = ({
                 transform: 'none',
                 width: defaultWidth + 'vw',
                 position: 'relative',
-                borderRadius: '16px',
                 overflow: 'hidden',
-                paddingTop: '0px'
+                paddingTop: '0px',
+                borderRadius: '16px'
             },
         },
         {
@@ -85,7 +85,7 @@ const Post = ({
                 height: 'calc(100vh + 2px)',
                 transform: 'translateY(-'+  (cardRef.current ? parseFloat(Math.ceil(cardRef.current.getBoundingClientRect().top)) + 2 + 'px' : '4rem') +')',
             })}
-            transition={{ ease: "easeOut", duration: 0.35, delay: 0.1 }}
+            transition={{ ease: "easeOut", duration: 0.1, delay: 0.1 }}
             ref={cardRef}
         >
             <div className="card-content-wrapper">
