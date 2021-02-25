@@ -66,7 +66,7 @@ const Post = ({
                     setTimeout(() => {
                         document.body.classList.add('lock-scrolly')
                         document.getElementsByClassName('card-selected')[0].style.position = 'absolute'
-                    }, 1200)
+                    }, 700)
                 }
             }}
             ref={cardRef}
