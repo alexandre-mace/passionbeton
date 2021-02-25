@@ -28,6 +28,7 @@ const Post = ({
                 transform: 'none',
                 width: defaultWidth + 'vw',
                 position: 'relative',
+                zIndex: 0,
                 overflow: 'hidden',
                 paddingTop: '0px',
                 borderRadius: '16px'
