@@ -41,10 +41,10 @@ const Post = ({
                 ((prevSelected === true && isSelected === false) ? ' fadeIn' : "") +
                 (isSelected === true ? ' card-selected' : "")
             }
-            style={{
-                width: defaultWidth + 'vw',
+            // style={{
+                // width: defaultWidth + 'vw',
                 // transform: isSelected ? 'translateY(-'+  (cardRef.current ? parseFloat(Math.ceil(cardRef.current.getBoundingClientRect().top))  + 'px' : '7.3rem') +')' : 'none'
-            }}
+            // }}
             onClick={() => {
                 if (!isSelected) {
                     setIsSelected(true)
