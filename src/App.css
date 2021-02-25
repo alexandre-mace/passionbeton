@@ -217,10 +217,10 @@ input, textarea {
     padding-left: 18px !important;
 }
 .react-swipeable-view-container > div {
-    transition: padding 0.1s 0.1s ease-in;
+    transition: padding 0.2s 0.1s linear;
 }
 .react-swipeable-view-container > div.xswipe-context {
-    transition: padding 0.1s 0.1s linear;
+    transition: padding 0.2s 0.1s linear;
     padding-left: 0 !important;
 }
 .react-swipeable-view-container > div:first-child .card {
@@ -634,7 +634,6 @@ button:focus {
     }
     .card {
         height: 335px;
-        transform: none;
         width: 90vw;
         position: relative;
         z-index: 0;
@@ -644,10 +643,9 @@ button:focus {
     }
     .card-selected {
         height: 100vh;
-        transform: translateY(-7.3rem);
         width: 100vw !important;
         z-index: 30;
-        border-radius: 0px;
+        border-radius: 0;
         padding-top: 20px;
         padding-bottom: 2px;
         overflow: scroll;
@@ -665,10 +663,10 @@ button:focus {
         font-size: 1.9rem;
     }
     .card {
-        transition: transform 0.3s linear, padding-top 0.1s ease-out;
+        transition: all 0.3s linear;
     }
     .card-selected {
-        transition: transform 0.1s linear, padding-top 0.1s ease-out;
+        transition: all 0.3s linear;
     }
     .card-selected > * {
         -webkit-animation: 1s ease-in 0s fadeInOpen;

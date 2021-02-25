@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {motion, useCycle} from "framer-motion";
+import {motion} from "framer-motion";
 import PostTags from "../../blocks/PostTags";
 import PostTitle from "../../blocks/PostTitle";
 import PostContent from "../../blocks/PostContent";
@@ -21,22 +21,9 @@ const Post = ({
     const [isSelected, setIsSelected] = useState(false)
     const prevSelected = usePrevious(isSelected)
 
-    const [animate, cycleCard] = useCycle(
-        {
-            card: {
-
-            },
-        },
-        {
-            card: {
-
-            },
-        }
-    );
-
     const handleClose = () => {
-        console.log('hi')
         handleSelected(false)
+        setIsSelected(false)
         if (context === 'xswipe') {
             setTimeout(() => {
                 document.getElementsByClassName('react-swipeable-view-container')[0].parentElement.classList.remove('overflow-visible')
@@ -44,9 +31,9 @@ const Post = ({
             document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.remove('xswipe-context')
             document.getElementsByClassName('MuiBottomNavigation-root')[0].style.zIndex = 0
         }
-        setIsSelected(false)
+        cardRef.current.style.transform = 'none'
     }
-    console.log(isSelected)
+
     return (
         <motion.div
             className={
@@ -55,8 +42,11 @@ const Post = ({
                 ((prevSelected === true && isSelected === false) ? ' fadeIn' : "") +
                 (isSelected === true ? ' card-selected' : "")
             }
+            style={{
+                width: defaultWidth + 'vw'
+            }}
             onClick={() => {
-                if (!document.getElementsByClassName('react-swipeable-view-container')[0].parentElement.classList.contains('overflow-visible')) {
+                if (!isSelected) {
                     setIsSelected(true)
                     handleSelected(true)
                     if (context === 'xswipe') {
@@ -64,13 +54,9 @@ const Post = ({
                         document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.add('xswipe-context')
                         document.getElementsByClassName('MuiBottomNavigation-root')[0].style.zIndex = -1
                     }
+                    cardRef.current.style.transform = 'translateY(-'+  (cardRef.current ? parseFloat(Math.ceil(cardRef.current.getBoundingClientRect().top))  + 'px' : '7.3rem') +')'
                 }
             }}
-            animate={animate.card.zIndex !== 30 ? animate.card : Object.assign(animate.card, {
-                height: 'calc(100vh + 2px)',
-                transform: 'translateY(-'+  (cardRef.current ? parseFloat(Math.ceil(cardRef.current.getBoundingClientRect().top)) + 2 + 'px' : '4rem') +')',
-            })}
-            transition={{ ease: "easeOut", duration: 0.1, delay: 0.1 }}
             ref={cardRef}
         >
             <div className="card-content-wrapper">
