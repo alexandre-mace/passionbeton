@@ -632,6 +632,26 @@ button:focus {
         max-width: 100%;
         overflow-x: hidden;
     }
+    .card {
+        height: 335px;
+        transform: none;
+        width: 90vw;
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+        padding-top: 0;
+        border-radius: 16px;
+    }
+    .card-selected {
+        height: 100vh;
+        transform: translateY(-7.3rem);
+        width: 100vw !important;
+        z-index: 30;
+        border-radius: 0px;
+        padding-top: 20px;
+        padding-bottom: 2px;
+        overflow: scroll;
+    }
     body {
         padding: 25px 0 0;
         margin: 0;

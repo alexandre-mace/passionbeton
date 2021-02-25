@@ -24,33 +24,18 @@ const Post = ({
     const [animate, cycleCard] = useCycle(
         {
             card: {
-                height: small ? '250px': '335px',
-                transform: 'none',
-                width: defaultWidth + 'vw',
-                position: 'relative',
-                zIndex: 0,
-                overflow: 'hidden',
-                paddingTop: '0px',
-                borderRadius: '16px'
+
             },
         },
         {
             card: {
-                height: '100vh',
-                transform: 'translateY(-10rem)',
-                width: '100vw',
-                zIndex: 30,
-                borderRadius: '0px',
-                paddingTop: '20px',
-                paddingBottom: '2px',
-                overflow: 'scroll'
+
             },
         }
     );
 
     const handleClose = () => {
-        cycleCard();
-        setIsSelected(false)
+        console.log('hi')
         handleSelected(false)
         if (context === 'xswipe') {
             setTimeout(() => {
@@ -59,18 +44,19 @@ const Post = ({
             document.getElementsByClassName('react-swipeable-view-container')[0].children[id].classList.remove('xswipe-context')
             document.getElementsByClassName('MuiBottomNavigation-root')[0].style.zIndex = 0
         }
+        setIsSelected(false)
     }
+    console.log(isSelected)
     return (
         <motion.div
             className={
                 "card" +
                 (small ? ' card-small' : "") +
                 ((prevSelected === true && isSelected === false) ? ' fadeIn' : "") +
-                (isSelected ? ' card-selected' : "")
+                (isSelected === true ? ' card-selected' : "")
             }
             onClick={() => {
-                if (animate.card.zIndex !== 30) {
-                    cycleCard();
+                if (!document.getElementsByClassName('react-swipeable-view-container')[0].parentElement.classList.contains('overflow-visible')) {
                     setIsSelected(true)
                     handleSelected(true)
                     if (context === 'xswipe') {
