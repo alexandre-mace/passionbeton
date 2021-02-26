@@ -13,13 +13,14 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const messaging = null;
+let messaging = null;
 if (firebase.messaging.isSupported()) {
-    const messaging = firebase.messaging();
+    messaging = firebase.messaging();
 }
 
 export const getToken = (setTokenFound) => {
     if (firebase.messaging.isSupported()) {
+        console.log(messaging)
         return messaging.getToken({vapidKey: 'BIlSpicZrE17yN4cVKZ7xhD78z44qnnXlBH2kwR1trbSt1DHKP6oW4srqq4l6xD3GgKdThUYbcCGmoNvwxfdAJE'}).then((currentToken) => {
             if (currentToken) {
                 setTokenFound(true);
