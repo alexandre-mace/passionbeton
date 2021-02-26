@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {apiAddress} from "../data/config/api";
 
 export default function useIp() {
     const [ip, setIp] = useState(null);
@@ -16,10 +17,11 @@ export default function useIp() {
                 if (!localStorage.getItem('pb-ip')) {
                     localStorage.setItem('pb-ip', ip)
                 }
+                console.log(ip)
                 setIp(ip)
             }
         };
-        xhttp.open("GET", "//api.ipify.org?format=json", true);
+        xhttp.open("GET", apiAddress + '/ip', true);
         xhttp.send();
     }
 
