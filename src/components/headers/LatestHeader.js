@@ -6,7 +6,7 @@ const LatestHeader = () => {
             <div className={"header-title"}>
                 <div>Cool de se revoir ! <span className="emoji">👋</span></div>
             </div>
-            <div className={"header-subtitle"}>Voici les derniers partages par les passionés de béton.</div>
+            <div className={"header-subtitle"}>Voici les derniers partages par les passionné⸱e⸱s de béton.</div>
         </div>
     )
 }
