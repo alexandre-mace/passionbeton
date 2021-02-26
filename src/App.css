@@ -925,6 +925,10 @@ button:focus {
     }
     @media screen and (max-height: 800px) {
         .card {
+            margin-bottom: 40px;
+            height: 350px;
+        }
+        .card:not('.card-category') {
             min-height: 320px;
             max-height: 320px;
         }
