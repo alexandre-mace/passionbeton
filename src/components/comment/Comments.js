@@ -67,25 +67,6 @@ const Comments = ({post}) => {
 
     return (
         <div className={"comment-section"}>
-            {((post.comments && post.comments.length === 0) || !post.comments)  && <div className={"mb-4"}>Aucun commentaire.</div>}
-            {post.comments && post.comments.length > 0 &&
-            <List className={classes.root} aria-label="post comments">
-                {[...post.comments].slice(0, commentsShown).map((comment, index) => (
-                    <React.Fragment key={index}>
-                        <ListItem className={"comment-item d-flex flex-column text-left align-items-start justify-content-start w-100"}>
-                            <div className="d-flex justify-content-between w-100">
-                                <div className={"comment-author"}>{comment.author}</div>
-                                <CommentLikesIndicator comment={comment} post={post}/>
-                            </div>
-                            <div>{comment.content}</div>
-                        </ListItem>
-                        {(index + 1 !== commentsShown && !(post.comments.length < commentsShown && index + 1 === post.comments.length)) &&
-                            <Divider />
-                        }
-                    </React.Fragment>
-                ))}
-            </List>
-            }
             {post.comments.length - commentsShown > 0 &&
             <div className={"mt-3 mb-4 text-center"}>
                 <button
@@ -112,6 +93,25 @@ const Comments = ({post}) => {
                     </button>
                 </div>
             </div>
+            {((post.comments && post.comments.length === 0) || !post.comments)  && <div className={"mb-4"}>Aucun commentaire.</div>}
+            {post.comments && post.comments.length > 0 &&
+            <List className={classes.root} aria-label="post comments">
+                {[...post.comments].reverse().slice(0, commentsShown).map((comment, index) => (
+                    <React.Fragment key={index}>
+                        <ListItem className={"comment-item d-flex flex-column text-left align-items-start justify-content-start w-100"}>
+                            <div className="d-flex justify-content-between w-100">
+                                <div className={"comment-author"}>{comment.author}</div>
+                                <CommentLikesIndicator comment={comment} post={post}/>
+                            </div>
+                            <div>{comment.content}</div>
+                        </ListItem>
+                        {(index + 1 !== commentsShown && !(post.comments.length < commentsShown && index + 1 === post.comments.length)) &&
+                            <Divider />
+                        }
+                    </React.Fragment>
+                ))}
+            </List>
+            }
         </div>
     )
 }
