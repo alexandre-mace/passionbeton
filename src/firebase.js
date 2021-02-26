@@ -13,7 +13,10 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const messaging = firebase.messaging();
+const messaging = null;
+if (firebase.messaging.isSupported()) {
+    const messaging = firebase.messaging();
+}
 
 export const getToken = (setTokenFound) => {
     if (firebase.messaging.isSupported()) {
