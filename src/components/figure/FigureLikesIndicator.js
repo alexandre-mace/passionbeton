@@ -33,12 +33,23 @@ const FigureLikesIndicator = ({figure}) => {
         if (!likes) {
             return false
         }
+
+        if (typeof likes === 'object') {
+            return Object.values(likes).includes(ip)
+        }
+
         return likes.includes(ip)
     }
 
     return (
         <div className={"medias-indicator figure-likes"}>
-            <div className={"like-indicator"}>{figure.likes ? figure.likes.length : 0}</div>
+            <div className={"like-indicator"}>{
+                figure.likes
+                    ? typeof figure.likes === 'object'
+                    ? Object.values(figure.likes).length
+                    : figure.likes.length
+                    : 0
+            }</div>
             <IconButton aria-label="like" className={"like-button"} name={'like'}  onClick={(e) => handleLike(e, !userAlreadyLikedComment(ip, figure.likes))}>
                 {userAlreadyLikedComment(ip, figure.likes)
                     ? <FavoriteIcon className={'color-black'}/>
