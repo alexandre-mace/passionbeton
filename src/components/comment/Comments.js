@@ -67,16 +67,6 @@ const Comments = ({post}) => {
 
     return (
         <div className={"comment-section"}>
-            {post.comments.length - commentsShown > 0 &&
-            <div className={"mt-3 mb-4 text-center"}>
-                <button
-                    className={`button`}
-                    onClick={() => setCommentsShown((commentsShown + 5 > post.comments.length) ? post.comments.length : (commentsShown + 5))}
-                >
-                    Voir plus ({post.comments.length - commentsShown})
-                </button>
-            </div>
-            }
             <div className={"my-3"}>
                 <textarea style={{minHeight: '2rem'}} className={'w-100'} type="text" placeholder={"Votre message"} value={content} onChange={(event => setContent(event.target.value))}/>
                 <div className={"my-2"}/>
@@ -111,6 +101,16 @@ const Comments = ({post}) => {
                     </React.Fragment>
                 ))}
             </List>
+            }
+            {post.comments.length - commentsShown > 0 &&
+            <div className={"mt-3 mb-4 text-center"}>
+                <button
+                    className={`button`}
+                    onClick={() => setCommentsShown((commentsShown + 5 > post.comments.length) ? post.comments.length : (commentsShown + 5))}
+                >
+                    Voir plus ({post.comments.length - commentsShown})
+                </button>
+            </div>
             }
         </div>
     )
